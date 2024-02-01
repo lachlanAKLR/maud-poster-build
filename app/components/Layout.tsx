@@ -11,15 +11,15 @@ export function SingleImage({ block }: { block: any }) {
     <div>
       {block.image ? (
         <Image
-          className="w-1/3 rounded-lg"
+          className="w-full rounded-lg"
           src={builder
             .image(block.image)
             .width(1080)
             .height(1080)
             .quality(100)
             .url()}
-          width={300}
-          height={300}
+          width={1000}
+          height={1000}
           alt={block.image.alt || ""}
         />
       ) : null}
@@ -29,10 +29,10 @@ export function SingleImage({ block }: { block: any }) {
 
 export function TwoUpImage({ block }: { block: any }) {
   return (
-    <div className="flex">
+    <div className="flex justify-center py-10 gap-x-9">
       {block.leftImage ? (
         <Image
-          className="w-1/3 rounded-lg"
+          className="w-2/3 rounded-lg"
           src={builder
             .image(block.leftImage)
             .width(1080)
@@ -46,7 +46,7 @@ export function TwoUpImage({ block }: { block: any }) {
       ) : null}
       {block.rightImage ? (
         <Image
-          className="w-1/3 rounded-lg"
+          className="w-2/3 rounded-lg"
           src={builder
             .image(block.rightImage)
             .width(1080)
@@ -68,14 +68,18 @@ export default function Layout({ layouts }: { layouts: any[] }) {
     twoUpImage: TwoUpImage,
   };
 
-  return layouts.map((block, index) => {
-    if (Components[block._type]) {
-      return React.createElement(Components[block._type], {
-        key: block._key,
-        block,
-        index,
-      });
-    }
-    return null;
-  });
+  return (
+    <div className="flex flex-col items-center justify-center">
+      {layouts.map((block, index) => {
+        if (Components[block._type]) {
+          return React.createElement(Components[block._type], {
+            key: block._key,
+            block,
+            index,
+          });
+        }
+        return null;
+      })}
+    </div>
+  );
 }

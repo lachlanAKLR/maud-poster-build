@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export default function Projects({ projects }: { projects: SanityDocument[] }) {
   return (
-    <main className="container mx-auto grid grid-cols-1 divide-y divide-blue-100">
+    <main className="flex flex-col text-center">
       {projects?.length > 0 ? (
         projects.map((project) => (
           <Link key={project._id} href={project.slug.current}>
-            <h2 className="p-4 hover:bg-blue-50">{project.title}</h2>
+            <h1 className="text-xl py-10">{project.title}</h1>
           </Link>
         ))
       ) : (

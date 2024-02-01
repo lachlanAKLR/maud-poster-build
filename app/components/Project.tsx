@@ -13,22 +13,22 @@ export default function Project({ project }: { project: SanityDocument }) {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen">
-      {title ? <h1>{title}</h1> : null}
+      {title ? <h1 className="text-xl py-10">{title}</h1> : null}
       {projectImage ? (
         <Image
-          className="w-1/3 rounded-lg"
-          src={builder
-            .image(projectImage)
-            .width(1080)
-            .height(1080)
-            .quality(100)
-            .url()}
-          width={300}
-          height={300}
+          className="w-full rounded-lg aspect-4/3 object-cover bg-maud-brown"
+          src={builder.image(projectImage).quality(100).url()}
+          width={3000}
+          height={3000}
+          quality={100}
           alt={heroImageTag || ""}
         />
       ) : null}
-      {projectText ? <PortableText value={projectText} /> : null}
+      {projectText ? (
+        <div className="py-10">
+          <PortableText value={projectText} />
+        </div>
+      ) : null}
       {layouts ? <Layout layouts={layouts} /> : null}
     </main>
   );

@@ -1,11 +1,11 @@
-import { MdOutlineBrandingWatermark } from "react-icons/md";
+import { MdAddPhotoAlternate } from "react-icons/md";
 import { defineType, defineField } from "sanity";
 
 export default defineType({
   name: "project",
-  title: "Project",
+  title: "Projects",
   type: "document",
-  icon: MdOutlineBrandingWatermark,
+  icon: MdAddPhotoAlternate,
   fields: [
     defineField({
       name: "title",

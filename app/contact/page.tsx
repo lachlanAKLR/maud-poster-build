@@ -7,22 +7,24 @@ export default async function Page() {
   const content: ProfileType[] = await getContact();
 
   return (
-    <div>
+    <main className="px-10">
       {content &&
         content.map((data) => (
-          <div key={data._id}>
-            {data.title}
-            <PortableText value={data.contactText} />
+          <div className="text-center" key={data._id}>
+            <h1 className="text-xl w-full py-10">{data.title}</h1>
+            <div className="py-10">
+              <PortableText value={data.contactText} />
+            </div>
             <Image
-              className="rounded-2xl mb-4 object-cover max-h-96 min-h-96 bg-top bg-[#1d1d20]"
+              className="rounded-2xl mb-4 object-cover bg-top bg-maud-brown"
               src={data.heroImage.image}
-              width={1000}
-              height={1000}
+              width={2000}
+              height={2000}
               quality={100}
               alt="image"
             />
           </div>
         ))}
-    </div>
+    </main>
   );
 }
