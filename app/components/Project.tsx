@@ -29,7 +29,7 @@ export default function Project({ project }: { project: SanityDocument }) {
         />
       ) : null}
       {projectText ? <PortableText value={projectText} /> : null}
-      <Layout layouts={layouts} />
+      {layouts ? <Layout layouts={layouts} /> : null}
     </main>
   );
 }
