@@ -43,5 +43,20 @@ export default defineType({
       validation: (Rule) =>
         Rule.min(0).max(100).warning("Maximum of 100 characters"),
     }),
+    defineField({
+      name: "layouts",
+      title: "Image Layouts",
+      type: "array",
+      of: [
+        {
+          type: "singleImage",
+          title: "Single Image",
+        },
+        {
+          type: "twoUpImage",
+          title: "Two Images",
+        },
+      ],
+    }),
   ],
 });

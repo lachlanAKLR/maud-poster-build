@@ -2,13 +2,14 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
+import Layout from "./Layout";
 
 import { dataset, projectId } from "@/sanity/env";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
 export default function Project({ project }: { project: SanityDocument }) {
-  const { title, projectImage, projectText, heroImageTag } = project;
+  const { title, projectImage, projectText, heroImageTag, layouts } = project;
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen">
@@ -28,6 +29,7 @@ export default function Project({ project }: { project: SanityDocument }) {
         />
       ) : null}
       {projectText ? <PortableText value={projectText} /> : null}
+      <Layout layouts={layouts} />
     </main>
   );
 }
