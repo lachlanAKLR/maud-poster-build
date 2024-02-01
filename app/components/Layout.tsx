@@ -6,7 +6,7 @@ import { dataset, projectId } from "@/sanity/env";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
-export function SingleImage({ block }) {
+export function SingleImage({ block }: { block: any }) {
   return (
     <div>
       {block.image ? (
@@ -27,7 +27,7 @@ export function SingleImage({ block }) {
   );
 }
 
-export function TwoUpImage({ block }) {
+export function TwoUpImage({ block }: { block: any }) {
   return (
     <div className="flex">
       {block.leftImage ? (
@@ -62,8 +62,8 @@ export function TwoUpImage({ block }) {
   );
 }
 
-export default function Layout({ layouts }) {
-  const Components = {
+export default function Layout({ layouts }: { layouts: any[] }) {
+  const Components: { [key: string]: React.ComponentType<any> } = {
     singleImage: SingleImage,
     twoUpImage: TwoUpImage,
   };
@@ -76,5 +76,6 @@ export default function Layout({ layouts }) {
         index,
       });
     }
+    return null;
   });
 }
