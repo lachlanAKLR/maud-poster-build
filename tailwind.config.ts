@@ -19,14 +19,18 @@ const config: Config = {
         "9/16": "9 / 16",
       },
       fontSize: {
-        sm: ["14px", "20px"],
-        base: ["16px", "24px"],
-        lg: ["20px", "28px"],
-        xl: ["38px", "44px"],
+        sm: ["14px", "14px"],
+        base: ["14px", "14px"],
+        lg: ["32px", "32px"],
+        xl: ["750px", "750px"],
       },
       colors: {
         "maud-green": "#dee9bb",
         "maud-brown": "#897152",
+        "maud-red": "#FF2C1D",
+      },
+      maxWidth: {
+        "max-w-3xl": "50rem",
       },
     },
   },

@@ -1,7 +1,7 @@
 import { QueryParams, SanityDocument } from "next-sanity";
 import { loadQuery } from "@/sanity/lib/store";
 import { PROJECTS_QUERY, PROJECT_QUERY } from "@/sanity/lib/queries";
-import Project from "../components/Project";
+import Project from "../../components/Project";
 import { client } from "@/sanity/lib/client";
 
 export async function generateStaticParams() {

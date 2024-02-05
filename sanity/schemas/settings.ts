@@ -1,36 +1,44 @@
-import { defineType } from "sanity";
+import { defineType, defineField } from "sanity";
 
 export default defineType({
   name: "settings",
   title: "Settings Page",
   type: "document",
   fields: [
-    {
-      name: "title",
-      title: "Title",
+    defineField({
+      name: "phone",
+      title: "Phone Number",
       type: "string",
-    },
-    {
-      name: "settingsText",
+    }),
+    defineField({
+      name: "email",
+      title: "Email Address",
+      type: "string",
+    }),
+    defineField({
+      name: "instagram",
+      title: "Instagram",
+      type: "string",
+    }),
+    defineField({
+      name: "addressOne",
       type: "array",
-      title: "settings Text",
+      title: "Address One",
       of: [
         {
           type: "block",
         },
       ],
-    },
-    {
-      name: "heroImage",
-      title: "Image",
-      type: "image",
-      fields: [
+    }),
+    defineField({
+      name: "addressTwo",
+      type: "array",
+      title: "Address Two",
+      of: [
         {
-          name: "alt",
-          title: "Alt",
-          type: "string",
+          type: "block",
         },
       ],
-    },
+    }),
   ],
 });

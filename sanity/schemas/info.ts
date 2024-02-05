@@ -1,19 +1,14 @@
 import { defineType } from "sanity";
 
 export default defineType({
-  name: "contact",
-  title: "Contact Page",
+  name: "info",
+  title: "Info Page",
   type: "document",
   fields: [
     {
-      name: "title",
-      title: "Title",
-      type: "string",
-    },
-    {
-      name: "contactText",
+      name: "infoText",
       type: "array",
-      title: "Contact Text",
+      title: "Info Text",
       of: [
         {
           type: "block",
@@ -21,7 +16,7 @@ export default defineType({
       ],
     },
     {
-      name: "heroImage",
+      name: "image",
       title: "Image",
       type: "image",
       fields: [

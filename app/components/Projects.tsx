@@ -6,7 +6,7 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
     <main className="flex flex-col text-center">
       {projects?.length > 0 ? (
         projects.map((project) => (
-          <Link key={project._id} href={project.slug.current}>
+          <Link key={project._id} href={`/work/${project.slug.current}`}>
             <h1 className="text-xl py-10">{project.title}</h1>
           </Link>
         ))

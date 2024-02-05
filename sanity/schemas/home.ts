@@ -6,11 +6,6 @@ export default defineType({
   type: "document",
   fields: [
     {
-      name: "title",
-      title: "Title",
-      type: "string",
-    },
-    {
       name: "homeText",
       type: "array",
       title: "home Text",

@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
 
 import localFont from "next/font/local";
 
@@ -22,10 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${unica.className} antialiased px-10`}>
+      <body className={`${unica.className} antialiased`}>
         <Nav />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

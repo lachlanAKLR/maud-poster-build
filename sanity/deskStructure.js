@@ -9,20 +9,20 @@ export const deskStructure = (S) =>
     .title("Content")
     .items([
       ...S.documentTypeListItems().filter(
-        (listItem) => !["contact","home", "settings"].includes(listItem.getId())
+        (listItem) => !["info","home", "settings"].includes(listItem.getId())
       ),
       S.divider(),
       S.listItem()
       .title("Home")
       .icon(MdHomeFilled)
-      .child(S.editor().schemaType("home").documentId("home")),  
+      .child(S.editor().schemaType("home").documentId("home").title("Home")),  
       S.listItem()
       .title("Info")
       .icon(MdInfo)
-      .child(S.editor().schemaType("contact").documentId("contact")),
+      .child(S.editor().schemaType("info").documentId("info").title("Info")),
       S.divider(),
       S.listItem()
       .title("Settings")
       .icon(IoMdSettings)
-      .child(S.editor().schemaType("settings").documentId("settings")),
+      .child(S.editor().schemaType("settings").documentId("settings").title("Settings")),
   ]);

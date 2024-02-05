@@ -7,14 +7,26 @@ export const PROJECTS_QUERY = groq`*[_type == "project" && defined(slug)]`;
 
 export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]`;
 
-export async function getContact() {
+export async function getInfo() {
   return client.fetch(
-    groq`*[_type == "contact"]{
+    groq`*[_type == "info"]{
               _id,
-              title,
-              heroImage,
-              contactText,
-              heroImage {alt, "image": asset->url},
+              infoText,
+              image,
+              image {alt, "image": asset->url},
+            }`
+  );
+}
+
+export async function getSettings() {
+  return client.fetch(
+    groq`*[_type == "settings"]{
+              _id,
+              phone,
+              email,
+              instagram,
+              addressOne,
+              addressTwo,
             }`
   );
 }
