@@ -1,13 +1,40 @@
 import { SanityDocument } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
+import Image from "next/image";
+
+import { dataset, projectId } from "@/sanity/env";
+import PageAnimation from "./PageAnimation";
+
+const builder = imageUrlBuilder({ projectId, dataset });
+const title = `WORK`;
 
 export default function Projects({ projects }: { projects: SanityDocument[] }) {
   return (
-    <main className="flex flex-col text-center">
+    <main className="grid grid-cols-6 gap-x-20 gap-y-72 pt-72 px-20 pb-72 content-center">
+      <PageAnimation title={title} />
       {projects?.length > 0 ? (
         projects.map((project) => (
-          <Link key={project._id} href={`/work/${project.slug.current}`}>
-            <h1 className="text-xl py-10">{project.title}</h1>
+          <Link
+            className="col-span-2 flex flex-col justify-center content-center "
+            key={project._id}
+            href={`/work/${project.slug.current}`}
+          >
+            <Image
+              className={`object-cover bg-maud-grey ${
+                project.thumbnailImage.ratio === "square"
+                  ? "aspect-[1/1]"
+                  : project.thumbnailImage.ratio === "letterbox"
+                  ? "aspect-[3/2]"
+                  : "aspect-[2/3]"
+              }`}
+              src={builder.image(project.thumbnailImage).quality(100).url()}
+              width={3000}
+              height={3000}
+              quality={100}
+              alt={project.thumbnailImage.alt || ""}
+            />
+            {project.thumbnailImage.ratio != "square"}
           </Link>
         ))
       ) : (

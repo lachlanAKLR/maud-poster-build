@@ -20,18 +20,23 @@ interface PageAnimationProps {
 
 export default function PageAnimation({ title }: PageAnimationProps) {
   return (
-    <div className="w-full h-screen absolute top-0 pointer-events-none flex items-center justify-center">
-      {title.split("").map((item, index) => (
-        <h1
-          key={index}
-          id={index.toString()}
-          className="absolute top-0 size-full text-center"
-        >
-          <motion.span variants={typeVariants(index)} animate={`blink${index}`}>
-            {item}
-          </motion.span>
-        </h1>
-      ))}
+    <div className="w-full h-screen absolute top-0 left-0 flex items-center justify-center pointer-events-none">
+      <div className="flex justify-center content-center relative h-[50rem] w-96">
+        {title.split("").map((item, index) => (
+          <h1
+            key={index}
+            id={index.toString()}
+            className="absolute top-0 text-center"
+          >
+            <motion.span
+              variants={typeVariants(index)}
+              animate={`blink${index}`}
+            >
+              {item}
+            </motion.span>
+          </h1>
+        ))}
+      </div>
     </div>
   );
 }

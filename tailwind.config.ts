@@ -14,20 +14,21 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       aspectRatio: {
-        "4/3": "4 / 3",
+        "1/1": "1 / 1",
         "2/3": "2 / 3",
-        "9/16": "9 / 16",
+        "3/2": "3 / 2",
       },
       fontSize: {
         sm: ["14px", "14px"],
         base: ["14px", "14px"],
         lg: ["32px", "32px"],
-        xl: ["750px", "750px"],
+        xl: ["820px", "750px"],
       },
       colors: {
         "maud-green": "#dee9bb",
         "maud-brown": "#897152",
         "maud-red": "#FF2C1D",
+        "maud-black": "#16161D",
       },
       maxWidth: {
         "max-w-3xl": "50rem",

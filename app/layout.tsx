@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${unica.className} antialiased`}>
+      <body className={`${unica.className} antialiased text-maud-black`}>
         <Nav />
         {children}
         {/* <Footer /> */}
