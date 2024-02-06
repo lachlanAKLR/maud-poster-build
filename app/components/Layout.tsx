@@ -1,25 +1,59 @@
 import React from "react";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
+import { PortableText } from "@portabletext/react";
+import { herbik } from "../fonts";
+import { unica } from "../fonts";
 
 import { dataset, projectId } from "@/sanity/env";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
-export function SingleImage({ block }: { block: any }) {
+export function Quote({ block }: { block: any }) {
+  return (
+    <div className="grid grid-cols-10 py-72 px-20 gap-x-20">
+      <div className={`${herbik.className} col-start-2 col-span-8 text-5xl`}>
+        {block ? <PortableText value={block.text} /> : null}
+        <p className={`${unica.className} text-sm pt-10`}>{block.author}</p>
+      </div>
+    </div>
+  );
+}
+export function PortraitImage({ block }: { block: any }) {
+  return (
+    <div className="grid grid-cols-10 py-10 px-20 gap-x-20">
+      {block.image ? (
+        <Image
+          className="w-full aspect-4/5 object-cover col-start-3 col-span-6"
+          src={builder
+            .image(block.image)
+            .width(2000)
+            .height(3000)
+            .quality(100)
+            .url()}
+          width={2000}
+          height={3000}
+          alt={block.image.alt || ""}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+export function LandscapeImage({ block }: { block: any }) {
   return (
     <div>
       {block.image ? (
         <Image
-          className="w-full rounded-lg"
+          className="w-full aspect-3/2 object-cover py-10 px-20"
           src={builder
             .image(block.image)
-            .width(1080)
-            .height(1080)
+            .width(3000)
+            .height(2000)
             .quality(100)
             .url()}
-          width={1000}
-          height={1000}
+          width={3000}
+          height={2000}
           alt={block.image.alt || ""}
         />
       ) : null}
@@ -29,32 +63,32 @@ export function SingleImage({ block }: { block: any }) {
 
 export function TwoUpImage({ block }: { block: any }) {
   return (
-    <div className="flex justify-center py-10 gap-x-9">
+    <div className="grid grid-cols-10 py-10 px-20 gap-x-20">
       {block.leftImage ? (
         <Image
-          className="w-2/3 rounded-lg"
+          className="aspect-2/3 col-start-1 col-span-5"
           src={builder
             .image(block.leftImage)
-            .width(1080)
-            .height(1080)
+            .width(2000)
+            .height(3000)
             .quality(100)
             .url()}
-          width={300}
-          height={300}
+          width={2000}
+          height={3000}
           alt={block.leftImage.alt || ""}
         />
       ) : null}
       {block.rightImage ? (
         <Image
-          className="w-2/3 rounded-lg"
+          className="aspect-2/3 col-span-5"
           src={builder
             .image(block.rightImage)
-            .width(1080)
-            .height(1080)
+            .width(2000)
+            .height(3000)
             .quality(100)
             .url()}
-          width={300}
-          height={300}
+          width={2000}
+          height={3000}
           alt={block.rightImage.alt || ""}
         />
       ) : null}
@@ -64,12 +98,14 @@ export function TwoUpImage({ block }: { block: any }) {
 
 export default function Layout({ layouts }: { layouts: any[] }) {
   const Components: { [key: string]: React.ComponentType<any> } = {
-    singleImage: SingleImage,
+    landscapeImage: LandscapeImage,
     twoUpImage: TwoUpImage,
+    portraitImage: PortraitImage,
+    quote: Quote,
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="text-center">
       {layouts.map((block, index) => {
         if (Components[block._type]) {
           return React.createElement(Components[block._type], {

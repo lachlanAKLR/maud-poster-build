@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-
-import localFont from "next/font/local";
-
-const unica = localFont({ src: "./assets/fonts/Unica77-Medium.otf" });
+import { unica } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Maud — Part of Accenture song",

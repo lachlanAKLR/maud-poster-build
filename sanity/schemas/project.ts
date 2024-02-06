@@ -70,16 +70,24 @@ export default defineType({
     }),
     defineField({
       name: "layouts",
-      title: "Image Layouts",
+      title: "Layout Builder",
       type: "array",
       of: [
         {
-          type: "singleImage",
-          title: "Single Image",
+          type: "landscapeImage",
+          title: "Landscape Image",
+        },
+        {
+          type: "portraitImage",
+          title: "Portrait Image",
         },
         {
           type: "twoUpImage",
-          title: "Two Images",
+          title: "Portrait Two Up",
+        },
+        {
+          type: "quote",
+          title: "Text Quote",
         },
       ],
     }),

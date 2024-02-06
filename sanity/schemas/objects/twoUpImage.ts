@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export default defineType({
   name: "twoUpImage",
-  title: "Two Images",
+  title: "Portrait Two Up",
   type: "object",
   fields: [
     defineField({
@@ -32,8 +32,8 @@ export default defineType({
   ],
   preview: {
     select: {
-      media: "leftImage",
       title: "leftImage.alt",
+      media: "leftImage",
     },
   },
 });
