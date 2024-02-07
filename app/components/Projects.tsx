@@ -24,7 +24,7 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
               className={`object-cover bg-maud-grey ${
                 project.thumbnailImage.ratio === "square"
                   ? "aspect-[1/1]"
-                  : project.thumbnailImage.ratio === "letterbox"
+                  : project.thumbnailImage.ratio === "landscape"
                   ? "aspect-[3/2]"
                   : "aspect-[2/3]"
               }`}
@@ -33,6 +33,7 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
               height={3000}
               quality={100}
               alt={project.thumbnailImage.alt || ""}
+              id={project.thumbnailImage.ratio}
             />
             {project.thumbnailImage.ratio != "square"}
           </Link>

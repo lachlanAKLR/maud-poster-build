@@ -39,7 +39,7 @@ export default defineType({
           options: {
             list: [
               { title: "Square", value: "square" },
-              { title: "Letterbox", value: "letterbox" },
+              { title: "Landscape", value: "landscape" },
               { title: "Portrait", value: "portrait" },
             ],
           },
@@ -57,6 +57,12 @@ export default defineType({
           type: "string",
         }),
       ],
+    }),
+    defineField({
+      name: "tags",
+      title: "Project Tags",
+      type: "array",
+      of: [{ type: "reference", to: { type: "tags" } }],
     }),
     defineField({
       name: "projectText",
@@ -91,5 +97,28 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: "projectCredits",
+      type: "array",
+      title: "Project Credits",
+      of: [
+        {
+          type: "block",
+        },
+      ],
+    }),
+    defineField({
+      name: "orderRank",
+      title: "Order Rank",
+      type: "string",
+      hidden: true,
+    }),
   ],
+  preview: {
+    select: {
+      media: "thumbnailImage",
+      title: "title",
+      subtitle: "thumbnailImage.ratio",
+    },
+  },
 });

@@ -20,7 +20,7 @@ const config: Config = {
         "4/5": "4 / 5",
       },
       fontSize: {
-        xs: ["14px", "14px"],
+        xs: ["14px", "16px"],
         sm: ["20px", "24px"],
         base: ["16px", "18px"],
         lg: ["32px", "32px"],
@@ -33,6 +33,7 @@ const config: Config = {
         "maud-brown": "#897152",
         "maud-red": "#FF2C1D",
         "maud-black": "#16161D",
+        "maud-grey": "#F2F2F0",
       },
       maxWidth: {
         "max-w-3xl": "50rem",

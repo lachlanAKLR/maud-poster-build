@@ -1,16 +1,19 @@
 import { MdInfo } from "react-icons/md";
 import { MdHomeFilled } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 
 
 
-export const deskStructure = (S) =>
+
+export const deskStructure = (S, context) =>
   S.list()
     .title("Content")
     .items([
       ...S.documentTypeListItems().filter(
-        (listItem) => !["info","home", "settings"].includes(listItem.getId())
+        (listItem) => !["info", "home", "settings", "project", "tags"].includes(listItem.getId())
       ),
+      orderableDocumentListDeskItem({type: 'project', S, context, title: 'Projects'}),
       S.divider(),
       S.listItem()
       .title("Home")

@@ -13,11 +13,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: QueryParams }) {
-  const initial = await loadQuery<SanityDocument>(PROJECT_QUERY, params, {
-    // Because of Next.js, RSC and Dynamic Routes this currently
-    // cannot be set on the loadQuery function at the "top level"
-    // perspective: draftMode().isEnabled ? "previewDrafts" : "published",
-  });
+  const initial = await loadQuery<SanityDocument>(PROJECT_QUERY, params, {});
+  const projects = await client.fetch<SanityDocument[]>(PROJECTS_QUERY);
 
-  return <Project project={initial.data} />;
+  return <Project project={initial.data} projects={projects} />;
 }

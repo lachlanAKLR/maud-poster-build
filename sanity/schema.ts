@@ -8,6 +8,7 @@ import settings from "./schemas/settings";
 import home from "./schemas/home";
 import portraitImage from "./schemas/objects/portraitImage";
 import quote from "./schemas/objects/quote";
+import tags from "./schemas/objects/tags";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +20,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     home,
     portraitImage,
     quote,
+    tags,
   ],
 };

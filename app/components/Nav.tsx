@@ -9,7 +9,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <div className="fixed w-full flex p-3 z-40 justify-between">
+      <div className="fixed w-full flex py-1 px-3 z-40 justify-between">
         <div>
           <Link className="text-xs" href="/">
             Maud, Part of Accenture Song

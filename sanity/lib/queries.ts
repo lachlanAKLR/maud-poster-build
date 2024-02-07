@@ -3,7 +3,7 @@
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 
-export const PROJECTS_QUERY = groq`*[_type == "project" && defined(slug)]`;
+export const PROJECTS_QUERY = groq`*[_type == "project" && defined(slug)]|order(orderRank)`;
 
 export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]`;
 

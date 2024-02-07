@@ -3,14 +3,22 @@ import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
 import Layout from "./Layout";
+import Tags from "./Tags";
 
 import { dataset, projectId } from "@/sanity/env";
+import MoreProjects from "./MoreProjects";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
-export default function Project({ project }: { project: SanityDocument }) {
-  const { title, featuredImage, projectText, layouts } = project;
-
+export default function Project({
+  project,
+  projects,
+}: {
+  project: SanityDocument;
+  projects: SanityDocument[];
+}) {
+  const { title, featuredImage, projectText, layouts, projectCredits, _id } =
+    project;
   return (
     <main className="min-h-screen">
       {title ? (
@@ -34,6 +42,15 @@ export default function Project({ project }: { project: SanityDocument }) {
         </div>
       ) : null}
       {layouts ? <Layout layouts={layouts} /> : null}
+      {projectCredits ? (
+        <div className="grid grid-cols-8 gap-x-20 px-20">
+          <div className="py-32 col-start-3 col-span-4 text-center text-xs">
+            <PortableText value={projectCredits} />
+          </div>
+        </div>
+      ) : null}
+      <MoreProjects projects={projects} id={_id} />
+      {/* <Tags tags={tags} /> */}
     </main>
   );
 }
