@@ -30,7 +30,7 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
                     ? "aspect-[1/1]"
                     : project.thumbnailImage.ratio === "landscape"
                     ? "aspect-[3/2]"
-                    : "aspect-[2/3]"
+                    : "aspect-[3/4]"
                 }`}
                 src={builder.image(project.thumbnailImage).quality(100).url()}
                 width={3000}

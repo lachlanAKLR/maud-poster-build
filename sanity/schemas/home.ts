@@ -1,31 +1,21 @@
 import { defineType } from "sanity";
+import { defineField } from "sanity";
 
 export default defineType({
   name: "home",
   title: "Home Page",
   type: "document",
   fields: [
-    {
-      name: "homeText",
+    defineField({
+      name: "carouselItems",
+      title: "Carousel",
       type: "array",
-      title: "home Text",
       of: [
         {
-          type: "block",
+          type: "carouselItem",
+          title: "Carousel Item",
         },
       ],
-    },
-    {
-      name: "heroImage",
-      title: "Image",
-      type: "image",
-      fields: [
-        {
-          name: "alt",
-          title: "Alt",
-          type: "string",
-        },
-      ],
-    },
+    }),
   ],
 });

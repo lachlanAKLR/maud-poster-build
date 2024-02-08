@@ -11,7 +11,7 @@ export default async function Page() {
   const videoId = `877781990`;
 
   return (
-    <main className="bg-maud-red min-h-screen">
+    <>
       <PageAnimation title={title} />
       {content &&
         content.map((data) => (
@@ -69,6 +69,6 @@ export default async function Page() {
             />
           </div>
         ))}
-    </main>
+    </>
   );
 }
