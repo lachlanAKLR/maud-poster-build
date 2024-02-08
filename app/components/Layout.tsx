@@ -9,6 +9,14 @@ import { dataset, projectId } from "@/sanity/env";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
+export function Video({ block }: { block: any }) {
+  return (
+    <video className="py-10 px-20" autoPlay playsInline muted loop>
+      <source src={block.videoUrl} type="video/mp4" />
+    </video>
+  );
+}
+
 export function Quote({ block }: { block: any }) {
   return (
     <div className="grid grid-cols-10 py-72 px-20 gap-x-20">
@@ -102,6 +110,7 @@ export default function Layout({ layouts }: { layouts: any[] }) {
     twoUpImage: TwoUpImage,
     portraitImage: PortraitImage,
     quote: Quote,
+    video: Video,
   };
 
   return (

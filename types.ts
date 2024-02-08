@@ -13,4 +13,5 @@ export type ProfileType = {
   instagram: string;
   addressOne: PortableTextBlock[];
   addressTwo: PortableTextBlock[];
+  videoUrl: string;
 };

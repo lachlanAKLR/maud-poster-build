@@ -14,7 +14,7 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
     <main className="grid grid-cols-6 gap-x-20 gap-y-72 pt-72 px-20 pb-72 content-center">
       <PageAnimation title={title} />
       {projects?.length > 0 ? (
-        projects.map((project) => (
+        projects.map((project, index) => (
           <Link
             className="col-span-2 flex flex-col justify-center content-center "
             key={project._id}
@@ -33,7 +33,9 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
               height={3000}
               quality={100}
               alt={project.thumbnailImage.alt || ""}
-              id={project.thumbnailImage.ratio}
+              priority={index >= 0 && index <= 2 ? true : false}
+              blurDataURL="data:..."
+              placeholder="blur"
             />
             {project.thumbnailImage.ratio != "square"}
           </Link>

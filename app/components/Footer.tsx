@@ -1,26 +1,43 @@
 import { ProfileType } from "@/types";
 import { getSettings } from "@/sanity/lib/queries";
-import { PortableText } from "@portabletext/react";
+import Image from "next/image";
+import { dataset, projectId } from "@/sanity/env";
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder({ projectId, dataset });
 
 export default async function Footer() {
   const settings: ProfileType[] = await getSettings();
 
   return (
-    <footer className="text-center ">
-      <div className="grid grid-cols-8 gap-x-10 pt-10 pb-10">
+    <footer className="text-center">
+      <div className="grid grid-cols-8 gap-x-10 pt-10">
         {settings &&
           settings.map((data) => (
             <div
               key={data._id}
-              className="flex justify-center text-center col-start-3 col-span-4"
+              className="flex justify-center text-center col-start-1 col-span-8"
             >
               <div className="text-sm">
-                <h3>
+                <h3 className="py-20">
                   Got a project in mind?
                   <br />
                   Email us at
                   <a href={`mailto:${data.email}`}> {data.email}</a>
                 </h3>
+                {data.image ? (
+                  <Image
+                    className="w-full object-cover"
+                    src={builder.image(data.image.image).quality(100).url()}
+                    width={3000}
+                    height={3000}
+                    quality={100}
+                    alt={data.image.alt || ""}
+                    priority
+                    blurDataURL="data:..."
+                    placeholder="blur"
+                  />
+                ) : null}
               </div>
             </div>
           ))}

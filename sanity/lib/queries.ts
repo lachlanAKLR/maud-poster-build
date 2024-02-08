@@ -27,6 +27,8 @@ export async function getSettings() {
               instagram,
               addressOne,
               addressTwo,
+              image,
+              image {alt, "image": asset->url},
             }`
   );
 }

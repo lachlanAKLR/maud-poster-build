@@ -95,6 +95,10 @@ export default defineType({
           type: "quote",
           title: "Text Quote",
         },
+        {
+          type: "video",
+          title: "Video",
+        },
       ],
     }),
     defineField({

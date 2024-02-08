@@ -40,5 +40,17 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: "image",
+      title: "Footer Image",
+      type: "image",
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Image Description",
+          type: "string",
+        }),
+      ],
+    }),
   ],
 });

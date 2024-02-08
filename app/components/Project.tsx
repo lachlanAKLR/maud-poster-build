@@ -32,6 +32,9 @@ export default function Project({
           height={3000}
           quality={100}
           alt={featuredImage.alt || ""}
+          priority
+          blurDataURL="data:..."
+          placeholder="blur"
         />
       ) : null}
       {projectText ? (

@@ -8,6 +8,7 @@ export default async function Page() {
   const content: ProfileType[] = await getInfo();
   const settings: ProfileType[] = await getSettings();
   const title = `INFO`;
+  const videoId = `877781990`;
 
   return (
     <main className="bg-maud-red min-h-screen">
@@ -64,6 +65,7 @@ export default async function Page() {
               height={2000}
               quality={100}
               alt={data.image.alt}
+              priority
             />
           </div>
         ))}
