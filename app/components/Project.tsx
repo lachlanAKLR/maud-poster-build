@@ -4,6 +4,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
 import Layout from "./Layout";
 import Tags from "./Tags";
+import Video from "./Video";
 
 import { dataset, projectId } from "@/sanity/env";
 import MoreProjects from "./MoreProjects";
@@ -19,12 +20,15 @@ export default function Project({
 }) {
   const { title, featuredImage, projectText, layouts, projectCredits, _id } =
     project;
+
   return (
     <main className="min-h-screen">
-      {title ? (
+      {title && (
         <h1 className="py-20 px-10 font-black text-xl text-center">{title}</h1>
-      ) : null}
-      {featuredImage ? (
+      )}
+      {featuredImage && featuredImage.videoUrl ? (
+        <Video videoUrl={featuredImage.videoUrl} />
+      ) : featuredImage ? (
         <Image
           className="w-full aspect-3/2 object-cover bg-maud-brown"
           src={builder.image(featuredImage).quality(100).url()}

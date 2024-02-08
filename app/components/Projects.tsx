@@ -2,6 +2,7 @@ import { SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import Image from "next/image";
+import Video from "./Video";
 
 import { dataset, projectId } from "@/sanity/env";
 import PageAnimation from "./PageAnimation";
@@ -20,24 +21,27 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
             key={project._id}
             href={`/work/${project.slug.current}`}
           >
-            <Image
-              className={`object-cover bg-maud-grey ${
-                project.thumbnailImage.ratio === "square"
-                  ? "aspect-[1/1]"
-                  : project.thumbnailImage.ratio === "landscape"
-                  ? "aspect-[3/2]"
-                  : "aspect-[2/3]"
-              }`}
-              src={builder.image(project.thumbnailImage).quality(100).url()}
-              width={3000}
-              height={3000}
-              quality={100}
-              alt={project.thumbnailImage.alt || ""}
-              priority={index >= 0 && index <= 2 ? true : false}
-              blurDataURL="data:..."
-              placeholder="blur"
-            />
-            {project.thumbnailImage.ratio != "square"}
+            {project.thumbnailImage && project.thumbnailImage.videoUrl ? (
+              <Video videoUrl={project.thumbnailImage.videoUrl} />
+            ) : project.thumbnailImage ? (
+              <Image
+                className={`object-cover bg-maud-grey ${
+                  project.thumbnailImage.ratio === "square"
+                    ? "aspect-[1/1]"
+                    : project.thumbnailImage.ratio === "landscape"
+                    ? "aspect-[3/2]"
+                    : "aspect-[2/3]"
+                }`}
+                src={builder.image(project.thumbnailImage).quality(100).url()}
+                width={3000}
+                height={3000}
+                quality={100}
+                alt={project.thumbnailImage.alt || ""}
+                priority={index >= 0 && index <= 2 ? true : false}
+                blurDataURL="data:..."
+                placeholder="blur"
+              />
+            ) : null}
           </Link>
         ))
       ) : (
