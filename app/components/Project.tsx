@@ -5,6 +5,7 @@ import { SanityDocument } from "next-sanity";
 import Layout from "./Layout";
 import Tags from "./Tags";
 import Video from "./Video";
+import { Suspense } from "react";
 
 import { dataset, projectId } from "@/sanity/env";
 import MoreProjects from "./MoreProjects";
@@ -30,7 +31,7 @@ export default function Project({
         <Video videoUrl={featuredImage.videoUrl} />
       ) : featuredImage ? (
         <Image
-          className="w-full aspect-3/2 object-cover bg-maud-brown"
+          className="w-full aspect-3/2 object-cover bg-maud-grey"
           src={builder.image(featuredImage).quality(100).url()}
           width={3000}
           height={3000}

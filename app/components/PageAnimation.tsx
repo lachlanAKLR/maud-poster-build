@@ -20,7 +20,7 @@ interface PageAnimationProps {
 
 export default function PageAnimation({ title }: PageAnimationProps) {
   return (
-    <div className="w-full h-screen absolute top-0 left-0 flex items-center justify-center pointer-events-none">
+    <div className="w-full h-screen absolute top-0 left-0 flex items-center justify-center pointer-events-none z-40">
       <div className="flex justify-center content-center relative h-[50rem] w-96">
         {title.split("").map((item, index) => (
           <h1

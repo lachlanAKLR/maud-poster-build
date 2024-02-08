@@ -9,14 +9,24 @@ import { dataset, projectId } from "@/sanity/env";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
+// —————————— Video —————————— //
 export function Video({ block }: { block: any }) {
   return (
-    <video className="py-10 px-20" autoPlay playsInline muted loop>
-      <source src={block.videoUrl} type="video/mp4" />
-    </video>
+    <div className="relative w-full h-fit py-10 px-20">
+      <video
+        className="inset-0 w-full h-fit bg-maud-grey"
+        autoPlay
+        playsInline
+        muted
+        loop
+      >
+        <source src={block.videoUrl} type="video/mp4" />
+      </video>
+    </div>
   );
 }
 
+// —————————— Quote —————————— //
 export function Quote({ block }: { block: any }) {
   return (
     <div className="grid grid-cols-10 py-72 px-20 gap-x-20">
@@ -27,6 +37,8 @@ export function Quote({ block }: { block: any }) {
     </div>
   );
 }
+
+// —————————— Portrait Image —————————— //
 export function PortraitImage({ block }: { block: any }) {
   return (
     <div className="grid grid-cols-10 py-10 px-20 gap-x-20">
@@ -42,12 +54,15 @@ export function PortraitImage({ block }: { block: any }) {
           width={2000}
           height={3000}
           alt={block.image.alt || ""}
+          blurDataURL="data:..."
+          placeholder="blur"
         />
       ) : null}
     </div>
   );
 }
 
+// —————————— Landscape Image —————————— //
 export function LandscapeImage({ block }: { block: any }) {
   return (
     <div>
@@ -63,12 +78,15 @@ export function LandscapeImage({ block }: { block: any }) {
           width={3000}
           height={2000}
           alt={block.image.alt || ""}
+          blurDataURL="data:..."
+          placeholder="blur"
         />
       ) : null}
     </div>
   );
 }
 
+// —————————— Two Up Image —————————— //
 export function TwoUpImage({ block }: { block: any }) {
   return (
     <div className="grid grid-cols-10 py-10 px-20 gap-x-20">
@@ -84,6 +102,8 @@ export function TwoUpImage({ block }: { block: any }) {
           width={2000}
           height={3000}
           alt={block.leftImage.alt || ""}
+          blurDataURL="data:..."
+          placeholder="blur"
         />
       ) : null}
       {block.rightImage ? (
@@ -98,6 +118,8 @@ export function TwoUpImage({ block }: { block: any }) {
           width={2000}
           height={3000}
           alt={block.rightImage.alt || ""}
+          blurDataURL="data:..."
+          placeholder="blur"
         />
       ) : null}
     </div>
