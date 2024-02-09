@@ -54,6 +54,8 @@ const Carousel: React.FC = () => {
       setContent(fetchedContent);
 
       // Preload images using the standard Image object
+      // @ts-ignore
+
       fetchedContent[0]?.carousel.forEach((item) => {
         const img = new window.Image();
         img.src = builder.image(item.featuredImage).quality(100).url();
