@@ -7,15 +7,10 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
-      name: "carouselItems",
-      title: "Carousel",
+      name: "carousel",
+      title: "Featured Projects",
       type: "array",
-      of: [
-        {
-          type: "carouselItem",
-          title: "Carousel Item",
-        },
-      ],
+      of: [{ type: "reference", to: { type: "project" } }],
     }),
   ],
 });

@@ -10,7 +10,6 @@ import portraitImage from "./schemas/objects/portraitImage";
 import quote from "./schemas/objects/quote";
 import tags from "./schemas/objects/tags";
 import video from "./schemas/objects/video";
-import carouseltem from "./schemas/objects/carouseltem";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -24,6 +23,5 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     quote,
     tags,
     video,
-    carouseltem,
   ],
 };

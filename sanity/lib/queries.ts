@@ -32,3 +32,17 @@ export async function getSettings() {
             }`
   );
 }
+
+export async function getCarouselItems() {
+  return client.fetch(
+    groq`*[_type == "home"]{
+      "carousel": carousel[]->{
+        _id,
+        title,
+        subtitle,
+        featuredImage,
+        image {alt, "image": asset->url},
+       }
+    }`
+  );
+}
