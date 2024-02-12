@@ -10,17 +10,23 @@ export default function Nav() {
 
   return (
     <nav>
-      <div className="fixed w-full flex py-1 px-3 z-40 justify-between">
+      <div>
         <div>
-          <Link href="/" className={clsx("text-xs", colorClass)}>
+          <Link
+            href="/"
+            className={clsx(
+              "text-xs fixed top-[10px] left-[5px] z-40",
+              colorClass
+            )}
+          >
             Maud, Part of Accenture Song
           </Link>
         </div>
-        <div>
+        <div className="fixed top-[5px] right-[5px] z-40">
           <Link
             href="/work"
             className={clsx("text-xs mr-1", colorClass, {
-              uppercase: pathname === `/work`,
+              "": pathname === `/work`,
             })}
           >
             Work,
@@ -28,7 +34,7 @@ export default function Nav() {
           <Link
             href="/info"
             className={clsx("text-xs", colorClass, {
-              uppercase: pathname === `/info`,
+              "": pathname === `/info`,
             })}
           >
             Info

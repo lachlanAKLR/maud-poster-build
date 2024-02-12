@@ -3,7 +3,7 @@ import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
 import Layout from "./Layout";
-import Tags from "./Tags";
+import Tags from "./TagsFilter";
 import Video from "./Video";
 import { Suspense } from "react";
 
