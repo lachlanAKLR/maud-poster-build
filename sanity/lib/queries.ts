@@ -41,7 +41,7 @@ export async function getCarouselItems() {
         title,
         subtitle,
         featuredImage,
-        image {alt, "image": asset->url},
+        image {alt, "image": asset->url, videoUrl},
        }
     }`
   );

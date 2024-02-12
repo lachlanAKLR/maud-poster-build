@@ -1,14 +1,19 @@
-import Carousel from "./components/Carousel";
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import PageAnimation from "./components/PageAnimation";
 import Cursor from "./components/Cursor";
-import Nav from "./components/Nav";
+import Carousel from "./components/Carousel";
 
-const color = "white";
+export default function ParentComponent() {
+  const [animationComplete, setAnimationComplete] = useState(false);
 
-export default function Page() {
   return (
-    <>
+    <div className="bg-maud-black">
+      <PageAnimation title="MAUD" />
       <Cursor />
       <Carousel />
-    </>
+    </div>
   );
 }

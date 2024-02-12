@@ -7,7 +7,7 @@ export default function InfoLayout({
 }) {
   return (
     <>
-      <main className="bg-maud-red min-h-screen">{children}</main>;
+      <main className="bg-maud-red min-h-screen">{children}</main>
     </>
   );
 }

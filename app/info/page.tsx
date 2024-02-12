@@ -8,7 +8,6 @@ export default async function Page() {
   const content: ProfileType[] = await getInfo();
   const settings: ProfileType[] = await getSettings();
   const title = `INFO`;
-  const videoId = `877781990`;
 
   return (
     <>

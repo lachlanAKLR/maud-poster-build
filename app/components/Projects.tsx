@@ -22,7 +22,9 @@ export default function Projects({ projects }: { projects: SanityDocument[] }) {
             href={`/work/${project.slug.current}`}
           >
             {project.thumbnailImage && project.thumbnailImage.videoUrl ? (
-              <Video videoUrl={project.thumbnailImage.videoUrl} />
+              <div className="aspect-[4/3]">
+                <Video videoUrl={project.thumbnailImage.videoUrl} />
+              </div>
             ) : project.thumbnailImage ? (
               <Image
                 className={`object-cover bg-maud-grey ${

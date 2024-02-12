@@ -28,7 +28,9 @@ export default function Project({
         <h1 className="py-20 px-10 font-black text-xl text-center">{title}</h1>
       )}
       {featuredImage && featuredImage.videoUrl ? (
-        <Video videoUrl={featuredImage.videoUrl} />
+        <div className="h-[90vh]">
+          <Video videoUrl={featuredImage.videoUrl} />
+        </div>
       ) : featuredImage ? (
         <Image
           className="w-full aspect-3/2 object-cover bg-maud-grey"
