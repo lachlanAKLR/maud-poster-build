@@ -39,6 +39,7 @@ export async function getCarouselItems() {
       "carousel": carousel[]->{
         _id,
         title,
+        slug,
         subtitle,
         featuredImage,
         image {alt, "image": asset->url, videoUrl},

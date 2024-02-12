@@ -22,7 +22,7 @@ const CountdownCircle: React.FC<CountdownCircleProps> = ({
     <svg
       width="24"
       height="24"
-      className="absolute bottom-2 right-2"
+      className="absolute bottom-1 right-1"
       style={{ transform: "rotate(-90deg)" }}
     >
       <circle

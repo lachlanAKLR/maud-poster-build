@@ -9,6 +9,7 @@ import { ProfileType } from "@/types";
 import { dataset, projectId } from "@/sanity/env";
 import Video from "./Video";
 import CountdownCircle from "./CountdownCircle";
+import Link from "next/link";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -16,6 +17,9 @@ interface CarouselItemProps {
   item: {
     _id: string;
     title: string;
+    slug: {
+      current: string;
+    };
     subtitle?: string;
     featuredImage: {
       asset: {
@@ -51,11 +55,14 @@ const CarouselItem: React.FC<CarouselItemProps> = ({ item, isVisible }) => {
           priority
         />
       )}
-      <div className="absolute left-1 bottom-1 z-10 text-white text-xs">
+      <div className="absolute left-1 bottom-1 z-50 text-white text-xs flex">
         <p>
           <span className="uppercase mr-2">{item.title}</span>
           {item.subtitle}
         </p>
+        <Link className="ml-2" href={`/work/${item.slug.current}`}>
+          View project
+        </Link>
       </div>
     </motion.div>
   );
@@ -120,11 +127,11 @@ const Carousel: React.FC = () => {
         startCountdown={isContentLoaded}
       />
       <button
-        className="absolute cursor-none w-1/2 h-full top-0 left-0 z-30"
+        className="absolute cursor-none w-1/2 h-full  bottom-[40px] left-0 z-30"
         onClick={handlePrev}
       ></button>
       <button
-        className="absolute cursor-none w-1/2 h-full top-0 right-0 z-30"
+        className="absolute cursor-none w-1/2 h-full bottom-[40px] right-0 z-30"
         onClick={handleNext}
       ></button>
     </div>
