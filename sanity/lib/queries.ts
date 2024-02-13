@@ -25,6 +25,15 @@ export async function getInfo() {
   );
 }
 
+export async function getHome() {
+  return client.fetch(
+    groq`*[_type == "info"]{
+              _id,
+              subtitle
+            }`
+  );
+}
+
 export async function getSettings() {
   return client.fetch(
     groq`*[_type == "settings"]{

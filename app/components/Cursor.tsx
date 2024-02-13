@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect, useRef } from "react";
 
 const CustomCursor: React.FC = () => {
@@ -21,12 +19,19 @@ const CustomCursor: React.FC = () => {
 
     const checkHover = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if the mouse is over a link element
-      if (target.tagName === "A" || target.closest("a")) {
-        setCursorLabel(""); // Clear the label
+      const screenWidthThird = window.innerWidth / 3;
+      const cursorX = e.clientX;
+
+      // Determine if the cursor is over the middle third of the screen
+      if (cursorX > screenWidthThird && cursorX < screenWidthThird * 2) {
+        setCursorLabel("View Project");
+      } else if (target.tagName === "A" || target.closest("a")) {
+        // Check if the mouse is over a link element and clear the label if so
+        setCursorLabel("");
       } else {
-        const shouldShowPrevious = e.clientX < window.innerWidth / 2;
-        setCursorLabel(shouldShowPrevious ? "PREVIOUS" : "NEXT");
+        // Adjust cursor label based on cursor position relative to the screen's width
+        const shouldShowPrevious = cursorX < screenWidthThird;
+        setCursorLabel(shouldShowPrevious ? "Previous" : "Next");
       }
     };
 

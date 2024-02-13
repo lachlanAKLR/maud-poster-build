@@ -7,6 +7,11 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "subtitle",
+      title: "Subtitle",
+      type: "string",
+    }),
+    defineField({
       name: "carousel",
       title: "Featured Projects",
       type: "array",

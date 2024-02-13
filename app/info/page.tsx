@@ -2,17 +2,16 @@ import { getInfo, getSettings, getTags } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import PageAnimation from "../components/PageAnimation";
-import TagsFilter from "../components/TagsFilter";
+import TitleAnimation from "../components/TitleAnimation";
 
 export default async function Page() {
   const content: ProfileType[] = await getInfo();
   const settings: ProfileType[] = await getSettings();
-  const title = `INFO`;
 
   return (
     <>
-      <PageAnimation title={title} />
+      <TitleAnimation title="INFO" intervalMs={300} />
+
       {content &&
         content.map((data) => (
           <div

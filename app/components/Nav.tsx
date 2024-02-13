@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { getHome } from "@/sanity/lib/queries";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -19,7 +20,7 @@ export default function Nav() {
               colorClass
             )}
           >
-            Maud, Part of Accenture Song
+            MAUD, Part of Accenture Song
           </Link>
         </div>
         <div className="fixed top-[5px] right-[5px] z-40">

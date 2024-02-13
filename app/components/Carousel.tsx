@@ -8,10 +8,15 @@ import { getCarouselItems } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
 import { dataset, projectId } from "@/sanity/env";
 import Video from "./Video";
-import CountdownCircle from "./CountdownCircle";
 import Link from "next/link";
 
 const builder = imageUrlBuilder({ projectId, dataset });
+
+function formatNumber(num: number): string {
+  num += 1;
+
+  return num.toString().padStart(2, "0");
+}
 
 interface CarouselItemProps {
   item: {
@@ -30,40 +35,49 @@ interface CarouselItemProps {
     };
   };
   isVisible: boolean;
+  index: number;
+  indexLength: number;
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({ item, isVisible }) => {
+const CarouselItem: React.FC<CarouselItemProps> = ({
+  item,
+  isVisible,
+  index,
+  indexLength,
+}) => {
   const hasVideo = !!item.featuredImage.videoUrl;
 
   return (
     <motion.div
-      className="absolute inset-0"
+      className={`absolute inset-0 ${isVisible ? "" : "pointer-events-none"}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {hasVideo ? (
-        //@ts-ignore
-        <Video videoUrl={item.featuredImage.videoUrl} />
-      ) : (
-        <Image
-          layout="fill"
-          objectFit="cover"
-          src={builder.image(item.featuredImage).quality(100).url()}
-          alt={item.featuredImage.alt || ""}
-          priority
-        />
-      )}
-      <div className="absolute left-1 bottom-1 z-50 text-white text-xs flex">
-        <p>
-          <span className="uppercase mr-2">{item.title}</span>
-          {item.subtitle}
-        </p>
-        <Link className="ml-2" href={`/work/${item.slug.current}`}>
-          View project
-        </Link>
-      </div>
+      <Link className="cursor-none" href={`/work/${item.slug.current}`}>
+        {hasVideo ? (
+          //@ts-ignore
+          <Video videoUrl={item.featuredImage.videoUrl} />
+        ) : (
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src={builder.image(item.featuredImage).quality(100).url()}
+            alt={item.featuredImage.alt || ""}
+            priority
+          />
+        )}
+        <div className="absolute left-0 px-1 bottom-1 z-50 text-white text-xs flex justify-between w-full">
+          <p>
+            <span className="uppercase mr-2">{item.title}</span>
+            {item.subtitle}
+          </p>
+          <p className="align-right">
+            {formatNumber(index)}/{formatNumber(indexLength)}
+          </p>
+        </div>
+      </Link>
     </motion.div>
   );
 };
@@ -119,19 +133,16 @@ const Carousel: React.FC = () => {
             //@ts-ignore
             item={item}
             isVisible={index === currentIndex}
+            index={index}
+            indexLength={content[0].carousel.length - 1}
           />
         ))}
-      <CountdownCircle
-        key={currentIndex}
-        duration={changeTime}
-        startCountdown={isContentLoaded}
-      />
       <button
-        className="absolute cursor-none w-1/2 h-full  bottom-[40px] left-0 z-30"
+        className="absolute cursor-none w-1/3 h-full bottom-[40px] left-0 z-30"
         onClick={handlePrev}
       ></button>
       <button
-        className="absolute cursor-none w-1/2 h-full bottom-[40px] right-0 z-30"
+        className="absolute cursor-none w-1/3 h-full bottom-[40px] right-0 z-30"
         onClick={handleNext}
       ></button>
     </div>
