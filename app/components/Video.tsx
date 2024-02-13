@@ -17,7 +17,7 @@ const Video: React.FC<{ videoUrl: string; poster: string }> = ({
         muted
         loop
         controls={false}
-        poster={poster}
+        poster={poster ? poster : ""}
       />
     </div>
   );

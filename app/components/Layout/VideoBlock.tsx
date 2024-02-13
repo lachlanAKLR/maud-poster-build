@@ -4,10 +4,6 @@ import { dataset, projectId } from "@/sanity/env";
 const builder = imageUrlBuilder({ projectId, dataset });
 
 export default function VideoBlock({ block }: { block: any }) {
-  if (!block.videoPoster) {
-    return null;
-  }
-
   return (
     <div className="relative w-full h-fit py-10 px-20">
       <video
@@ -16,7 +12,11 @@ export default function VideoBlock({ block }: { block: any }) {
         playsInline
         muted
         loop
-        poster={builder.image(block.videoPoster).quality(50).url()}
+        poster={
+          block.videoPoster
+            ? builder.image(block.videoPoster).quality(50).url()
+            : ""
+        }
       >
         <source src={block.videoUrl} type="video/mp4" />
       </video>

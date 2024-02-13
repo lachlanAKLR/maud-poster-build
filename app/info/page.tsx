@@ -68,6 +68,7 @@ export default async function Page() {
               quality={100}
               alt={data.image.alt}
               priority
+              sizes="100vw"
             />
           </div>
         ))}

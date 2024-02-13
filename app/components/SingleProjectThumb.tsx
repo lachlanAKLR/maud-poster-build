@@ -47,6 +47,7 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
           priority={index >= 0 && index <= 2}
           blurDataURL="data:..."
           placeholder="blur"
+          sizes="100vw"
         />
       ) : null}
       <div

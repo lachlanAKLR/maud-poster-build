@@ -30,8 +30,8 @@ export default function Project({
           <Video
             videoUrl={featuredImage.videoUrl}
             poster={
-              featuredImage.poster
-                ? builder.image(featuredImage.poster).quality(50).url()
+              featuredImage
+                ? builder.image(featuredImage).quality(50).url()
                 : ""
             }
           />
@@ -47,6 +47,7 @@ export default function Project({
           priority
           blurDataURL="data:..."
           placeholder="blur"
+          sizes="100vw"
         />
       ) : null}
       {projectText ? (

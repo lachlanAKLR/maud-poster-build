@@ -32,6 +32,7 @@ function Project({ project }: ProjectProps) {
         quality={100}
         alt={project.thumbnailImage.alt || ""}
         id={project.thumbnailImage.ratio}
+        sizes="100vw"
       />
     </Link>
   );

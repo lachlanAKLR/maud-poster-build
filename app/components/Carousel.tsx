@@ -47,6 +47,8 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             src={builder.image(item.featuredImage).quality(100).url()}
             alt={item.featuredImage.alt || ""}
             priority
+            sizes="100vw"
+            className="bg-maud-grey"
           />
         )}
         <div className="absolute left-0 px-1 bottom-1 z-50 text-white text-xs flex justify-between w-full">
