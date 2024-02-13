@@ -29,7 +29,10 @@ export default function Project({
       )}
       {featuredImage && featuredImage.videoUrl ? (
         <div className="h-[90vh]">
-          <Video videoUrl={featuredImage.videoUrl} />
+          <Video
+            videoUrl={featuredImage.videoUrl}
+            poster={builder.image(project.featuredImage).quality(50).url()}
+          />
         </div>
       ) : featuredImage ? (
         <Image

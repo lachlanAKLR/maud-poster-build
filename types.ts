@@ -28,6 +28,8 @@ export type ProfileType = {
   addressTwo: PortableTextBlock[];
   videoUrl: string;
   carousel: CarouselItemType[];
+  slug: string;
+  subtitle: string;
 };
 
 export type Tag = {
@@ -36,4 +38,21 @@ export type Tag = {
   slug: {
     current: string;
   };
+};
+
+export type Project = {
+  _id: string;
+  slug: { current: string };
+  thumbnailImage?: {
+    videoUrl?: string;
+    ratio?: "square" | "landscape" | "portrait";
+    alt?: string;
+  };
+  title?: string;
+  subtitle: string;
+};
+
+export type SingleProjectProps = {
+  project: Project;
+  index: number;
 };

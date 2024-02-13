@@ -26,7 +26,7 @@ const CustomCursor: React.FC = () => {
         setCursorLabel(""); // Clear the label
       } else {
         const shouldShowPrevious = e.clientX < window.innerWidth / 2;
-        setCursorLabel(shouldShowPrevious ? "previous" : "next");
+        setCursorLabel(shouldShowPrevious ? "PREVIOUS" : "NEXT");
       }
     };
 

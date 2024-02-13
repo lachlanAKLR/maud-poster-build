@@ -2,7 +2,10 @@ interface VideoProps {
   videoUrl: string;
 }
 
-const Video: React.FC<{ videoUrl: string }> = ({ videoUrl }) => {
+const Video: React.FC<{ videoUrl: string; poster: string }> = ({
+  videoUrl,
+  poster,
+}) => {
   return (
     <div className="relative w-full h-full overflow-hidden">
       <video
@@ -14,6 +17,7 @@ const Video: React.FC<{ videoUrl: string }> = ({ videoUrl }) => {
         muted
         loop
         controls={false}
+        poster={poster}
       />
     </div>
   );

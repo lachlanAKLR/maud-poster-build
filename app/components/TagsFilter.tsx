@@ -23,7 +23,7 @@ const TagsFilter: React.FC<TagsFilterProps> = ({ tags, onSelectTag }) => {
         <button
           key={tag._id}
           onClick={() => handleTagClick(tag.slug.current)}
-          className={` ml-1 ${
+          className={` ml-1 hover:text-maud-red ${
             selectedTagSlug === tag.slug.current ? "text-maud-red ml-1" : ""
           }`}
         >
@@ -35,7 +35,7 @@ const TagsFilter: React.FC<TagsFilterProps> = ({ tags, onSelectTag }) => {
           setSelectedTagSlug(null);
           onSelectTag(null);
         }}
-        className="ml-1"
+        className="ml-1 hover:text-maud-red"
       >
         Clear
       </button>

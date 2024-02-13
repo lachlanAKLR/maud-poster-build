@@ -16,6 +16,11 @@ export default defineType({
       name: "videoUrl",
       type: "url",
     }),
+    defineField({
+      title: "Video Poster",
+      name: "videoPoster",
+      type: "image",
+    }),
   ],
   preview: {
     select: {

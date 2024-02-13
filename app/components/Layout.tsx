@@ -19,6 +19,7 @@ export function Video({ block }: { block: any }) {
         playsInline
         muted
         loop
+        poster={builder.image(block.videoPoster).quality(50).url()}
       >
         <source src={block.videoUrl} type="video/mp4" />
       </video>
