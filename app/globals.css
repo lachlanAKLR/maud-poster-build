@@ -7,12 +7,24 @@
     @apply text-2xl;
   }
   h2 {
-    @apply text-lg;
+    @apply text-sm;
   }
   h3 {
     @apply text-sm;
   }
   h4 {
-    @apply text-xs;
+    @apply text-sm;
+  }
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  h4 {
+    font-size: 14px;
+    line-height: 16px;
   }
 }

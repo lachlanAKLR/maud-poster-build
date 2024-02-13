@@ -56,3 +56,24 @@ export type SingleProjectProps = {
   project: Project;
   index: number;
 };
+
+export type CarouselItemProps = {
+  item: {
+    _id: string;
+    title: string;
+    slug: {
+      current: string;
+    };
+    subtitle?: string;
+    featuredImage: {
+      asset: {
+        _ref: string;
+      };
+      alt?: string;
+      videoUrl?: string;
+    };
+  };
+  isVisible: boolean;
+  index: number;
+  indexLength: number;
+};

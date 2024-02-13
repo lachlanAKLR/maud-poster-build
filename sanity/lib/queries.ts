@@ -27,7 +27,7 @@ export async function getInfo() {
 
 export async function getHome() {
   return client.fetch(
-    groq`*[_type == "info"]{
+    groq`*[_type == "home"]{
               _id,
               subtitle
             }`

@@ -9,6 +9,8 @@ import { ProfileType } from "@/types";
 import { dataset, projectId } from "@/sanity/env";
 import Video from "./Video";
 import Link from "next/link";
+import { CarouselItemProps } from "@/types";
+import { getHome } from "@/sanity/lib/queries";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -16,27 +18,6 @@ function formatNumber(num: number): string {
   num += 1;
 
   return num.toString().padStart(2, "0");
-}
-
-interface CarouselItemProps {
-  item: {
-    _id: string;
-    title: string;
-    slug: {
-      current: string;
-    };
-    subtitle?: string;
-    featuredImage: {
-      asset: {
-        _ref: string;
-      };
-      alt?: string;
-      videoUrl?: string;
-    };
-  };
-  isVisible: boolean;
-  index: number;
-  indexLength: number;
 }
 
 const CarouselItem: React.FC<CarouselItemProps> = ({

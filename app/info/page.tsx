@@ -15,7 +15,7 @@ export default async function Page() {
       {content &&
         content.map((data) => (
           <div
-            className="text-center grid grid-cols-6 gap-x-20 pt-40 pb-10"
+            className="text-center flex px-8 md:px-0 md:grid grid-cols-6 gap-x-20 pt-14 md:pt-40 pb-5 md:pb-10"
             key={data._id}
           >
             <div className="col-start-2 col-span-4">
@@ -27,9 +27,12 @@ export default async function Page() {
         ))}
       {settings &&
         settings.map((data) => (
-          <div className="grid grid-cols-8 gap-x-10 pt-10 pb-10" key={data._id}>
-            <div className="flex justify-center text-center col-start-3 col-span-4">
-              <div className="w-1/3">
+          <div
+            className="flex flex-col md:grid md:grid-cols-8 gap-x-10 pt-5 md:pt-10 pb-10"
+            key={data._id}
+          >
+            <div className="flex flex-col gap-10 md:flex-row justify-center text-center md:col-start-3 md:col-span-4">
+              <div className="w-full md:w-1/3">
                 <h4>
                   <span className="mr-1">P</span>
                   <a href={`tel:${data.phone}`}>{data.phone}</a>
@@ -45,10 +48,10 @@ export default async function Page() {
                   </a>
                 </h4>
               </div>
-              <div className="w-1/3">
+              <div className="w-full md:w-1/3">
                 <PortableText value={data.addressOne} />
               </div>
-              <div className="w-1/3">
+              <div className="w-full md:w-1/3">
                 <PortableText value={data.addressTwo} />
               </div>
             </div>

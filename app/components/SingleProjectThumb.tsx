@@ -50,7 +50,7 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
         />
       ) : null}
       <div
-        className={`transition-opacity duration-500 ${
+        className={`hidden md:block transition-opacity duration-500 ${
           isHovered ? "opacity-100" : "opacity-0"
         } text-xs pt-2`}
       >

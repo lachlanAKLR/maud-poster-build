@@ -17,7 +17,7 @@ const TagsFilter: React.FC<TagsFilterProps> = ({ tags, onSelectTag }) => {
   };
 
   return (
-    <div className="fixed top-[6px] left-1/2 transform -translate-x-1/2 py-1 px-3 text-xs w-fit">
+    <div className="fixed hidden md:block top-[6px] left-1/2 transform -translate-x-1/2 py-1 px-3 text-xs w-fit">
       Filter →
       {tags.map((tag) => (
         <button
