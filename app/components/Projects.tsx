@@ -27,7 +27,7 @@ export default function Projects({
   return (
     <>
       <TagsFilter tags={tags} onSelectTag={setSelectedTagSlug} />
-      <main className="grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-72 px-8 md:px-24 pt-12 md:pt-72 pb-12 md:pb-72 content-center">
+      <main className="grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-72 px-8 md:px-24 pt-20 md:pt-72 pb-12 md:pb-72 content-center">
         <TitleAnimation title="WORK" intervalMs={300} />
         {filteredProjects.length > 0 ? (
           filteredProjects.map((project, index) => {

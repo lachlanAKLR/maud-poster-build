@@ -28,7 +28,8 @@ const config: Config = {
         base: ["16px", "18px"],
         lg: ["32px", "32px"],
         xl: ["180px", "180px"],
-        "2xl": ["820px", "750px"],
+        "2xl": ["300px", "300px"],
+        "3xl": ["820px", "750px"],
         "5xl": ["48px", "53px"],
       },
       colors: {

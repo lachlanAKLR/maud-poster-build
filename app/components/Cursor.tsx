@@ -49,7 +49,7 @@ const CustomCursor: React.FC = () => {
   return (
     <div
       ref={cursorRef}
-      className="fixed pointer-events-none z-50 cursor-none"
+      className="hidden md:block fixed pointer-events-none z-50 cursor-none"
       style={{
         left: `${cursorPosition.x}px`,
         top: `${cursorPosition.y}px`,
@@ -57,7 +57,9 @@ const CustomCursor: React.FC = () => {
       }}
     >
       {cursorLabel && (
-        <div className="text-maud-red p-2 text-xs rounded">{cursorLabel}</div>
+        <div className="hidden md:block text-maud-red p-2 text-xs rounded">
+          {cursorLabel}
+        </div>
       )}
     </div>
   );

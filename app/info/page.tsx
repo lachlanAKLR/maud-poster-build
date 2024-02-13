@@ -15,7 +15,7 @@ export default async function Page() {
       {content &&
         content.map((data) => (
           <div
-            className="text-center flex px-8 md:px-0 md:grid grid-cols-6 gap-x-20 pt-14 md:pt-40 pb-5 md:pb-10"
+            className="text-center flex px-8 md:px-0 md:grid grid-cols-6 gap-x-20 pt-24 md:pt-40 pb-5 md:pb-10"
             key={data._id}
           >
             <div className="col-start-2 col-span-4">
