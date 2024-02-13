@@ -11,7 +11,7 @@ export const deskStructure = (S, context) =>
     .title("Content")
     .items([
       ...S.documentTypeListItems().filter(
-        (listItem) => !["info", "home", "settings", "project", "tags", "video",].includes(listItem.getId())
+        (listItem) => !["info", "home", "settings", "project", "tags", "video", "media.tag"].includes(listItem.getId())
       ),
       orderableDocumentListDeskItem({type: 'project', S, context, title: 'Projects'}),
       S.divider(),

@@ -23,7 +23,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
-    "sanity": "^3.26.1"
+    "sanity": "^3.26.1",
+    "sanity-plugin-media": "^2.2.5"
   },
   "devDependencies": {
     "@portabletext/react": "^3.0.11",
