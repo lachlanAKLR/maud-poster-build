@@ -23,7 +23,9 @@ export default function Project({
   return (
     <main className="min-h-screen">
       {title && (
-        <h1 className="py-20 px-10 font-black text-xl text-center">{title}</h1>
+        <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl text-center">
+          {title}
+        </h1>
       )}
       {featuredImage && featuredImage.videoUrl ? (
         <div className="h-[90vh]">
@@ -38,7 +40,7 @@ export default function Project({
         </div>
       ) : featuredImage ? (
         <Image
-          className="w-full aspect-3/2 object-cover bg-maud-grey"
+          className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
           src={builder.image(featuredImage).quality(100).url()}
           width={3000}
           height={3000}
@@ -51,16 +53,16 @@ export default function Project({
         />
       ) : null}
       {projectText ? (
-        <div className="grid grid-cols-8 gap-x-20 px-20">
-          <div className="py-72 indent-16 col-start-3 col-span-4">
+        <div className="block md:grid grid-cols-8 gap-x-20 px-3 md:px-20">
+          <div className="py-24 md:py-72 indent-16 col-start-3 col-span-4 md:text-sm">
             <PortableText value={projectText} />
           </div>
         </div>
       ) : null}
       {layouts ? <Layout layouts={layouts} /> : null}
       {projectCredits ? (
-        <div className="grid grid-cols-8 gap-x-20 px-20">
-          <div className="py-32 col-start-3 col-span-4 text-center text-xs">
+        <div className="block md:grid grid-cols-8 gap-x-20 px-20">
+          <div className="py-24 md:py-32 col-start-3 col-span-4 text-center text-xs">
             <PortableText value={projectCredits} />
           </div>
         </div>

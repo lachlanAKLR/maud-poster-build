@@ -5,7 +5,7 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 export default function VideoBlock({ block }: { block: any }) {
   return (
-    <div className="relative w-full h-fit py-10 px-20">
+    <div className="relative w-full h-fit py-1.5 md:py-10 px-3 md:px-20">
       <video
         className="inset-0 w-full h-fit bg-maud-grey"
         autoPlay

@@ -35,7 +35,11 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
         >
           <Video
             videoUrl={project.thumbnailImage.videoUrl}
-            poster={builder.image(project.thumbnailImage).quality(50).url()}
+            poster={
+              project.thumbnailImage
+                ? builder.image(project.thumbnailImage).quality(50).url()
+                : ""
+            }
           />
         </div>
       ) : project.thumbnailImage ? (

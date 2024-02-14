@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
   h1 {
     @apply text-2xl;
   }
@@ -27,4 +27,4 @@
     font-size: 14px;
     line-height: 16px;
   }
-}
+} */

@@ -6,7 +6,7 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 export default function TwoUpImage({ block }: { block: any }) {
   return (
-    <div className="grid grid-cols-10 py-10 px-20 gap-x-20">
+    <div className="flex flex-col md:grid grid-cols-10 py-1.5 md:py-10 px-3 md:px-20 gap-x-20 gap-y-3">
       {block.leftImage ? (
         <Image
           className="aspect-2/3 col-start-1 col-span-5 bg-maud-grey"
