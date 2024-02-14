@@ -47,7 +47,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             src={builder.image(item.featuredImage).quality(100).url()}
             alt={item.featuredImage.alt || ""}
             priority
-            sizes="100vw"
+            sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 100vw"
             className="bg-maud-grey"
           />
         )}

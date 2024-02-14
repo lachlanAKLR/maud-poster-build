@@ -36,7 +36,7 @@ export default async function Footer() {
                     priority
                     blurDataURL="data:..."
                     placeholder="blur"
-                    sizes="100vw"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 100vw"
                   />
                 ) : null}
               </div>

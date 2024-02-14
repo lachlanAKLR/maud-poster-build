@@ -24,7 +24,15 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {project.thumbnailImage && project.thumbnailImage.videoUrl ? (
-        <div className="aspect-[4/3]">
+        <div
+          className={`object-cover bg-maud-grey ${
+            project.thumbnailImage.ratio === "square"
+              ? "aspect-[1/1]"
+              : project.thumbnailImage.ratio === "landscape"
+              ? "aspect-[4/3]"
+              : "aspect-[3/4]"
+          }`}
+        >
           <Video
             videoUrl={project.thumbnailImage.videoUrl}
             poster={builder.image(project.thumbnailImage).quality(50).url()}
@@ -47,7 +55,7 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
           priority={index >= 0 && index <= 2}
           blurDataURL="data:..."
           placeholder="blur"
-          sizes="100vw"
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 33vw, 33vw"
         />
       ) : null}
       <div

@@ -21,7 +21,7 @@ export default function LandscapeImage({ block }: { block: any }) {
           alt={block.image.alt || ""}
           blurDataURL="data:..."
           placeholder="blur"
-          sizes="100vw"
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 70vw"
         />
       ) : null}
     </div>

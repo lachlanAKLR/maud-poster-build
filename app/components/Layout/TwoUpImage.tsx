@@ -21,7 +21,7 @@ export default function TwoUpImage({ block }: { block: any }) {
           alt={block.leftImage.alt || ""}
           blurDataURL="data:..."
           placeholder="blur"
-          sizes="100vw"
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
         />
       ) : null}
       {block.rightImage ? (
@@ -38,7 +38,7 @@ export default function TwoUpImage({ block }: { block: any }) {
           alt={block.rightImage.alt || ""}
           blurDataURL="data:..."
           placeholder="blur"
-          sizes="100vw"
+          sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
         />
       ) : null}
     </div>
