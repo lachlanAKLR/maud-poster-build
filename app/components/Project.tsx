@@ -62,13 +62,12 @@ export default function Project({
       {layouts ? <Layout layouts={layouts} /> : null}
       {projectCredits ? (
         <div className="block md:grid grid-cols-8 gap-x-20 px-20">
-          <div className="py-24 md:py-32 col-start-3 col-span-4 text-center text-xs">
+          <div className="pt-24 pb-14 md:pb-8 md:pt-32 col-start-3 col-span-4 text-center text-xs">
             <PortableText value={projectCredits} />
           </div>
         </div>
       ) : null}
       <MoreProjects projects={projects} id={_id} />
-      {/* <Tags tags={tags} /> */}
     </main>
   );
 }

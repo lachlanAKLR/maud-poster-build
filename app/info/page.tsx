@@ -19,7 +19,7 @@ export default async function Page() {
             key={data._id}
           >
             <div className="col-start-2 col-span-4">
-              <div className="max-w-3xl m-auto">
+              <div className="max-w-3xl m-auto text-lg">
                 <PortableText value={data.infoText} />
               </div>
             </div>
@@ -31,7 +31,7 @@ export default async function Page() {
             className="flex flex-col md:grid md:grid-cols-8 gap-x-10 pt-5 md:pt-10 pb-10"
             key={data._id}
           >
-            <div className="flex flex-col gap-10 md:flex-row justify-center text-center md:col-start-3 md:col-span-4">
+            <div className="flex flex-col gap-10 md:flex-row justify-center text-center md:col-start-3 md:col-span-4 text-xs">
               <div className="w-full md:w-1/3">
                 <h4>
                   <span className="mr-1">P</span>
