@@ -145,7 +145,7 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <div className="relative h-screen w-full">
+    <div className="relative h-dvh md:h-screen w-full">
       {content.length > 0 &&
         content[0].carousel.map((item, index) => (
           <CarouselItem
