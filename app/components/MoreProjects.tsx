@@ -19,6 +19,7 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
     return array;
   };
   const randProjects = shuffle(filterProjects);
+
   return (
     <div className="pt-10 md:pt-32">
       <div className="bg-maud-grey">

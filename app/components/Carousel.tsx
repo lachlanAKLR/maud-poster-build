@@ -10,7 +10,6 @@ import { dataset, projectId } from "@/sanity/env";
 import Video from "./Video";
 import Link from "next/link";
 import { CarouselItemProps } from "@/types";
-import { getHome } from "@/sanity/lib/queries";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 

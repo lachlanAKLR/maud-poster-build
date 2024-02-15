@@ -28,6 +28,7 @@ export type ProfileType = {
   addressTwo: PortableTextBlock[];
   videoUrl: string;
   carousel: CarouselItemType[];
+  carouselContent?: CarouselItemType[];
   slug: string;
   subtitle: string;
 };

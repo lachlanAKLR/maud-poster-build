@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${unica.className} antialiased text-maud-black`}>
+        <link rel="icon" href="./favicon.gif" sizes="any" type="image/png" />
         <Nav />
         {children}
       </body>
