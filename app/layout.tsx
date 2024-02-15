@@ -6,9 +6,6 @@ import Nav from "./components/Nav";
 export const metadata: Metadata = {
   title: "Maud — Part of Accenture song",
   description: "A Brand Identity Company",
-  icons: {
-    icon: "/favicon.gif",
-  },
 };
 
 export default function RootLayout({

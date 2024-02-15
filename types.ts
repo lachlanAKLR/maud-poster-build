@@ -72,6 +72,9 @@ export type CarouselItemProps = {
       };
       alt?: string;
       videoUrl?: string;
+      featuredPortrait?: {
+        image: string;
+      };
     };
   };
   isVisible: boolean;

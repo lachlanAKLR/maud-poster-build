@@ -1,4 +1,6 @@
 import { MdAddPhotoAlternate } from "react-icons/md";
+import { MdAod } from "react-icons/md";
+
 import { defineType, defineField } from "sanity";
 
 export default defineType({
@@ -61,6 +63,11 @@ export default defineType({
       title: "Featured Image",
       type: "image",
       fields: [
+        defineField({
+          title: "Featured Portrait Image",
+          name: "featuredPortrait",
+          type: "image",
+        }),
         defineField({
           name: "alt",
           title: "Image Description",

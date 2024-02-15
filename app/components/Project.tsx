@@ -1,14 +1,13 @@
-import Image from "next/image";
 import { PortableText } from "@portabletext/react";
-import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
 import Layout from "./Layout";
-import Video from "./Video";
-
-import { dataset, projectId } from "@/sanity/env";
+import ProjectContent from "./ProjectContent";
 import MoreProjects from "./MoreProjects";
 
-const builder = imageUrlBuilder({ projectId, dataset });
+const titleVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function Project({
   project,
@@ -17,48 +16,11 @@ export default function Project({
   project: SanityDocument;
   projects: SanityDocument[];
 }) {
-  const { title, featuredImage, projectText, layouts, projectCredits, _id } =
-    project;
+  const { layouts, projectCredits, _id } = project;
 
   return (
     <main className="min-h-screen">
-      {title && (
-        <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl text-center">
-          {title}
-        </h1>
-      )}
-      {featuredImage && featuredImage.videoUrl ? (
-        <div className="h-[90vh]">
-          <Video
-            videoUrl={featuredImage.videoUrl}
-            poster={
-              featuredImage
-                ? builder.image(featuredImage).quality(50).url()
-                : ""
-            }
-          />
-        </div>
-      ) : featuredImage ? (
-        <Image
-          className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
-          src={builder.image(featuredImage).quality(100).url()}
-          width={3000}
-          height={3000}
-          quality={100}
-          alt={featuredImage.alt || ""}
-          priority
-          blurDataURL="data:..."
-          placeholder="blur"
-          sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 33vw"
-        />
-      ) : null}
-      {projectText ? (
-        <div className="block md:grid grid-cols-8 gap-x-20 px-3 md:px-20">
-          <div className="py-24 md:py-72 indent-16 col-start-3 col-span-4 md:text-sm">
-            <PortableText value={projectText} />
-          </div>
-        </div>
-      ) : null}
+      <ProjectContent project={project} />
       {layouts ? <Layout layouts={layouts} /> : null}
       {projectCredits ? (
         <div className="block md:grid grid-cols-8 gap-x-20 px-20">

@@ -19,6 +19,23 @@ function formatNumber(num: number): string {
   return num.toString().padStart(2, "0");
 }
 
+//@ts-ignore
+const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    const listener = () => setMatches(media.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [matches, query]);
+
+  return matches;
+};
+
 const CarouselItem: React.FC<CarouselItemProps> = ({
   item,
   isVisible,
@@ -26,6 +43,12 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   indexLength,
 }) => {
   const hasVideo = !!item.featuredImage.videoUrl;
+  const hasFeaturedPortrait = !!item.featuredImage.featuredPortrait;
+  const isSmallScreen = useMediaQuery("(max-width:639px)");
+
+  console.log(
+    `${item.title} has Featured Portrait? ${hasFeaturedPortrait} and we're on a small Screen? ${isSmallScreen}`
+  );
 
   return (
     <motion.div
@@ -37,8 +60,22 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
     >
       <Link className="cursor-none" href={`/work/${item.slug.current}`}>
         {hasVideo ? (
-          //@ts-ignore
+          // @ts-ignore
           <Video videoUrl={item.featuredImage.videoUrl} />
+        ) : hasFeaturedPortrait && isSmallScreen ? (
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src={builder
+              // @ts-ignore
+              .image(item.featuredImage.featuredPortrait)
+              .quality(100)
+              .url()}
+            alt={item.featuredImage.alt || ""}
+            priority
+            sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 100vw"
+            className="bg-maud-grey"
+          />
         ) : (
           <Image
             layout="fill"
@@ -50,9 +87,10 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             className="bg-maud-grey"
           />
         )}
+
         <div className="absolute left-0 px-1 bottom-1 z-50 text-white text-xs flex justify-between w-full">
-          <p>
-            <span className="uppercase mr-2">{item.title}</span>
+          <p className="w-3/4 md:w-fit">
+            <span className="uppercase mr-1">{item.title}</span>
             {item.subtitle}
           </p>
           <p className="align-right">

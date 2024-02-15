@@ -13,7 +13,7 @@ export default async function Page() {
   const carouselContent: ProfileType[] = await getCarouselItems();
 
   return (
-    <div>
+    <div className="bg-maud-black">
       <TitleAnimation title="MAUD" intervalMs={300} />
       <SubTitle content={content} />
       <CustomCursor />

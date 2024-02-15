@@ -6,6 +6,8 @@ import TagsFilter from "./TagsFilter";
 import { Tag } from "@/types";
 import SingleProjectThumb from "./SingleProjectThumb";
 import TitleAnimation from "./TitleAnimation";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Projects({
   projects,
@@ -15,6 +17,10 @@ export default function Projects({
   tags: Tag[];
 }) {
   const [selectedTagSlug, setSelectedTagSlug] = useState<string | null>(null);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
+    null
+  );
+  const router = useRouter();
 
   const filteredProjects = selectedTagSlug
     ? projects.filter(
@@ -24,22 +30,61 @@ export default function Projects({
       )
     : projects;
 
+  const handleProjectSelect = (projectId: string, projectSlug: string) => {
+    setSelectedProjectId(projectId);
+    setTimeout(() => {
+      router.push(`/work/${projectSlug}`);
+    }, 1000);
+  };
+
+  const projectVariants = {
+    initial: { opacity: 1 },
+    exit: { opacity: 0, transition: { duration: 1 } },
+  };
+
   return (
     <>
       <TagsFilter tags={tags} onSelectTag={setSelectedTagSlug} />
-      <main className="grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 pt-20 md:pt-44 pb-12 md:pb-72 content-center">
-        <TitleAnimation title="WORK" intervalMs={300} />
-        {filteredProjects.length > 0 ? (
-          filteredProjects.map((project, index) => {
-            return (
-              //@ts-ignore
-              <SingleProjectThumb key={index} project={project} index={index} />
-            );
-          })
-        ) : (
-          <div className="p-4 text-red-500">No projects found</div>
-        )}
-      </main>
+      <AnimatePresence mode="wait">
+        <main className="grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 pt-20 md:pt-44 pb-12 md:pb-72 content-center">
+          <TitleAnimation title="WORK" intervalMs={300} />
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => {
+              return (
+                <motion.div
+                  key={project._id}
+                  initial={{ opacity: 1 }}
+                  animate={{
+                    opacity:
+                      selectedProjectId && project._id !== selectedProjectId
+                        ? 0
+                        : 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: {
+                      delay: project._id === selectedProjectId ? 1.5 : 0,
+                    },
+                  }}
+                  onClick={() =>
+                    handleProjectSelect(project._id, project.slug.current)
+                  }
+                  className="cursor-pointer col-span-2 flex flex-col justify-center content-center"
+                >
+                  <SingleProjectThumb
+                    key={index}
+                    // @ts-ignore
+                    project={project}
+                    index={index}
+                  />
+                </motion.div>
+              );
+            })
+          ) : (
+            <div className="p-4 text-red-500">No projects found</div>
+          )}
+        </main>
+      </AnimatePresence>
     </>
   );
 }
