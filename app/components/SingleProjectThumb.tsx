@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { SingleProjectProps } from "@/types";
 import { useState } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/env";
 import Video from "./Video";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import { motion } from "framer-motion";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -16,11 +16,20 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
   index,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
+  const handleClick = () => {
+    // Assuming you have a way to notify the parent component to start the exit animation
+    // For example, using a context or passing a callback prop to this component
+    // After setting up the necessary state/prop, trigger navigation after the animation
+    // For this example, let's directly navigate after a delay
+    setTimeout(() => {
+      router.push(`/work/${project.slug.current}`);
+    }, 1000); // Delay to allow for animation, adjust as needed
+  };
   return (
-    <Link
-      key={project._id}
-      className="col-span-2 flex flex-col justify-center content-center"
-      href={`/work/${project.slug.current}`}
+    <div
+      className="col-span-2 flex flex-col justify-center content-center cursor-pointer"
+      onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -73,7 +82,7 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
           {project.subtitle}
         </p>
       </div>
-    </Link>
+    </div>
   );
 };
 

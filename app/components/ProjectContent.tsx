@@ -17,9 +17,9 @@ const titleVariants = {
 };
 
 const featuredVariants = {
-  initial: { y: 0, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  exit: { y: 0, opacity: 0 },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
 };
 
 export default function ProjectContent({
@@ -36,7 +36,7 @@ export default function ProjectContent({
           animate="animate"
           exit="exit"
           variants={titleVariants}
-          transition={{ duration: 2, delay: 0.25 }}
+          transition={{ duration: 0.5, delay: 0 }}
         >
           {title && (
             <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl text-center">
@@ -51,7 +51,7 @@ export default function ProjectContent({
           animate="animate"
           exit="exit"
           variants={featuredVariants}
-          transition={{ duration: 2, delay: 0.25 }}
+          transition={{ duration: 0.5, delay: 0 }}
           className="h-[90vh]"
         >
           <Video
@@ -69,7 +69,7 @@ export default function ProjectContent({
           animate="animate"
           exit="exit"
           variants={featuredVariants}
-          transition={{ duration: 0.5, delay: 0.25 }}
+          transition={{ duration: 0.5, delay: 0 }}
         >
           <Image
             className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
