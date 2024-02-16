@@ -24,7 +24,7 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
     // For this example, let's directly navigate after a delay
     setTimeout(() => {
       router.push(`/work/${project.slug.current}`);
-    }, 1000); // Delay to allow for animation, adjust as needed
+    }, 350); // Delay to allow for animation, adjust as needed
   };
   return (
     <div
