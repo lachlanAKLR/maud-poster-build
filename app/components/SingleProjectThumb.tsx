@@ -6,8 +6,7 @@ import { useState } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/env";
 import Video from "./Video";
-import { useRouter } from "next/navigation"; // Import useRouter for navigation
-import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -18,13 +17,9 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
   const handleClick = () => {
-    // Assuming you have a way to notify the parent component to start the exit animation
-    // For example, using a context or passing a callback prop to this component
-    // After setting up the necessary state/prop, trigger navigation after the animation
-    // For this example, let's directly navigate after a delay
     setTimeout(() => {
       router.push(`/work/${project.slug.current}`);
-    }, 350); // Delay to allow for animation, adjust as needed
+    }, 350);
   };
   return (
     <div

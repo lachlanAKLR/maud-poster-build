@@ -11,16 +11,16 @@ import { AnimatePresence, motion } from "framer-motion";
 const builder = imageUrlBuilder({ projectId, dataset });
 
 const titleVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
+  initial: { y: "30vh", opacity: 1 },
+  animate: { y: 0, opacity: 1 },
   exit: { opacity: 0 },
 };
 
-const featuredVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-};
+// const featuredVariants = {
+//   initial: { opacity: 0 },
+//   animate: { opacity: 0 },
+//   exit: { opacity: 0 },
+// };
 
 export default function ProjectContent({
   project,
@@ -32,26 +32,39 @@ export default function ProjectContent({
     <>
       <AnimatePresence mode="wait">
         <motion.div
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={titleVariants}
-          transition={{ duration: 0.5, delay: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ delay: 0.5, duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
+          onAnimationComplete={() => {
+            // This can be used if there's any action needed right after the fade-in completes.
+            console.log("Fade in complete");
+          }}
         >
-          {title && (
-            <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl text-center">
-              {title}
-            </h1>
-          )}
+          <motion.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={titleVariants}
+            transition={{
+              duration: 0.75,
+              delay: 1,
+              ease: [0.4, 0.0, 0.2, 1],
+            }}
+          >
+            {title && (
+              <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl text-center">
+                {title}
+              </h1>
+            )}
+          </motion.div>
         </motion.div>
       </AnimatePresence>
       {featuredImage && featuredImage.videoUrl ? (
         <motion.div
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={featuredVariants}
-          transition={{ duration: 0.5, delay: 0 }}
+          initial={{ y: "100vh" }} // Start directly underneath the viewport
+          animate={{ y: 0 }} // Animate to its final position
+          transition={{ delay: 1, duration: 0.75, ease: [0.4, 0.0, 0.2, 1] }} // Customize the animation
           className="h-[90vh]"
         >
           <Video
@@ -65,11 +78,10 @@ export default function ProjectContent({
         </motion.div>
       ) : featuredImage ? (
         <motion.div
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={featuredVariants}
-          transition={{ duration: 0.5, delay: 0 }}
+          initial={{ y: "100vh" }} // Start directly underneath the viewport
+          animate={{ y: 0 }} // Animate to its final position
+          transition={{ delay: 1, duration: 0.75, ease: [0.4, 0.0, 0.2, 1] }} // Customize the animation
+          className="h-[90vh]"
         >
           <Image
             className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
