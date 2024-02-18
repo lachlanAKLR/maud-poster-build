@@ -31,7 +31,6 @@ export type ProfileType = {
   carouselContent?: CarouselItemType[];
   slug: string;
   subtitle: string;
-  thumbnailImageLQIP: string;
 };
 
 export type Tag = {
@@ -49,7 +48,6 @@ export type Project = {
     videoUrl?: string;
     ratio?: "square" | "landscape" | "portrait";
     alt?: string;
-    thumbnailImageLQIP: string;
   };
   title?: string;
   subtitle: string;
@@ -58,7 +56,6 @@ export type Project = {
 export type SingleProjectProps = {
   project: Project;
   index: number;
-  thumbnailImageLQIP: string;
 };
 
 export type CarouselItemProps = {
