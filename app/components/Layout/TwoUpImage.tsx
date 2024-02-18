@@ -19,8 +19,7 @@ export default function TwoUpImage({ block }: { block: any }) {
           width={2000}
           height={3000}
           alt={block.leftImage.alt || ""}
-          blurDataURL="data:..."
-          placeholder="blur"
+          placeholder="empty"
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
         />
       ) : null}
@@ -36,8 +35,7 @@ export default function TwoUpImage({ block }: { block: any }) {
           width={2000}
           height={3000}
           alt={block.rightImage.alt || ""}
-          blurDataURL="data:..."
-          placeholder="blur"
+          placeholder="empty"
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
         />
       ) : null}
