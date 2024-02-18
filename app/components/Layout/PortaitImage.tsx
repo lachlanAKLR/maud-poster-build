@@ -19,8 +19,7 @@ export default function PortraitImage({ block }: { block: any }) {
           width={2000}
           height={3000}
           alt={block.image.alt || ""}
-          blurDataURL="data:..."
-          placeholder="blur"
+          placeholder="empty"
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
         />
       ) : null}
