@@ -51,11 +51,13 @@ export type Project = {
   };
   title?: string;
   subtitle: string;
+  thumbnailImageLQIP: string;
 };
 
 export type SingleProjectProps = {
   project: Project;
   index: number;
+  thumbnailImageLQIP: string;
 };
 
 export type CarouselItemProps = {

@@ -112,10 +112,6 @@ export default function Projects({
 
   useEffect(() => {
     if (selectedProjectId && isProjectFadeOut) {
-      // Wait for other projects to fade out before starting the selected project fade out
-      // setTimeout(() => {
-      //   router.push(`/work/${selectedProjectSlug}`); // Adjust variable name as necessary
-      // }, 1500); // Adjust timing based on your fade out duration
     }
   }, [selectedProjectId, isProjectFadeOut, router]);
 
@@ -129,10 +125,9 @@ export default function Projects({
 
   const handleProjectSelect = (projectId: string, projectSlug: string) => {
     setSelectedProjectId(projectId);
-    // Delay to start fade out of unselected projects
     setTimeout(() => {
-      setIsProjectFadeOut(true); // This triggers the fade out for the selected project
-    }, 750); // This should match the exit transition delay of unselected projects
+      setIsProjectFadeOut(true);
+    }, 600);
   };
 
   return (
@@ -140,7 +135,7 @@ export default function Projects({
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: selectedProjectId ? 0 : 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.45 }}
       >
         <TagsFilter tags={tags} onSelectTag={setSelectedTagSlug} />
       </motion.div>
@@ -164,7 +159,7 @@ export default function Projects({
                 exit={{
                   opacity: 0,
                   transition: {
-                    delay: project._id === selectedProjectId ? 0.5 : 0,
+                    delay: project._id === selectedProjectId ? 0.45 : 0,
                   },
                 }}
                 onClick={() =>

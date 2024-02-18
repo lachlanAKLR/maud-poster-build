@@ -11,17 +11,22 @@ export const PROJECTS_QUERY = groq`
     title,
     slug
   },
+  "thumbnailImageLQIP": thumbnailImage.asset->metadata.lqip,
 }`;
 export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]`;
 
 export async function getInfo() {
   return client.fetch(
     groq`*[_type == "info"]{
-              _id,
-              infoText,
-              image,
-              image {alt, "image": asset->url},
-            }`
+      _id,
+      infoText,
+      image,
+      "image": {
+        alt,
+        "image": image.asset->url,
+        "lqip": image.asset->metadata.lqip
+      }
+    }`
   );
 }
 

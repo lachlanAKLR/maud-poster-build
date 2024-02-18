@@ -62,9 +62,9 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
           quality={100}
           alt={project.thumbnailImage.alt || ""}
           priority={index >= 0 && index <= 2}
-          blurDataURL="data:..."
+          blurDataURL={project.thumbnailImageLQIP}
           placeholder="blur"
-          sizes="(max-width: 600px) 100vw, (max-width: 900px) 33vw, 33vw"
+          sizes="(max-width: 600px) 50vw, (max-width: 900px) 33vw, 33vw"
         />
       ) : null}
       <div
