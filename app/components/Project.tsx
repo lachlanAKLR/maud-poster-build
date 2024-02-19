@@ -29,7 +29,6 @@ export default function Project({
           </div>
         </div>
       ) : null}
-      {/* @ts-ignore */}
       <MoreProjects projects={projects} id={_id} />
     </main>
   );

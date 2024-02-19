@@ -6,7 +6,8 @@ import clsx from "clsx";
 
 export default function Nav() {
   const pathname = usePathname();
-  const colorClass = pathname === "/" ? "text-white" : "text-black";
+  const colorClass =
+    pathname === "/" || pathname === "/archive" ? "text-white" : "text-black";
   const varTitle = pathname === "/" ? "" : "part of Accenture Song";
 
   return (

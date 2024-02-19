@@ -81,3 +81,31 @@ export type CarouselItemProps = {
   index: number;
   indexLength: number;
 };
+
+export type ArchiveImageAsset = {
+  _id: string;
+  url: string;
+};
+
+export type ArchiveImage = {
+  _key?: string;
+  _id?: string;
+  _type: "image";
+  alt: string;
+  ratio: "square" | "landscape" | "portrait";
+  videoUrl?: string;
+  asset: ArchiveImageAsset;
+};
+
+export type ArchiveDocument = {
+  _id: string;
+  archiveImage: ArchiveImage;
+  image?: {
+    alt: string;
+    image: string;
+    videoUrl?: string;
+    ratio: "square" | "landscape" | "portrait";
+  };
+};
+
+export type ArchiveQueryResult = ArchiveDocument[];

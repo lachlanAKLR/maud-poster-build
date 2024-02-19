@@ -1,5 +1,3 @@
-// ./sanity/lib/queries.ts
-
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 
@@ -69,10 +67,20 @@ export async function getCarouselItems() {
 
 export async function getTags() {
   return client.fetch(
-    groq`*[_type == "tags"]{
+    groq`*[_type == "tags"]|order(orderRank){
               _id,
               title,
               slug,
+            }`
+  );
+}
+
+export async function getArchive() {
+  return client.fetch(
+    groq`*[_type == "archive"]|order(orderRank){
+              _id,
+              archiveImage,
+              archiveImage {alt, "image": asset->url, videoUrl, ratio},
             }`
   );
 }

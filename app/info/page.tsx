@@ -1,4 +1,4 @@
-import { getInfo, getSettings, getTags } from "@/sanity/lib/queries";
+import { getInfo, getSettings } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";

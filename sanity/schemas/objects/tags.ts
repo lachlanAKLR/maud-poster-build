@@ -3,8 +3,9 @@ import { MdBookmarks } from "react-icons/md";
 
 export default defineType({
   name: "tags",
-  title: "Tag",
+  title: "Tags",
   type: "document",
+  icon: MdBookmarks,
   fields: [
     defineField({
       name: "title",
@@ -19,6 +20,12 @@ export default defineType({
         source: "title",
         maxLength: 96,
       },
+    }),
+    defineField({
+      name: "orderRank",
+      title: "Order Rank",
+      type: "string",
+      hidden: true,
     }),
   ],
   preview: {

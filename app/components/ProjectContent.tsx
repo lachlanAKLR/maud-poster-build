@@ -8,6 +8,7 @@ import { dataset, projectId } from "@/sanity/env";
 import { PortableText } from "@portabletext/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import styled from "styled-components";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -17,13 +18,23 @@ const titleVariants = {
   exit: { opacity: 0 },
 };
 
+const TextContainer = styled.div`
+  & h3:first-of-type {
+    text-indent: 64px;
+  }
+
+  & h3:not(:first-of-type) {
+    margin-top: 20px;
+  }
+`;
+
 export default function ProjectContent({
   project,
 }: {
   project: SanityDocument;
 }) {
   const { title, featuredImage, projectText } = project;
-  const [animationCompleted, setAnimationCompleted] = useState(false); // State to track if animation is completed
+  const [animationCompleted, setAnimationCompleted] = useState(false);
 
   return (
     <>
@@ -81,15 +92,16 @@ export default function ProjectContent({
             quality={100}
             alt={featuredImage.alt || ""}
             priority
-            blurDataURL="data:..."
-            placeholder="blur"
+            placeholder="empty"
             sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 33vw"
           />
         ) : null}
         {projectText ? (
           <div className="block md:grid grid-cols-8 gap-x-20 px-3 md:px-20">
-            <div className="py-24 md:py-72 indent-16 col-start-3 col-span-4 md:text-sm">
-              <PortableText value={projectText} />
+            <div className="py-24 md:py-72 col-start-3 col-span-4 md:text-sm">
+              <TextContainer>
+                <PortableText value={projectText} />
+              </TextContainer>
             </div>
           </div>
         ) : null}

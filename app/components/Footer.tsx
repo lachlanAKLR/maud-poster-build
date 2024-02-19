@@ -34,8 +34,7 @@ export default async function Footer() {
                     quality={100}
                     alt={data.image.alt || ""}
                     priority
-                    blurDataURL="data:..."
-                    placeholder="blur"
+                    placeholder="empty"
                     sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 100vw"
                   />
                 ) : null}
