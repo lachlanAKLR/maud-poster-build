@@ -55,7 +55,6 @@ export default async function Page() {
             <ArchiveThumb
               key={data._id}
               // @ts-ignore
-
               data={data}
               index={index}
             ></ArchiveThumb>
