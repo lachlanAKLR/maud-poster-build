@@ -13,12 +13,11 @@ export default async function Page() {
   const carouselContent: ProfileType[] = await getCarouselItems();
 
   return (
-    <div className="bg-maud-black">
+    <div>
       <TitleAnimation title="MAUD" intervalMs={300} />
       <SubTitle content={content} />
       <CustomCursor />
       <Carousel />
-
       {/* <SlideCarousel>
         {carouselContent.length > 0 &&
           carouselContent[0].carousel.map((item, index) => (

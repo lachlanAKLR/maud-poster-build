@@ -80,6 +80,7 @@ export type CarouselItemProps = {
   isVisible: boolean;
   index: number;
   indexLength: number;
+  onFadeOut?: () => void;
 };
 
 export type ArchiveImageAsset = {

@@ -16,12 +16,13 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
+
   const handleClick = () => {
     setTimeout(() => {
       router.push(`/work/${project.slug.current}`);
     }, 350);
   };
-  console.log(project);
+
   return (
     <div
       className="col-span-2 flex flex-col justify-center content-center cursor-pointer"
