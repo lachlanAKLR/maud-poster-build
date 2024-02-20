@@ -4,6 +4,10 @@ import { PROJECTS_QUERY, PROJECT_QUERY } from "@/sanity/lib/queries";
 import Project from "../../components/Project";
 import { client } from "@/sanity/lib/client";
 import { Metadata } from "next";
+import imageUrlBuilder from "@sanity/image-url";
+import { dataset, projectId } from "@/sanity/env";
+
+const builder = imageUrlBuilder({ projectId, dataset });
 
 export async function generateMetadata({
   params,
@@ -35,6 +39,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: QueryParams }) {
   const initial = await loadQuery<SanityDocument>(PROJECT_QUERY, params, {});
   const projects = await client.fetch<SanityDocument[]>(PROJECTS_QUERY);
+  // console.log(builder.image(initial.data.featuredImage).quality(100).url());
 
   return <Project project={initial.data} projects={projects} />;
 }

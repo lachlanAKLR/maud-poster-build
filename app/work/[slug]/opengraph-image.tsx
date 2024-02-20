@@ -1,7 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { ImageResponse } from "next/og";
 import { loadQuery } from "@/sanity/lib/store"; // Use your loadQuery function
 import { QueryParams, SanityDocument } from "next-sanity";
 import { PROJECT_QUERY } from "@/sanity/lib/queries"; // Ensure this query fetches the required image data
+import imageUrlBuilder from "@sanity/image-url";
+import { dataset, projectId } from "@/sanity/env";
+
+const builder = imageUrlBuilder({ projectId, dataset });
 
 export const runtime = "edge";
 
@@ -20,24 +26,12 @@ export default async function Image({ params }: { params: { slug: string } }) {
     {}
   );
 
-  const imageUrl = initial.data.featuredImage.image; // Direct link to the image
+  const imageUrl = builder.image(initial.data.featuredImage).quality(100).url(); // Direct link to the image
 
   return new ImageResponse(
     (
-      <div
-        style={{
-          fontSize: 48,
-          background: `url('${imageUrl}') no-repeat center center`,
-          backgroundSize: "cover",
-          color: "white", // Ensure text color contrasts with the image
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {initial.data.title}
+      <div tw="relative flex items-center justify-center">
+        <img src={`${imageUrl}`} alt={initial.data.title} />
       </div>
     ),
     { ...size }
