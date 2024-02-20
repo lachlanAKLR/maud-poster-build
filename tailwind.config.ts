@@ -29,9 +29,10 @@ const config: Config = {
         lg: ["24px", "28.8px"],
         xl: ["48px", "57.6px"],
         "2xl": ["64px", "58px"],
-        "3xl": ["180px", "171px"],
-        "4xl": ["300px", "300px"],
-        "5xl": ["820px", "750px"],
+        "3xl": ["150px", "134px"],
+        "4xl": ["180px", "171px"],
+        "5xl": ["300px", "300px"],
+        "6xl": ["820px", "750px"],
       },
       colors: {
         "maud-green": "#dee9bb",

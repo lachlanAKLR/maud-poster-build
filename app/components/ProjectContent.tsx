@@ -58,7 +58,7 @@ export default function ProjectContent({
             }}
           >
             {title && (
-              <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl text-center">
+              <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl 2xl:text-4xl text-center">
                 {title}
               </h1>
             )}
