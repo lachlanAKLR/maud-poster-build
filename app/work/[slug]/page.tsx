@@ -39,7 +39,9 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: QueryParams }) {
   const initial = await loadQuery<SanityDocument>(PROJECT_QUERY, params, {});
   const projects = await client.fetch<SanityDocument[]>(PROJECTS_QUERY);
-  // console.log(builder.image(initial.data.featuredImage).quality(100).url());
+  const imageUrl = builder.image(initial.data.featuredImage).quality(100).url(); // Direct link to the image
+
+  console.log(process.env.metadataBase, imageUrl);
 
   return <Project project={initial.data} projects={projects} />;
 }

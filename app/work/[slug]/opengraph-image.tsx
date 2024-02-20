@@ -26,12 +26,12 @@ export default async function Image({ params }: { params: { slug: string } }) {
     {}
   );
 
-  const imageUrl = builder.image(initial.data.featuredImage).quality(100).url(); // Direct link to the image
+  const imageUrl = builder.image(initial.data.featuredImage).quality(50).url(); // Direct link to the image
 
   return new ImageResponse(
     (
       <div tw="relative flex items-center justify-center">
-        <img src={`${imageUrl}`} alt={initial.data.title} />
+        <img src={imageUrl} alt={initial.data.title} />
       </div>
     ),
     { ...size }

@@ -11,7 +11,10 @@ const nextConfig = {
     experimental: {
       taint: true,
     },
-    // ...other config settings
+    env: {
+      metadataBase: 'https://maud-website.vercel.app/',
+    },
   };
 
 export default nextConfig;
+ 
