@@ -10,6 +10,7 @@ export const PROJECTS_QUERY = groq`
     slug
   },
 }`;
+
 export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]`;
 
 export async function getInfo() {
