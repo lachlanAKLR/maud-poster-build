@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { ImageResponse } from "next/og";
-import { loadQuery } from "@/sanity/lib/store"; // Use your loadQuery function
+import { loadQuery } from "@/sanity/lib/store";
 import { QueryParams, SanityDocument } from "next-sanity";
-import { PROJECT_QUERY } from "@/sanity/lib/queries"; // Ensure this query fetches the required image data
+import { PROJECT_QUERY } from "@/sanity/lib/queries";
 import imageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/env";
 
@@ -26,7 +26,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
     {}
   );
 
-  const imageUrl = builder.image(initial.data.featuredImage).quality(50).url(); // Direct link to the image
+  const imageUrl = builder.image(initial.data.featuredImage).quality(50).url();
 
   return new ImageResponse(
     (
