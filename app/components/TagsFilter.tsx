@@ -22,7 +22,7 @@ const TagsFilter: React.FC<TagsFilterProps> = ({ tags, onSelectTag }) => {
   };
 
   return (
-    <div className="fixed text-center hidden md:block top-[6px] left-1/2 transform -translate-x-1/2 py-1 px-3 text-xs w-fit">
+    <div className="relative md:fixed text-center md:top-[6px] w-full md:left-1/2 md:transform md:-translate-x-1/2 pt-20 md:py-1 md:px-3 text-xs md:w-fit">
       <span>Filter →</span>
       {selectedTagSlug ? (
         <>

@@ -68,7 +68,7 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
         <AnimatePresence>
           <NoScrollBar>
             <div className="overflow-x-scroll">
-              <div className="flex md:grid grid-cols-6 gap-x-5 gap-y-24 md:gap-y-72 pt-10 px-5 md:px-20 pb-10 content-center w-[250vw]">
+              <div className="flex gap-x-5 gap-y-24 pt-10 px-5 pb-10 content-center w-[250vw]">
                 {randProjects.slice(0, 4).map((project, index) => (
                   <motion.div
                     key={project._id}
@@ -89,7 +89,7 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
                       },
                     }}
                     onClick={() => handleProjectSelect(project._id)}
-                    className="cursor-pointer col-span-2 flex flex-col justify-center content-center  w-full"
+                    className="cursor-pointer col-span-2 flex flex-col justify-center content-center w-full"
                   >
                     <SingleProjectThumb project={project} index={index} />
                     <p className="pt-1 text-xs">
