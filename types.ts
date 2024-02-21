@@ -31,6 +31,10 @@ export type ProfileType = {
   carouselContent?: CarouselItemType[];
   slug: string;
   subtitle: string;
+  metaImage: {
+    alt: string;
+    image: string;
+  };
 };
 
 export type Tag = {

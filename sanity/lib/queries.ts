@@ -47,6 +47,8 @@ export async function getSettings() {
               addressTwo,
               image,
               image {alt, "image": asset->url},
+              metaImage,
+              metaImage {alt, "image": asset->url},
             }`
   );
 }

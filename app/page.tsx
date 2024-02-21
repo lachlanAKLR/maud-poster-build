@@ -7,10 +7,12 @@ import SlideCarousel from "./components/SlideCarousel";
 import SlideCarouselItem from "./components/SlideCarouselItem";
 import Carousel from "./components/Carousel";
 import CustomCursor from "./components/Cursor";
+import { getSettings } from "@/sanity/lib/queries";
 
 export default async function Page() {
   const content: ProfileType[] = await getHome();
   const carouselContent: ProfileType[] = await getCarouselItems();
+  const settings: ProfileType[] = await getSettings();
 
   return (
     <div>

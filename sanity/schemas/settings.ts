@@ -52,5 +52,17 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: "metaImage",
+      title: "Meta Image",
+      type: "image",
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Meta Image Description",
+          type: "string",
+        }),
+      ],
+    }),
   ],
 });
