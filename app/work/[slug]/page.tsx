@@ -23,7 +23,7 @@ export async function generateMetadata({
     };
 
   return {
-    title: `${initial.data.title} | MAUD`,
+    title: `MAUD — ${initial.data.title}`,
     description: initial.data.subtitle,
     metadataBase: new URL("https://maud-website.vercel.app"),
   };

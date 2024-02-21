@@ -1,4 +1,9 @@
-import Nav from "../components/Nav";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MAUD — Info",
+  description: "A Brand Identity Company",
+};
 
 export default function InfoLayout({
   children,

@@ -6,6 +6,10 @@ import Nav from "./components/Nav";
 export const metadata: Metadata = {
   title: "MAUD — Part of Accenture song",
   description: "A Brand Identity Company",
+  metadataBase: new URL("https://maud-website.vercel.app"),
+  // openGraph: {
+  //   images: ["/some-specific-page-image.jpg"],
+  // },
 };
 
 export default function RootLayout({

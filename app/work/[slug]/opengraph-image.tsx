@@ -19,7 +19,6 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image({ params }: { params: { slug: string } }) {
-  // Use the loadQuery method similar to your page.tsx
   const initial = await loadQuery<SanityDocument>(
     PROJECT_QUERY,
     { slug: params.slug },
