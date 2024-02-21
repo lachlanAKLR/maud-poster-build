@@ -15,7 +15,7 @@ export default async function Image() {
   return new ImageResponse(
     (
       <div tw="relative flex items-center justify-center">
-        <img src="./assets/images/Social_Share_01.png" alt="MAUD" />
+        <img src="../assets/images/Social_Share_01.png" alt="MAUD" />
       </div>
     ),
     { ...size }
