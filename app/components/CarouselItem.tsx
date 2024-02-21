@@ -64,7 +64,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
     >
       <div className="cursor-none" onClick={handleClick}>
         {hasVideo ? (
-          <div className="h-screen">
+          <div className="h-dvh md:h-screen">
             {/* @ts-ignore */}
             <Video videoUrl={item.featuredImage.videoUrl} />
           </div>
