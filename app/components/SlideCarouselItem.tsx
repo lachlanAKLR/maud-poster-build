@@ -31,9 +31,7 @@ const SlideCarouselItem: React.FC<CarouselItemProps> = ({ item }) => {
           <span className="uppercase mr-2">{item.title}</span>
           {item.subtitle}
         </p>
-        <p className="align-right">
-          {/* {formatNumber(index)}/{formatNumber(indexLength)} */}
-        </p>
+        <p className="align-right"></p>
       </div>
     </Link>
   );

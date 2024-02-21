@@ -54,7 +54,7 @@ export default defineType({
     }),
     defineField({
       name: "metaImage",
-      title: "Meta Image",
+      title: "Meta Image [1200 x 630]",
       type: "image",
       fields: [
         defineField({

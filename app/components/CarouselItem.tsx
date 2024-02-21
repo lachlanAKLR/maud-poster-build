@@ -41,7 +41,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 }) => {
   const hasVideo = !!item.featuredImage.videoUrl;
   const hasFeaturedPortrait = !!item.featuredImage.featuredPortrait;
-  const isSmallScreen = useMediaQuery("(max-width:639px)");
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
   const router = useRouter();
 
   const handleClick = () => {
