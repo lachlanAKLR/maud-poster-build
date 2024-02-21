@@ -94,7 +94,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           />
         )}
 
-        <div className="absolute left-0 px-1 bottom-1 z-50 text-white text-xs flex justify-between w-full">
+        <div className="absolute left-0 px-[10px] bottom-1 z-50 text-white text-xs flex justify-between w-full">
           <p className="w-3/4 md:w-fit">
             <span className="uppercase mr-1">{item.title}</span>
             {item.subtitle}

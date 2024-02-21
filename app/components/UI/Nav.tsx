@@ -17,14 +17,14 @@ export default function Nav() {
           <Link
             href="/"
             className={clsx(
-              "text-xs fixed top-[10px] left-[5px] z-40",
+              "text-xs fixed top-[10px] left-[10px] z-40",
               colorClass
             )}
           >
             MAUD, {varTitle}
           </Link>
         </div>
-        <div className="fixed top-[5px] right-[5px] z-40">
+        <div className="fixed top-[5px] right-[10px] z-40">
           <Link
             href="/work"
             className={clsx("text-xs mr-1", colorClass, {

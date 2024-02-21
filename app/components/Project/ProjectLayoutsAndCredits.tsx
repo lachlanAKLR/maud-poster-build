@@ -1,6 +1,6 @@
 "use client";
 
-import Layout from "./Layout";
+import Layout from "../Layout/Layout";
 import { PortableText } from "@portabletext/react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { unica } from "./fonts";
-import Nav from "./components/Nav";
+import Nav from "./components/UI/Nav";
 
 export const metadata: Metadata = {
   title: "MAUD — Part of Accenture song",

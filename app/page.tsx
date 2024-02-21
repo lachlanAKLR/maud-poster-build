@@ -1,12 +1,12 @@
-import TitleAnimation from "./components/TitleAnimation";
+import TitleAnimation from "./components/UI/TitleAnimation";
 import { ProfileType } from "@/types";
 import { getHome } from "@/sanity/lib/queries";
-import SubTitle from "./components/SubTitle";
+import SubTitle from "./components/UI/SubTitle";
 import { getCarouselItems } from "@/sanity/lib/queries";
-import SlideCarousel from "./components/SlideCarousel";
-import SlideCarouselItem from "./components/SlideCarouselItem";
-import Carousel from "./components/Carousel";
-import CustomCursor from "./components/Cursor";
+import SlideCarousel from "./components/UI/SlideCarousel";
+import SlideCarouselItem from "./components/UI/SlideCarouselItem";
+import Carousel from "./components/UI/Carousel";
+import CustomCursor from "./components/UI/Cursor";
 import { getSettings } from "@/sanity/lib/queries";
 
 export default async function Page() {

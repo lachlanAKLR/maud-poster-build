@@ -1,9 +1,8 @@
-import { getInfo, getSettings } from "@/sanity/lib/queries";
+import { getInfo, getSettings, getTags } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import TitleAnimation from "../components/UI/TitleAnimation";
-import { herbik } from "@/app/fonts";
 
 export default async function Page() {
   const content: ProfileType[] = await getInfo();
@@ -20,7 +19,7 @@ export default async function Page() {
             key={data._id}
           >
             <div className="col-start-2 col-span-4">
-              <div className={` ${herbik.className} text-lg md:text-xl`}>
+              <div className="max-w-3xl m-auto text-lg">
                 <PortableText value={data.infoText} />
               </div>
             </div>

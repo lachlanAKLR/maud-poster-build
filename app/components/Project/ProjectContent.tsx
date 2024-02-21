@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Video from "./Video";
+import Video from "../UI/Video";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
 import { dataset, projectId } from "@/sanity/env";

@@ -2,10 +2,10 @@
 
 import { SanityDocument } from "next-sanity";
 import { useEffect, useState } from "react";
-import TagsFilter from "./TagsFilter";
+import TagsFilter from "../UI/TagsFilter";
 import { Tag } from "@/types";
 import SingleProjectThumb from "./SingleProjectThumb";
-import TitleAnimation from "./TitleAnimation";
+import TitleAnimation from "../UI/TitleAnimation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 

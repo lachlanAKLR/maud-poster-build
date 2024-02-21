@@ -2,7 +2,7 @@
 
 import { SanityDocument } from "next-sanity";
 import { useEffect, useState } from "react";
-import SingleProjectThumb from "./SingleProjectThumb";
+import SingleProjectThumb from "../Projects/SingleProjectThumb";
 import { AnimatePresence, motion } from "framer-motion";
 import styled from "styled-components";
 

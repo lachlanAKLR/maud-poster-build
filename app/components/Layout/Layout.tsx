@@ -1,9 +1,9 @@
 import React from "react";
-import Quote from "./Layout/Quote";
-import VideoBlock from "./Layout/VideoBlock";
-import PortraitImage from "./Layout/PortaitImage";
-import LandscapeImage from "./Layout/LandscapeImage";
-import TwoUpImage from "./Layout/TwoUpImage";
+import Quote from "./Quote";
+import VideoBlock from "./VideoBlock";
+import PortraitImage from "./PortaitImage";
+import LandscapeImage from "./LandscapeImage";
+import TwoUpImage from "./TwoUpImage";
 
 export default function Layout({ layouts }: { layouts: any[] }) {
   const Components: { [key: string]: React.ComponentType<any> } = {
