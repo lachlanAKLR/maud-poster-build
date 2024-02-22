@@ -35,6 +35,7 @@ export type ProfileType = {
     alt: string;
     image: string;
   };
+  isHome?: boolean;
 };
 
 export type Tag = {

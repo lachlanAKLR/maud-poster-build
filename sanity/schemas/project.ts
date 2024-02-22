@@ -1,5 +1,4 @@
 import { MdAddPhotoAlternate } from "react-icons/md";
-import { MdAod } from "react-icons/md";
 
 import { defineType, defineField } from "sanity";
 

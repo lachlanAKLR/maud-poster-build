@@ -12,6 +12,11 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      title: "Video URL",
+      name: "videoUrl",
+      type: "url",
+    }),
+    defineField({
       name: "carousel",
       title: "Featured Projects",
       type: "array",

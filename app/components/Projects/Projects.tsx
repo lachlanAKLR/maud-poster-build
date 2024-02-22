@@ -12,9 +12,11 @@ import { useRouter } from "next/navigation";
 export default function Projects({
   projects,
   tags,
+  isHome,
 }: {
   projects: SanityDocument[];
   tags: Tag[];
+  isHome: boolean;
 }) {
   const [selectedTagSlug, setSelectedTagSlug] = useState<string | null>(null);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
@@ -46,7 +48,7 @@ export default function Projects({
 
   return (
     <>
-      <TitleAnimation title="WORK" intervalMs={300} />
+      {isHome ? null : <TitleAnimation title="WORK" intervalMs={300} />}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -56,7 +58,11 @@ export default function Projects({
           initial={{ opacity: 1 }}
           animate={{ opacity: selectedProjectId ? 0 : 1 }}
         >
-          <TagsFilter tags={tags} onSelectTag={setSelectedTagSlug} />
+          <TagsFilter
+            tags={tags}
+            onSelectTag={setSelectedTagSlug}
+            isHome={isHome}
+          />
         </motion.div>
         <AnimatePresence mode="wait">
           <main className="grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 pt-20 md:pt-44 pb-12 md:pb-72 content-center">
