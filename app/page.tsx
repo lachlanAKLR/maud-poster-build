@@ -19,7 +19,7 @@ export default async function Page() {
   const settings: ProfileType[] = await getSettings();
 
   return (
-    <div className="bg-black h-screen">
+    <div className="">
       <TitleAnimation title="MAUD" intervalMs={300} />
       {/* <SubTitle content={content} /> */}
       <HomeVideo content={content} />

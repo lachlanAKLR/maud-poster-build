@@ -65,7 +65,7 @@ export default function Projects({
           />
         </motion.div>
         <AnimatePresence mode="wait">
-          <main className="bg-white relative top-0 h-auto z-[-1] grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 pt-20 md:pt-44 pb-12 md:pb-72 content-center mb-[100vh]">
+          <main className="bg-white relative top-0 h-auto z-0 grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 pt-20 md:pt-44 pb-12 md:pb-72 content-center min-h-dvh md:min-h-screen">
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project, index) => (
                 <motion.div
@@ -103,7 +103,7 @@ export default function Projects({
               <div className="p-4 text-red-500">No projects found</div>
             )}
           </main>
-          {/* <div className="h-screen w-full relative">spacer</div> */}
+          <div className="h-screen w-full bg-transparent" />
         </AnimatePresence>
       </motion.div>
     </>

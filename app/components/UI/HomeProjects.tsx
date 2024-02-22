@@ -33,7 +33,7 @@ export default function HomeProjects({
     <div
       className={`${
         isHome
-          ? ` bg-white w-full absolute top-[100vh] left-0 h-auto z-40 min-h-dvh md:min-h-screen ${
+          ? `w-full absolute top-[100vh] left-0 h-auto z-40 min-h-dvh md:min-h-screen ${
               isFixed ? "fixed top-0" : "fixed top-0"
             }`
           : " "

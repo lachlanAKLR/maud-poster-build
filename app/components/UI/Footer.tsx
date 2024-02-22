@@ -31,7 +31,7 @@ export default function Footer({ settings }: FooterProps) {
 
   return (
     <footer
-      className={` text-center bg-maud-grey min-h-dvh md:min-h-screen flex flex-col justify-between fixed bottom-0 z-[-2] ${
+      className={` text-center bg-maud-grey min-h-dvh md:min-h-screen flex flex-col-reverse justify-between fixed bottom-0 z-[-2] ${
         showFooter ? "block" : "hidden"
       }`}
     >
