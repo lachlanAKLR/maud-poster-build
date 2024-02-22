@@ -9,7 +9,6 @@ import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { getTags } from "@/sanity/lib/queries";
 import { Tag } from "@/types";
 import HomeProjects from "./components/UI/HomeProjects";
-import Footer from "./components/UI/Footer";
 
 export default async function Page() {
   const content: ProfileType[] = await getHome();
@@ -22,7 +21,6 @@ export default async function Page() {
       {/* <SubTitle content={content} /> */}
       <HomeVideo content={content} />
       <HomeProjects projects={initial.data} tags={tags} isHome={true} />
-      <Footer />
     </div>
   );
 }

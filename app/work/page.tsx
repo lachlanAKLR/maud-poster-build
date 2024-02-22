@@ -10,7 +10,7 @@ export default async function Page() {
 
   return (
     <>
-      <Projects projects={initial.data} tags={tags} />
+      <Projects projects={initial.data} tags={tags} isHome={false} />
     </>
   );
 }

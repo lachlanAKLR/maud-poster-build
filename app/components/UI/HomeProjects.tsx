@@ -4,6 +4,7 @@ import Projects from "../Projects/Projects";
 import { SanityDocument } from "next-sanity";
 import { Tag } from "@/types";
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 
 export default function HomeProjects({
   projects,
