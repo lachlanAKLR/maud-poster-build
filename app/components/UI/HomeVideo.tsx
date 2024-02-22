@@ -21,7 +21,7 @@ export default function HomeVideo({ content }: HomeProps) {
     const onScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
       const threshold =
-        document.documentElement.scrollHeight - window.innerHeight;
+        document.documentElement.scrollHeight - window.innerHeight - 500;
       setHideVideo(scrollPosition > threshold);
     };
 
@@ -32,7 +32,7 @@ export default function HomeVideo({ content }: HomeProps) {
   return (
     <div
       className={`h-dvh md:h-screen w-full fixed z-0 bg-black pointer-events-none ${
-        hideVideo ? "hidden" : "block"
+        hideVideo ? "opacity-0" : "opacity-1"
       }`}
     >
       <Video videoUrl={videoUrl} poster={""} />

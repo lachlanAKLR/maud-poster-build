@@ -21,7 +21,7 @@ export default function Footer({ settings }: FooterProps) {
     const onScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
       const threshold =
-        document.documentElement.scrollHeight - window.innerHeight;
+        document.documentElement.scrollHeight - window.innerHeight - 500;
       setShowFooter(scrollPosition > threshold);
     };
 
@@ -32,7 +32,7 @@ export default function Footer({ settings }: FooterProps) {
   return (
     <footer
       className={` text-center bg-maud-grey min-h-dvh md:min-h-screen flex flex-col-reverse justify-between fixed bottom-0 z-[-2] ${
-        showFooter ? "block" : "hidden"
+        showFooter ? "opacity-1" : "opacity-0"
       }`}
     >
       <div className="text-sm">
