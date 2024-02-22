@@ -9,18 +9,22 @@ import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { getTags } from "@/sanity/lib/queries";
 import { Tag } from "@/types";
 import HomeProjects from "./components/UI/HomeProjects";
+import Footer from "./components/UI/Footer";
+import { getSettings } from "@/sanity/lib/queries";
 
 export default async function Page() {
   const content: ProfileType[] = await getHome();
   const initial = await loadQuery<SanityDocument[]>(PROJECTS_QUERY);
   const tags: Tag[] = await getTags();
+  const settings: ProfileType[] = await getSettings();
 
   return (
-    <div>
+    <div className="bg-black h-screen">
       <TitleAnimation title="MAUD" intervalMs={300} />
       {/* <SubTitle content={content} /> */}
       <HomeVideo content={content} />
       <HomeProjects projects={initial.data} tags={tags} isHome={true} />
+      <Footer settings={settings} />
     </div>
   );
 }
