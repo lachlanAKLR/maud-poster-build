@@ -7,20 +7,9 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
-      name: "subtitle",
-      title: "Subtitle",
-      type: "string",
-    }),
-    defineField({
       title: "Video URL",
       name: "videoUrl",
       type: "url",
-    }),
-    defineField({
-      name: "carousel",
-      title: "Featured Projects",
-      type: "array",
-      of: [{ type: "reference", to: { type: "project" } }],
     }),
   ],
 });
