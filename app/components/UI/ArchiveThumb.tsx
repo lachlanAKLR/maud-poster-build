@@ -16,8 +16,11 @@ export default function ArchiveThumb({
   index,
   dynamicWidth,
 }: ArchiveThumbProps) {
-  const widthStyle = dynamicWidth ? { width: `${dynamicWidth}px` } : {};
-
+  const widthStyle = dynamicWidth
+    ? {
+        width: `${dynamicWidth}px`,
+      }
+    : {};
   return (
     <div className="pointer-events-none w-0" style={widthStyle}>
       <Image
