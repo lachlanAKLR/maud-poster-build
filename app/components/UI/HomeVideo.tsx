@@ -2,10 +2,15 @@
 
 import Video from "./Video";
 import { useState, useEffect } from "react";
+import { dataset, projectId } from "@/sanity/env";
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder({ projectId, dataset });
 
 interface HomeItem {
   videoUrl: string;
   subtitle: string;
+  videoPosterUrl: string;
 }
 
 interface HomeProps {
@@ -14,6 +19,7 @@ interface HomeProps {
 
 export default function HomeVideo({ content }: HomeProps) {
   const videoUrl = content[0].videoUrl;
+  const videoPoster = content[0].videoPosterUrl;
 
   const [hideVideo, setHideVideo] = useState<boolean>(false);
 
@@ -35,7 +41,10 @@ export default function HomeVideo({ content }: HomeProps) {
         hideVideo ? "opacity-0" : "opacity-1"
       }`}
     >
-      <Video videoUrl={videoUrl} poster={""} />
+      <Video
+        videoUrl={videoUrl}
+        poster={videoPoster ? builder.image(videoPoster).quality(50).url() : ""}
+      />
     </div>
   );
 }

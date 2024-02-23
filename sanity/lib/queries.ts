@@ -31,8 +31,8 @@ export async function getHome() {
   return client.fetch(
     groq`*[_type == "home"]{
               _id,
-              subtitle,
               videoUrl,
+              "videoPosterUrl": videoPoster.asset->url,
             }`
   );
 }

@@ -36,6 +36,7 @@ export type ProfileType = {
     image: string;
   };
   isHome?: boolean;
+  videoPosterUrl: string;
 };
 
 export type Tag = {

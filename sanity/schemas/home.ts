@@ -11,5 +11,10 @@ export default defineType({
       name: "videoUrl",
       type: "url",
     }),
+    defineField({
+      title: "Video Fallback",
+      name: "videoPoster",
+      type: "image",
+    }),
   ],
 });
