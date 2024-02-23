@@ -19,24 +19,9 @@ export default function ArchiveThumb({
   const widthStyle = dynamicWidth ? { width: `${dynamicWidth}px` } : {};
 
   return (
-    <div
-      className={`m-auto pointer-events-none w-0 ${
-        data.archiveImage.ratio === "square"
-          ? "w-full"
-          : data.archiveImage.ratio === "landscape"
-          ? "w-3/4"
-          : "w-8/12"
-      }`}
-      style={widthStyle}
-    >
+    <div className="pointer-events-none w-0" style={widthStyle}>
       <Image
-        className={`object-cover ${
-          data.archiveImage.ratio === "square"
-            ? "aspect-[1/1]"
-            : data.archiveImage.ratio === "landscape"
-            ? "aspect-[4/3]"
-            : "aspect-[3/4]"
-        }`}
+        className="object-cover"
         src={builder.image(data.archiveImage.image).quality(100).url()}
         width={3000}
         height={3000}
