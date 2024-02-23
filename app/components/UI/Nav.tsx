@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 export default function Nav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isArchive = pathname === "/archive";
 
   const [isFixed, setIsFixed] = useState(false);
 
@@ -24,7 +25,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <div className="text-xs">
+      <div className={`text-xs ${isArchive ? "text-white" : "text-black"}`}>
         <Link
           href="/"
           className={`z-50 left-[10px] text-xs ${
@@ -41,7 +42,7 @@ export default function Nav() {
           isHome
             ? `${isFixed ? "fixed top-[10px]" : "absolute custom-top"}`
             : "fixed top-[10px]"
-        }`}
+        } ${isArchive ? "text-white" : "text-black"}`}
       >
         <Link href="/work" className="mr-1">
           Work,
