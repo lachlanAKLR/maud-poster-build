@@ -10,6 +10,7 @@ import { Tag } from "@/types";
 import HomeProjects from "./components/UI/HomeProjects";
 import Footer from "./components/UI/Footer";
 import { getSettings } from "@/sanity/lib/queries";
+import ScrollDown from "./components/UI/ScrollDown";
 
 export default async function Page() {
   const content: ProfileType[] = await getHome();
@@ -19,8 +20,8 @@ export default async function Page() {
 
   return (
     <div className="">
+      <ScrollDown />
       <TitleAnimation title="MAUD" intervalMs={300} />
-      {/* <SubTitle content={content} /> */}
       <HomeVideo content={content} />
       <HomeProjects projects={initial.data} tags={tags} isHome={true} />
       <Footer settings={settings} />
