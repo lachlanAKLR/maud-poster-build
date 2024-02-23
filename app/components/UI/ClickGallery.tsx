@@ -81,7 +81,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
             top: position.y,
           }}
         >
-          {/* Render ArchiveThumb with dynamic width */}
+          {/* @ts-ignore */}
           <ArchiveThumb data={doc} index={index} dynamicWidth={width} />
         </div>
       ))}
@@ -95,6 +95,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
           }}
         >
           <ArchiveThumb
+            //  @ts-ignore
             data={draggingDocument.doc}
             index={-1}
             dynamicWidth={draggingDocument.width}
