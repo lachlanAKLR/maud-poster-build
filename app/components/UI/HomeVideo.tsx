@@ -18,9 +18,6 @@ interface HomeProps {
 }
 
 export default function HomeVideo({ content }: HomeProps) {
-  const videoUrl = content[0].videoUrl;
-  const videoPoster = content[0].videoPosterUrl;
-
   const [hideVideo, setHideVideo] = useState<boolean>(false);
 
   useEffect(() => {
@@ -41,10 +38,18 @@ export default function HomeVideo({ content }: HomeProps) {
         hideVideo ? "opacity-0" : "opacity-1"
       }`}
     >
-      <Video
-        videoUrl={videoUrl}
-        poster={videoPoster ? builder.image(videoPoster).quality(50).url() : ""}
-      />
+      {content &&
+        content.map((data, index) => (
+          <Video
+            key={index}
+            videoUrl={data.videoUrl}
+            poster={
+              data.videoPosterUrl
+                ? builder.image(data.videoPosterUrl).quality(50).url()
+                : ""
+            }
+          />
+        ))}
     </div>
   );
 }
