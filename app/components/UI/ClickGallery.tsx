@@ -109,36 +109,38 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
   };
 
   return (
-    <div
-      className="w-full h-dvh md:h-screen relative select-none"
-      onMouseDown={handleMouseDown}
-      onMouseUp={endHold}
-      onMouseLeave={endHold}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={endHold}
-      onContextMenu={handleContextMenu}
-      style={{ cursor: "pointer" }}
-    >
-      {displayedDocuments.map(({ doc, position, width }, index) => (
-        <div
-          key={index}
-          style={{
-            position: "absolute",
-            left: position.x,
-            top: position.y,
-          }}
-        >
-          {/* @ts-ignore */}
-          <ArchiveThumb data={doc} index={index} dynamicWidth={width} />
-        </div>
-      ))}
+    <>
+      <div
+        className="w-full h-dvh md:h-screen relative select-none"
+        onMouseDown={handleMouseDown}
+        onMouseUp={endHold}
+        onMouseLeave={endHold}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={endHold}
+        onContextMenu={handleContextMenu}
+        style={{ cursor: "pointer" }}
+      >
+        {displayedDocuments.map(({ doc, position, width }, index) => (
+          <div
+            key={index}
+            style={{
+              position: "absolute",
+              left: position.x,
+              top: position.y,
+            }}
+          >
+            {/* @ts-ignore */}
+            <ArchiveThumb data={doc} index={index} dynamicWidth={width} />
+          </div>
+        ))}
+      </div>
       <button
-        className="text-xs absolute bottom-0 right-0 text-white p-2 m-1 h-fit"
-        onClick={(event) => resetLayout(event)}
+        className="text-xs absolute bottom-0 right-0 text-white p-2 m-1 h-fit w-fit z-20"
+        onClick={resetLayout}
       >
         Clear
       </button>
-    </div>
+    </>
   );
 };
 
