@@ -28,7 +28,7 @@ export default function Nav() {
       <div className={`text-xs ${isArchive ? "text-white" : "text-black"}`}>
         <Link
           href="/"
-          className={`z-50 left-[10px] text-xs ${
+          className={`z-[101] left-[10px] text-xs ${
             isHome
               ? `${isFixed ? "fixed top-[10px]" : "absolute custom-top"}`
               : "fixed top-[10px]"
@@ -38,7 +38,7 @@ export default function Nav() {
         </Link>
       </div>
       <div
-        className={`z-50 right-[10px] text-xs ${
+        className={`z-[101]  right-[10px] text-xs ${
           isHome
             ? `${isFixed ? "fixed top-[10px]" : "absolute custom-top"}`
             : "fixed top-[10px]"
