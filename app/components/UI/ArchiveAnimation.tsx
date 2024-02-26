@@ -5,14 +5,6 @@ import { ArchivePageQueryResult } from "@/types";
 import { dataset, projectId } from "@/sanity/env";
 import imageUrlBuilder from "@sanity/image-url";
 
-import letterA from "../../assets/images/A.svg";
-import letterR from "../../assets/images/R.svg";
-import letterC from "../../assets/images/C.svg";
-import letterH from "../../assets/images/H.svg";
-import letterI from "../../assets/images/I.svg";
-import letterV from "../../assets/images/V.svg";
-import letterE from "../../assets/images/E.svg";
-
 import Image from "next/image";
 
 const builder = imageUrlBuilder({ projectId, dataset });
@@ -25,7 +17,7 @@ export default function ArchiveAnimation({
   titleImages,
 }: ArchiveAnimationProps) {
   const [visibleIndex, setVisibleIndex] = useState(0);
-  const [animationDone, setAnimationDone] = useState(false); // New state to track animation completion
+  const [animationDone, setAnimationDone] = useState(false);
   const imagesLength = titleImages[0]?.archiveTitleImages?.length || 0;
 
   useEffect(() => {
@@ -34,7 +26,6 @@ export default function ArchiveAnimation({
         setVisibleIndex((prevIndex) => {
           const nextIndex = prevIndex + 1;
 
-          // Check if the animation should end
           if (nextIndex >= imagesLength) {
             clearInterval(intervalId);
             setTimeout(() => setAnimationDone(true), 0);
@@ -81,7 +72,6 @@ export default function ArchiveAnimation({
           />
         </div>
       ))}
-      <Image priority src={letterA} alt="letter A" />
     </div>
   );
 }

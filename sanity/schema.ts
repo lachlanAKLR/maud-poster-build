@@ -11,7 +11,6 @@ import quote from "./schemas/objects/quote";
 import tags from "./schemas/objects/tags";
 import video from "./schemas/objects/video";
 import archive from "./schemas/archive";
-import archivePage from "./schemas/archivePage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -26,6 +25,5 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     tags,
     video,
     archive,
-    archivePage,
   ],
 };

@@ -4,28 +4,39 @@ import { useEffect } from "react";
 
 const ScrollDown = () => {
   useEffect(() => {
-    // Function to check if the current device is mobile
     const isMobile = () => {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       );
     };
 
-    // Only set the timeout for scrolling if not on a mobile device
     if (!isMobile()) {
-      const timer = setTimeout(() => {
-        window.scrollBy({
-          top: window.innerHeight, // Scrolls down one viewport height
-          behavior: "smooth", // Mimics the smooth scroll of a mouse
-        });
-      }, 3000); // Executes after 3 seconds
+      let userScrolled = false;
 
-      // Cleanup the timeout on component unmount
-      return () => clearTimeout(timer);
+      const handleUserScroll = () => {
+        userScrolled = true;
+        window.removeEventListener("scroll", handleUserScroll);
+      };
+
+      window.addEventListener("scroll", handleUserScroll, { passive: true });
+
+      const timer = setTimeout(() => {
+        if (!userScrolled) {
+          window.scrollBy({
+            top: window.innerHeight,
+            behavior: "smooth",
+          });
+        }
+      }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("scroll", handleUserScroll);
+      };
     }
   }, []);
 
-  return null; // This component does not render anything
+  return null;
 };
 
 export default ScrollDown;

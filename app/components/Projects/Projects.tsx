@@ -54,9 +54,9 @@ export default function Projects({
     <>
       {isHome ? null : <TitleAnimation title="WORK" intervalMs={300} />}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 0.25 }}
+        initial={isHome ? { opacity: 1 } : { opacity: 0 }}
+        animate={isHome ? { opacity: 1 } : { opacity: 1 }}
+        transition={isHome ? {} : { duration: 2, delay: 0.25 }}
       >
         <motion.div
           initial={{ opacity: 1 }}

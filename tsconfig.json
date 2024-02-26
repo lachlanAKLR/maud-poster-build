@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "sanity/deskStructure.js"
+    "sanity/deskStructure.js",
+    "app/404.js"
   ],
   "exclude": ["node_modules"]
 }

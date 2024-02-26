@@ -5,7 +5,6 @@ import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { MdBookmarks } from "react-icons/md";
 import { MdArchive } from "react-icons/md";
-import { MdOutlineImportContacts } from "react-icons/md";
 
 
 
@@ -31,10 +30,6 @@ export const deskStructure = (S, context) =>
       .title("Info")
       .icon(MdInfo) 
       .child(S.editor().schemaType("info").documentId("info").title("Info")),
-      S.listItem()
-      .title("Archive Page")
-      .icon(MdOutlineImportContacts)
-      .child(S.editor().schemaType("archivePage").documentId("archivePage").title("Archive Page")),
       S.divider(),
       S.listItem()
       .title("Settings")
