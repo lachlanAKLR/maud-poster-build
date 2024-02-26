@@ -8,6 +8,7 @@ export default function Nav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isArchive = pathname === "/archive";
+  const isStudio = pathname.includes("/studio");
 
   const [isFixed, setIsFixed] = useState(false);
 
@@ -24,7 +25,7 @@ export default function Nav() {
   }, [isHome]);
 
   return (
-    <nav>
+    <nav className={`${isStudio ? "hidden" : "block"}`}>
       <div className={`text-xs ${isArchive ? "text-white" : "text-black"}`}>
         <Link
           href="/"

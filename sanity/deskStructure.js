@@ -5,6 +5,7 @@ import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { MdBookmarks } from "react-icons/md";
 import { MdArchive } from "react-icons/md";
+import { MdOutlineImportContacts } from "react-icons/md";
 
 
 
@@ -14,11 +15,12 @@ export const deskStructure = (S, context) =>
     .title("Content")
     .items([
       ...S.documentTypeListItems().filter(
-        (listItem) => !["info", "home", "settings", "project",  "video", "media.tag", "tags", "archive"].includes(listItem.getId())
+        (listItem) => !["info", "home", "settings", "project",  "video", "media.tag", "tags", "archive", "archivePage"].includes(listItem.getId())
       ),
       orderableDocumentListDeskItem({type: 'project', S, context, title: 'Projects', icon: MdAddPhotoAlternate}),
-      orderableDocumentListDeskItem({type: 'tags', S, context, title: 'Project Tags', icon: MdBookmarks}),
       orderableDocumentListDeskItem({type: 'archive', S, context, title: 'Archive', icon: MdArchive}),
+      orderableDocumentListDeskItem({type: 'tags', S, context, title: 'Project Tags', icon: MdBookmarks}),
+
 
       S.divider(),
       S.listItem()
@@ -27,8 +29,12 @@ export const deskStructure = (S, context) =>
       .child(S.editor().schemaType("home").documentId("home").title("Home")),  
       S.listItem()
       .title("Info")
-      .icon(MdInfo)
+      .icon(MdInfo) 
       .child(S.editor().schemaType("info").documentId("info").title("Info")),
+      S.listItem()
+      .title("Archive Page")
+      .icon(MdOutlineImportContacts)
+      .child(S.editor().schemaType("archivePage").documentId("archivePage").title("Archive Page")),
       S.divider(),
       S.listItem()
       .title("Settings")

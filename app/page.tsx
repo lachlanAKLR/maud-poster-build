@@ -11,19 +11,26 @@ import HomeProjects from "./components/UI/HomeProjects";
 import Footer from "./components/UI/Footer";
 import { getSettings } from "@/sanity/lib/queries";
 import ScrollDown from "./components/UI/ScrollDown";
+import { getArchive } from "@/sanity/lib/queries";
 
 export default async function Page() {
   const content: ProfileType[] = await getHome();
   const initial = await loadQuery<SanityDocument[]>(PROJECTS_QUERY);
   const tags: Tag[] = await getTags();
   const settings: ProfileType[] = await getSettings();
+  const documents: ProfileType[] = await getArchive();
 
   return (
     <div className="">
       <ScrollDown />
       <TitleAnimation title="MAUD" intervalMs={300} />
       <HomeVideo content={content} />
-      <HomeProjects projects={initial.data} tags={tags} isHome={true} />
+      <HomeProjects
+        projects={initial.data}
+        tags={tags}
+        isHome={true}
+        documents={documents}
+      />
       <Footer settings={settings} />
     </div>
   );

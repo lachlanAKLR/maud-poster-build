@@ -116,3 +116,15 @@ export type ArchiveDocument = {
 };
 
 export type ArchiveQueryResult = ArchiveDocument[];
+
+export type ArchivePageImage = {
+  _id: string;
+  url: string;
+};
+
+export type ArchivePageDocument = {
+  _id: string;
+  archiveTitleImages: string[];
+};
+
+export type ArchivePageQueryResult = ArchivePageDocument[];

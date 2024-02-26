@@ -8,15 +8,19 @@ import SingleProjectThumb from "./SingleProjectThumb";
 import TitleAnimation from "../UI/TitleAnimation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import ArchiveLink from "../UI/ArchiveLink";
+import { ProfileType } from "@/types";
 
 export default function Projects({
   projects,
   tags,
   isHome,
+  documents,
 }: {
   projects: SanityDocument[];
   tags: Tag[];
   isHome: boolean;
+  documents: ProfileType[];
 }) {
   const [selectedTagSlug, setSelectedTagSlug] = useState<string | null>(null);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
@@ -106,7 +110,9 @@ export default function Projects({
             ) : (
               <div className="p-4 text-red-500">No projects found</div>
             )}
+            {/* @ts-ignore */}
           </main>
+          <ArchiveLink documents={documents} />
           <div className="h-screen w-full bg-transparent" />
         </AnimatePresence>
       </motion.div>

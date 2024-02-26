@@ -4,15 +4,18 @@ import Projects from "../Projects/Projects";
 import { SanityDocument } from "next-sanity";
 import { Tag } from "@/types";
 import { useEffect, useState } from "react";
+import { ProfileType } from "@/types";
 
 export default function HomeProjects({
   projects,
   tags,
   isHome,
+  documents,
 }: {
   projects: SanityDocument[];
   tags: Tag[];
   isHome: boolean;
+  documents: ProfileType[];
 }) {
   const [isFixed, setIsFixed] = useState(false);
 
@@ -38,7 +41,12 @@ export default function HomeProjects({
           : " "
       }`}
     >
-      <Projects projects={projects} tags={tags} isHome={isHome} />
+      <Projects
+        projects={projects}
+        tags={tags}
+        isHome={isHome}
+        documents={documents}
+      />
     </div>
   );
 }

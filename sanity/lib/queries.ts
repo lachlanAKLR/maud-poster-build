@@ -88,3 +88,12 @@ export async function getArchive() {
             }`
   );
 }
+
+export async function getArchivePage() {
+  return client.fetch(
+    groq`*[_type == "archivePage"]{
+              _id,
+              "archiveTitleImages": archiveTitle[].asset->url,
+            }`
+  );
+}
