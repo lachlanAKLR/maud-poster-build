@@ -56,28 +56,37 @@ export default function Footer({ settings }: FooterProps) {
       <AdressStyle>
         <div className="">
           {settings ? (
-            settings.map((data, index) => (
-              <div
-                className={`flex flex-col md:flex-row justify-center items-center gap-0.25 md:gap-1 pt-9 md:pt-[10px]  text-xs`}
-                key={index}
-              >
-                <PortableText value={data.addressOne} />
-                <PortableText value={data.addressTwo} />
-                <a
-                  className="pt-2 md:pt-0"
-                  href={`tel:${data.phone}`}
-                  target="blank"
+            settings.map((data, index) => {
+              // Log addressOne here
+              console.log(data.addressOne);
+
+              return (
+                <div
+                  className={`flex flex-col md:flex-row justify-center items-center gap-0.25 md:gap-1 pt-9 md:pt-[10px]  text-xs`}
+                  key={index}
                 >
-                  P {data.phone}
-                </a>
-                <a href={`mailto:${data.email}`} target="blank">
-                  {data.email}
-                </a>
-                <a href={data.instagram} target="blank">
-                  Instagram
-                </a>
-              </div>
-            ))
+                  <div className="flex gap-0.25 md:gap-1">
+                    <PortableText value={data.addressOne} />
+                  </div>
+                  <div className="flex gap-0.25 md:gap-1">
+                    <PortableText value={data.addressTwo} />
+                  </div>
+                  <a
+                    className="pt-2 md:pt-0"
+                    href={`tel:${data.phone}`}
+                    target="blank"
+                  >
+                    P {data.phone}
+                  </a>
+                  <a href={`mailto:${data.email}`} target="blank">
+                    {data.email}
+                  </a>
+                  <a href={data.instagram} target="blank">
+                    Instagram
+                  </a>
+                </div>
+              );
+            })
           ) : (
             <p className="text-xs">No settings available</p>
           )}
