@@ -2,6 +2,7 @@ import { SanityDocument } from "next-sanity";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/env";
+import Video from "./Video";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -16,12 +17,21 @@ export default function ArchiveThumb({
   index,
   dynamicWidth,
 }: ArchiveThumbProps) {
+  const videoUrl = data.archiveImage.videoUrl;
+
   const widthStyle = dynamicWidth
     ? {
         width: `${dynamicWidth}px`,
       }
     : {};
-  return (
+  return videoUrl ? (
+    <div className="aspect-3/2" style={widthStyle}>
+      <Video
+        videoUrl={videoUrl}
+        poster={builder.image(data.archiveImage.image).quality(100).url()}
+      />
+    </div>
+  ) : (
     <div className="pointer-events-none w-0" style={widthStyle}>
       <Image
         className="object-cover"

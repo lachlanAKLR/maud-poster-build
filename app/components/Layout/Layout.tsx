@@ -15,7 +15,7 @@ export default function Layout({ layouts }: { layouts: any[] }) {
   };
 
   return (
-    <div className="text-center">
+    <div>
       {layouts.map((block, index) => {
         if (Components[block._type]) {
           return React.createElement(Components[block._type], {

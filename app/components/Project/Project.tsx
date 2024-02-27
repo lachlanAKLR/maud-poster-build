@@ -4,7 +4,7 @@ import { SanityDocument } from "next-sanity";
 import ProjectContent from "./ProjectContent";
 import MoreProjects from "./MoreProjects";
 import MobileMoreProjects from "./MobileMoreProjects";
-import ProjectLayoutsAndCredits from "./ProjectLayoutsAndCredits";
+import ProjectLayouts from "./ProjectLayouts";
 import { useState, useEffect } from "react";
 
 // @ts-ignore
@@ -37,10 +37,7 @@ export default function Project({
   return (
     <main className="min-h-screen relative z-[100] bg-white">
       <ProjectContent project={project} />
-      <ProjectLayoutsAndCredits
-        layouts={layouts}
-        projectCredits={projectCredits}
-      />
+      <ProjectLayouts layouts={layouts} />
       {isSmallScreen ? (
         <MobileMoreProjects projects={projects} id={_id} />
       ) : (

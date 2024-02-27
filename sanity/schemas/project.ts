@@ -114,21 +114,11 @@ export default defineType({
         },
         {
           type: "quote",
-          title: "Text Quote",
+          title: "Project Text",
         },
         {
           type: "video",
           title: "Video",
-        },
-      ],
-    }),
-    defineField({
-      name: "projectCredits",
-      type: "array",
-      title: "Project Credits",
-      of: [
-        {
-          type: "block",
         },
       ],
     }),

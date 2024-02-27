@@ -57,12 +57,9 @@ export default function Footer({ settings }: FooterProps) {
         <div className="">
           {settings ? (
             settings.map((data, index) => {
-              // Log addressOne here
-              console.log(data.addressOne);
-
               return (
                 <div
-                  className={`flex flex-col md:flex-row justify-center items-center gap-0.25 md:gap-1 pt-9 md:pt-[10px]  text-xs`}
+                  className={`flex flex-col md:flex-row justify-center items-center gap-0.25 md:gap-1 pt-9 md:pt-[10px] text-xs`}
                   key={index}
                 >
                   <div className="flex md:gap-1">

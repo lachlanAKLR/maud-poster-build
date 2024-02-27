@@ -35,7 +35,6 @@ export default defineType({
     select: {
       media: "archiveImage",
       title: "archiveImage.alt",
-      subtitle: "archiveImage.ratio",
     },
   },
 });

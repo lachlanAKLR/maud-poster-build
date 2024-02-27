@@ -19,11 +19,11 @@ const titleVariants = {
 };
 
 const TextContainer = styled.div`
-  & h3:first-of-type {
+  & *:first-of-type {
     text-indent: 64px;
   }
 
-  & h3:not(:first-of-type) {
+  & *:not(:first-of-type) {
     margin-top: 20px;
   }
 `;
