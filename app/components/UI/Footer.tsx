@@ -65,10 +65,10 @@ export default function Footer({ settings }: FooterProps) {
                   className={`flex flex-col md:flex-row justify-center items-center gap-0.25 md:gap-1 pt-9 md:pt-[10px]  text-xs`}
                   key={index}
                 >
-                  <div className="flex gap-0.25 md:gap-1">
+                  <div className="flex md:gap-1">
                     <PortableText value={data.addressOne} />
                   </div>
-                  <div className="flex gap-0.25 md:gap-1">
+                  <div className="flex md:gap-1">
                     <PortableText value={data.addressTwo} />
                   </div>
                   <a
