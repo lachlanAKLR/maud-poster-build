@@ -35,7 +35,7 @@ export default function Project({
   const isSmallScreen = useMediaQuery("(max-width:768px)");
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative z-[100] bg-white">
       <ProjectContent project={project} />
       <ProjectLayoutsAndCredits
         layouts={layouts}

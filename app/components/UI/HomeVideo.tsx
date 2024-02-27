@@ -35,7 +35,7 @@ export default function HomeVideo({ content }: HomeProps) {
   return (
     <div
       className={`h-dvh md:h-screen w-full fixed z-0 bg-black pointer-events-none ${
-        hideVideo ? "opacity-0" : "opacity-1"
+        hideVideo ? "hidden" : "block"
       }`}
     >
       {content &&

@@ -10,6 +10,23 @@ interface ClickGalleryProps {
 }
 
 export default function ArchiveLink({ documents }: ClickGalleryProps) {
+  // @ts-ignore
+  const useMediaQuery = (query) => {
+    const [matches, setMatches] = useState(false);
+
+    useEffect(() => {
+      const media = window.matchMedia(query);
+      if (media.matches !== matches) {
+        setMatches(media.matches);
+      }
+      const listener = () => setMatches(media.matches);
+      media.addEventListener("change", listener);
+      return () => media.removeEventListener("change", listener);
+    }, [matches, query]);
+
+    return matches;
+  };
+
   const shuffle = (array: ProfileType[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -22,19 +39,18 @@ export default function ArchiveLink({ documents }: ClickGalleryProps) {
     shuffle(documents).slice(0, 5)
   );
   const [visibleIndex, setVisibleIndex] = useState<number>(0);
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
 
   useEffect(() => {
-    // Set the interval for the animation
     const intervalId = setInterval(() => {
       setVisibleIndex((prevIndex) => (prevIndex + 1) % randArchive.length);
-    }, 300); // Adjust this value to make the animation faster or slower
+    }, 300);
 
-    // Cleanup interval on component unmount
     return () => clearInterval(intervalId);
   }, [randArchive.length]);
 
   return (
-    <div className="pb-64 bg-white">
+    <div className=" pb-32 md:pb-64 bg-white mb-40 md:mb-10">
       <div className="relative w-full h-auto min-h-[400px] flex justify-center items-center ">
         <Link href="/archive">
           <p
@@ -60,8 +76,12 @@ export default function ArchiveLink({ documents }: ClickGalleryProps) {
                 transform: "translate(-50%, -50%)",
               }}
             >
-              {/* @ts-ignore */}
-              <ArchiveThumb data={data} index={index} dynamicWidth={200} />
+              <ArchiveThumb
+                // @ts-ignore
+                data={data}
+                index={index}
+                dynamicWidth={isSmallScreen ? 150 : 300}
+              />
             </div>
           ))}
         </Link>

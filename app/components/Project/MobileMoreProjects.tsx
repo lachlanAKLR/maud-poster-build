@@ -61,9 +61,9 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
       initial={{ opacity: 1 }}
       animate={{ opacity: isProjectFadeOut ? 0 : 1 }}
       transition={{ duration: 1 }}
-      className="pt-10 md:pt-32"
+      className="pt-10 md:pt-32 mb-40"
     >
-      <div className="bg-maud-grey">
+      <div className="bg-white">
         <h3 className="text-center pt-10 md:text-sm">More Projects</h3>
         <AnimatePresence>
           <NoScrollBar>

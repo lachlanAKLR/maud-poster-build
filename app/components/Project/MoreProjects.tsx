@@ -49,9 +49,9 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
       initial={{ opacity: 1 }}
       animate={{ opacity: isProjectFadeOut ? 0 : 1 }}
       transition={{ duration: 1 }}
-      className="pt-10 md:pt-32"
+      className="pt-10 md:pt-32 mb-10"
     >
-      <div className="bg-maud-grey">
+      <div className="">
         <h3 className="text-center pt-20 md:text-sm">More Projects</h3>
         <AnimatePresence>
           <div className="flex flex-col md:grid grid-cols-6 gap-x-20 gap-y-24 md:gap-y-72 pt-20 px-10 md:px-20 pb-36 content-center">
