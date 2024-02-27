@@ -7,10 +7,10 @@ import styled from "styled-components";
 
 const AdressStyle = styled.div`
   br {
-    content: " ";
+    content: " " !important;
   }
   br:after {
-    content: " ";
+    content: " " !important;
   }
 `;
 
