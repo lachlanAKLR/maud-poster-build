@@ -14,7 +14,25 @@ interface DisplayedDocument {
   width: number;
 }
 
+// @ts-ignore
+const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    const listener = () => setMatches(media.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [matches, query]);
+
+  return matches;
+};
+
 const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
   const [shuffledDocuments, setShuffledDocuments] = useState<ProfileType[]>([]);
   const [displayedDocuments, setDisplayedDocuments] = useState<
     DisplayedDocument[]
@@ -41,9 +59,9 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     const nextDocumentIndex =
       displayedDocuments.length % shuffledDocuments.length;
     const nextDocument = shuffledDocuments[nextDocumentIndex];
-    const initialWidth = 0; // Initial width
+    const initialWidth = isSmallScreen ? 100 : 250;
     const initialPosition = {
-      x: x - initialWidth / 2, // Adjust starting position to center
+      x: x - initialWidth / 2,
       y: y - initialWidth / 2,
     };
     const newDisplayDocument: DisplayedDocument = {
@@ -55,21 +73,18 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     setCurrentPosition(initialPosition);
     setDisplayedDocuments([...displayedDocuments, newDisplayDocument]);
 
-    // Start a timer to increase the width of the document over time
     const timer = setInterval(() => {
       setDisplayedDocuments((currentDocs) =>
         currentDocs.map((doc, index) => {
           if (index === currentDocs.length - 1) {
-            // Target the last (active) document
-            const widthIncrease = 2; // Increment for demonstration
-            // Assuming height is adjusted similarly, replace with actual logic if applicable
-            // const heightIncrease = 10;
+            const widthIncrease = 2;
+
             return {
               ...doc,
               width: doc.width + widthIncrease,
               position: {
-                x: doc.position.x - widthIncrease / 2, // Center horizontally
-                y: doc.position.y - widthIncrease / 2, // Center vertically if height is adjusted
+                x: doc.position.x - widthIncrease / 2,
+                y: doc.position.y - widthIncrease / 2,
               },
             };
           }
