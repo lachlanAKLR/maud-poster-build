@@ -14,10 +14,9 @@ export const deskStructure = (S, context) =>
     .title("Content")
     .items([
       ...S.documentTypeListItems().filter(
-        (listItem) => !["info", "home", "settings", "project",  "video", "media.tag", "tags", "archive", "archivePage"].includes(listItem.getId())
+        (listItem) => !["info", "home", "settings", "project",  "video", "media.tag", "tags", ].includes(listItem.getId())
       ),
       orderableDocumentListDeskItem({type: 'project', S, context, title: 'Projects', icon: MdAddPhotoAlternate}),
-      orderableDocumentListDeskItem({type: 'archive', S, context, title: 'Archive', icon: MdArchive}),
       orderableDocumentListDeskItem({type: 'tags', S, context, title: 'Project Tags', icon: MdBookmarks}),
 
 

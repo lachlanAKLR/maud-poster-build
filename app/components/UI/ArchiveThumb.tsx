@@ -32,7 +32,7 @@ export default function ArchiveThumb({
       />
     </div>
   ) : (
-    <div className="pointer-events-none w-0" style={widthStyle}>
+    <div className="pointer-events-none w-0 object-cover" style={widthStyle}>
       <Image
         className="object-cover"
         src={builder.image(data.archiveImage.image).quality(100).url()}
