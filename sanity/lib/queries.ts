@@ -81,19 +81,10 @@ export async function getTags() {
 
 export async function getArchive() {
   return client.fetch(
-    groq`*[_type == "archive"]|order(orderRank){
+    groq`*[_type == "archive"]{
               _id,
               archiveImage,
               archiveImage {alt, "image": asset->url, videoUrl, ratio},
-            }`
-  );
-}
-
-export async function getArchivePage() {
-  return client.fetch(
-    groq`*[_type == "archivePage"]{
-              _id,
-              "archiveTitleImages": archiveTitle[].asset->url,
             }`
   );
 }
