@@ -4,7 +4,7 @@ import { unica } from "./fonts";
 import Nav from "./components/UI/Nav";
 
 export const metadata: Metadata = {
-  title: "MAUD — Part of Accenture song",
+  title: "MAUD, Part of Accenture song",
   description: "A Brand Identity Company",
   metadataBase: new URL("https://maud-website.vercel.app"),
 };

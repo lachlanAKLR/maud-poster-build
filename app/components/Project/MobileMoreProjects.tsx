@@ -61,14 +61,14 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
       initial={{ opacity: 1 }}
       animate={{ opacity: isProjectFadeOut ? 0 : 1 }}
       transition={{ duration: 1 }}
-      className="pt-10 md:pt-32 mb-40"
+      className="pt-10 md:pt-32 mb-40 min-h-dvh"
     >
       <div className="bg-white">
         <h3 className="text-center pt-10 md:text-sm">More Projects</h3>
         <AnimatePresence>
           <NoScrollBar>
-            <div className="overflow-x-scroll">
-              <div className="flex gap-x-5 gap-y-24 pt-10 px-5 pb-10 content-center w-[250vw]">
+            <div className="overflow-x-scroll flex content-center">
+              <div className="flex gap-x-5 gap-y-24 px-5  content-center h-dvh">
                 {randProjects.slice(0, 4).map((project, index) => (
                   <motion.div
                     key={project._id}
@@ -89,12 +89,14 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
                       },
                     }}
                     onClick={() => handleProjectSelect(project._id)}
-                    className="cursor-pointer col-span-2 flex flex-col justify-center content-center w-full"
+                    className="cursor-pointer col-span-2 flex flex-col justify-center content-center w-full h-4/6"
                   >
-                    <SingleProjectThumb project={project} index={index} />
-                    <p className="pt-1 text-xs">
-                      <span className="uppercase mr-1">{project.title}</span>
-                    </p>
+                    <div className="w-[75vw]">
+                      <SingleProjectThumb project={project} index={index} />
+                      <p className="pt-1 text-xs">
+                        <span className="uppercase mr-1">{project.title}</span>
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
                 {randProjects.length === 0 && (

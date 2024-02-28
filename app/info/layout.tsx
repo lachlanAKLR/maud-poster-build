@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MAUD — Info",
+  title: "MAUD, Info",
   description: "A Brand Identity Company",
 };
 

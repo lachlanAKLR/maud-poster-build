@@ -7,7 +7,7 @@ import { SanityDocument } from "next-sanity";
 import { dataset, projectId } from "@/sanity/env";
 import { PortableText } from "@portabletext/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const builder = imageUrlBuilder({ projectId, dataset });
@@ -35,6 +35,19 @@ export default function ProjectContent({
 }) {
   const { title, featuredImage, projectText } = project;
   const [animationCompleted, setAnimationCompleted] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    const timer = setTimeout(() => {
+      document.body.style.overflow = "";
+    }, 1500);
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   return (
     <>

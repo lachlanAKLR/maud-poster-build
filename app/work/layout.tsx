@@ -2,7 +2,7 @@ import Footer from "../components/UI/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MAUD — Work",
+  title: "MAUD, Work",
   description: "A Brand Identity Company",
 };
 

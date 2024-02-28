@@ -49,7 +49,7 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
       initial={{ opacity: 1 }}
       animate={{ opacity: isProjectFadeOut ? 0 : 1 }}
       transition={{ duration: 1 }}
-      className="pt-10 md:pt-32 mb-10"
+      className="pt-10 md:pt-32 mb-10 md:pb-32 md:min-h-screen"
     >
       <div className="">
         <h3 className="text-center pt-20 md:text-sm">More Projects</h3>

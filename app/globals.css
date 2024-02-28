@@ -5,3 +5,8 @@
 .custom-top {
   top: calc(100vh + 10px);
 }
+
+::selection {
+  background: transparent;
+  color: #ff2c1d;
+}
