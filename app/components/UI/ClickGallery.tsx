@@ -104,6 +104,14 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
       clearInterval(holdTimer);
       setHoldTimer(null);
     }
+    setDisplayedDocuments((currentDocs) =>
+      currentDocs.map((doc, index) => {
+        if (index === currentDocs.length - 1) {
+          return { ...doc };
+        }
+        return doc;
+      })
+    );
     setCurrentPosition(null);
   };
 
