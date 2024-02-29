@@ -59,28 +59,32 @@ export default function Footer({ settings }: FooterProps) {
             settings.map((data, index) => {
               return (
                 <div
-                  className={`flex flex-col md:flex-row justify-center items-center gap-0.25 md:gap-1 pt-9 md:pt-[10px] text-xs`}
+                  className={`flex flex-col md:flex-row justify-center items-center pt-9 md:pt-[10px] text-xs gap-2.5`}
                   key={index}
                 >
-                  <div className="flex md:gap-1">
-                    <PortableText value={data.addressOne} />
+                  <div className="flex gap-2">
+                    <div className="flex md:gap-1">
+                      <PortableText value={data.addressOne} />
+                    </div>
+                    <div className="flex md:gap-1">
+                      <PortableText value={data.addressTwo} />
+                    </div>
                   </div>
-                  <div className="flex md:gap-1">
-                    <PortableText value={data.addressTwo} />
+                  <div className="flex gap-2">
+                    <a
+                      className="pt-2 md:pt-0"
+                      href={`tel:${data.phone}`}
+                      target="blank"
+                    >
+                      P {data.phone}
+                    </a>
+                    <a href={`mailto:${data.email}`} target="blank">
+                      E {data.email}
+                    </a>
+                    <a href={data.instagram} target="blank">
+                      Instagram
+                    </a>
                   </div>
-                  <a
-                    className="pt-2 md:pt-0"
-                    href={`tel:${data.phone}`}
-                    target="blank"
-                  >
-                    P {data.phone}
-                  </a>
-                  <a href={`mailto:${data.email}`} target="blank">
-                    {data.email}
-                  </a>
-                  <a href={data.instagram} target="blank">
-                    Instagram
-                  </a>
                 </div>
               );
             })

@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from "react";
 import ArchiveThumb from "./ArchiveThumb";
 import { ProfileType } from "@/types";
+import { SanityDocument } from "next-sanity";
 
 interface ClickGalleryProps {
-  documents: ProfileType[];
+  documents: SanityDocument[];
 }
 
 interface DisplayedDocument {
-  doc: ProfileType;
+  doc: SanityDocument;
   position: { x: number; y: number };
   width: number;
 }
@@ -33,7 +34,9 @@ const useMediaQuery = (query) => {
 
 const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
   const isSmallScreen = useMediaQuery("(max-width:768px)");
-  const [shuffledDocuments, setShuffledDocuments] = useState<ProfileType[]>([]);
+  const [shuffledDocuments, setShuffledDocuments] = useState<SanityDocument[]>(
+    []
+  );
   const [displayedDocuments, setDisplayedDocuments] = useState<
     DisplayedDocument[]
   >([]);
@@ -43,7 +46,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
   } | null>(null);
   const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout | null>(null);
 
-  const shuffleArray = (array: ProfileType[]) => {
+  const shuffleArray = (array: SanityDocument[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -98,10 +101,10 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
 
   const endHold = () => {
     if (holdTimer) {
-      clearInterval(holdTimer); // Stop the timer
+      clearInterval(holdTimer);
       setHoldTimer(null);
     }
-    setCurrentPosition(null); // Reset current position
+    setCurrentPosition(null);
   };
 
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {

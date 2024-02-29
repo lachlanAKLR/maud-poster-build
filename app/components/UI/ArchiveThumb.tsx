@@ -32,7 +32,10 @@ export default function ArchiveThumb({
       />
     </div>
   ) : (
-    <div className="pointer-events-none w-0 object-cover" style={widthStyle}>
+    <div
+      className="pointer-events-none w-[300px] object-cover"
+      style={widthStyle}
+    >
       <Image
         className="object-cover"
         src={builder.image(data.archiveImage.image).quality(100).url()}
@@ -40,7 +43,7 @@ export default function ArchiveThumb({
         height={3000}
         quality={100}
         alt={data.archiveImage.alt || ""}
-        priority={index >= 0 && index <= 2}
+        priority
         placeholder="empty"
         sizes="(max-width: 600px) 50vw, (max-width: 900px) 33vw, 33vw"
       />

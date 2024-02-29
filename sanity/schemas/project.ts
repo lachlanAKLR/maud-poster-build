@@ -63,11 +63,6 @@ export default defineType({
       type: "image",
       fields: [
         defineField({
-          title: "Featured Portrait Image",
-          name: "featuredPortrait",
-          type: "image",
-        }),
-        defineField({
           name: "alt",
           title: "Image Description",
           type: "string",
