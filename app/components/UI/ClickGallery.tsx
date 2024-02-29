@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import ArchiveThumb from "./ArchiveThumb";
 import { ProfileType } from "@/types";
 import { SanityDocument } from "next-sanity";
+import useMediaQuery from "../Utilities/useMediaQuery";
+import { shuffleArray } from "../Utilities/shuffleArray";
 
 interface ClickGalleryProps {
   documents: SanityDocument[];
@@ -14,23 +16,6 @@ interface DisplayedDocument {
   position: { x: number; y: number };
   width: number;
 }
-
-// @ts-ignore
-const useMediaQuery = (query) => {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
-    const listener = () => setMatches(media.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, [matches, query]);
-
-  return matches;
-};
 
 const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
   const isSmallScreen = useMediaQuery("(max-width:768px)");
@@ -45,14 +30,6 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     y: number;
   } | null>(null);
   const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout | null>(null);
-
-  const shuffleArray = (array: SanityDocument[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  };
 
   useEffect(() => {
     setShuffledDocuments(shuffleArray([...documents]));
@@ -115,6 +92,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     setCurrentPosition(null);
   };
 
+  // @ts-ignore
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     startHold(event.clientX, event.clientY);
   };
