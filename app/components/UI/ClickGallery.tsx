@@ -156,6 +156,7 @@ import ArchiveThumb from "./ArchiveThumb";
 import { SanityDocument } from "next-sanity";
 import useMediaQuery from "../Utilities/useMediaQuery";
 import { shuffleArray } from "../Utilities/shuffleArray";
+import ArchiveThumbImg from "./ArchiveThumbImg";
 
 interface ClickGalleryProps {
   documents: SanityDocument[];
@@ -183,29 +184,21 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
 
   useEffect(() => {
     setShuffledDocuments(shuffleArray([...documents]));
-    // Prefetch the first and the second document upon initial load or documents update
-    prefetchDocuments();
+    // Preload the first two images upon initialization or when documents change
+    preloadImages();
   }, [documents]);
 
-  // Prefetching function
-  const prefetchDocuments = () => {
-    if (documents.length > 1) {
-      // Preload first two documents if available
-      const prefetchIndexes = [0, 1, 2, 4];
-      prefetchIndexes.forEach((index) => {
-        const doc = documents[index];
-        if (doc) {
-          // This preloads the image by creating a new Image object and setting its source to the document's image URL.
-          // Assuming 'imageUrl' exists on your SanityDocument object (you might need to adjust this)
-          const img = new Image();
-          img.src = doc.imageUrl; // Adjust 'imageUrl' according to your data structure
-        }
-      });
-    } else if (documents.length === 1) {
-      // Preload only the first document if that's all there is
-      const img = new Image();
-      img.src = documents[0].imageUrl; // Adjust 'imageUrl' according to your data structure
-    }
+  const preloadImages = () => {
+    documents.forEach((document) => {
+      if (document.archiveImage && document.archiveImage.image) {
+        const img = new Image();
+        img.src = document.archiveImage.image;
+        // Optionally, you can listen for the load event to know when each image is loaded
+        img.onload = () => {
+          console.log(`Image preloaded: ${img.src}`);
+        };
+      }
+    });
   };
 
   const startHold = (x: number, y: number) => {
@@ -279,8 +272,8 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     event.stopPropagation(); // Prevents event from reaching the onMouseDown handler of the parent
     setDisplayedDocuments([]);
     setShuffledDocuments(shuffleArray([...documents])); // Reshuffle on reset
-    // Prefetch documents again after resetting
-    prefetchDocuments();
+    // Preload images again after resetting
+    preloadImages();
   };
 
   const handleContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -308,8 +301,8 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
               top: position.y,
             }}
           >
-            {/* Assuming ArchiveThumb can accept and handle image preloading or has an efficient rendering mechanism */}
-            <ArchiveThumb data={doc} index={index} dynamicWidth={width} />
+            {/* Assuming ArchiveThumb properly handles the passed "data" prop */}
+            <ArchiveThumbImg data={doc} index={index} dynamicWidth={width} />
           </div>
         ))}
       </div>
