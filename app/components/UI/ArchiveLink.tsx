@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import ArchiveThumb from "./ArchiveThumb";
 import { ProfileType } from "@/types";
 import Link from "next/link";
-import useMediaQuery from "../../Utilities/useMediaQuery";
-import { shuffleArray } from "../../Utilities/shuffleArray";
+import useMediaQuery from "../Utilities/useMediaQuery";
+import { shuffleArray } from "../Utilities/shuffleArray";
 
 interface ClickGalleryProps {
   documents: ProfileType[];

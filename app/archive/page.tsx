@@ -1,7 +1,7 @@
 import { ARCHIVE_QUERY, getArchive } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
-import ClickGallery from "../components/Projects/UI/ClickGallery";
-import SvgAnimation from "../components/Projects/UI/SvgAnimation";
+import ClickGallery from "../components/UI/ClickGallery";
+import SvgAnimation from "../components/UI/SvgAnimation";
 import { loadQuery } from "@/sanity/lib/store";
 import { SanityDocument } from "next-sanity";
 

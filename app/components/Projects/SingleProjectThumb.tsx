@@ -5,7 +5,7 @@ import { SingleProjectProps } from "@/types";
 import { useState } from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/env";
-import Video from "./UI/Video";
+import Video from "../UI/Video";
 import { useRouter } from "next/navigation";
 
 const builder = imageUrlBuilder({ projectId, dataset });
