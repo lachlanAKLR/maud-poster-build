@@ -4,7 +4,7 @@ import { PROJECTS_QUERY, PROJECT_QUERY } from "@/sanity/lib/queries";
 import Project from "../../components/Project/Project";
 import { client } from "@/sanity/lib/client";
 import { Metadata } from "next";
-import Footer from "@/app/components/UI/Footer";
+import Footer from "@/app/components/Projects/UI/Footer";
 import { getSettings } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
 

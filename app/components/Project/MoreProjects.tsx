@@ -4,6 +4,7 @@ import { SanityDocument } from "next-sanity";
 import { useEffect, useState } from "react";
 import SingleProjectThumb from "../Projects/SingleProjectThumb";
 import { AnimatePresence, motion } from "framer-motion";
+import { shuffleArray } from "../Utilities/shuffleArray";
 
 interface MoreProjectsProps {
   id: string;
@@ -17,19 +18,9 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
   const [isProjectFadeOut, setIsProjectFadeOut] = useState<boolean>(false);
 
   const filterProjects = projects.filter((project) => project._id !== id);
-  const shuffle = (array: any[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
-  };
 
   const [randProjects, setRandProjects] = useState(() =>
-    shuffle(filterProjects)
+    shuffleArray(filterProjects)
   );
 
   useEffect(() => {
@@ -77,6 +68,7 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
                 onClick={() => handleProjectSelect(project._id)}
                 className="cursor-pointer col-span-2 flex flex-col justify-center content-center"
               >
+                {/* @ts-ignore */}
                 <SingleProjectThumb project={project} index={index} />
               </motion.div>
             ))}

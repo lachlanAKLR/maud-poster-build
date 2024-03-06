@@ -4,39 +4,16 @@ import React, { useEffect, useState } from "react";
 import ArchiveThumb from "./ArchiveThumb";
 import { ProfileType } from "@/types";
 import Link from "next/link";
+import useMediaQuery from "../../Utilities/useMediaQuery";
+import { shuffleArray } from "../../Utilities/shuffleArray";
 
 interface ClickGalleryProps {
   documents: ProfileType[];
 }
 
 export default function ArchiveLink({ documents }: ClickGalleryProps) {
-  // @ts-ignore
-  const useMediaQuery = (query) => {
-    const [matches, setMatches] = useState(false);
-
-    useEffect(() => {
-      const media = window.matchMedia(query);
-      if (media.matches !== matches) {
-        setMatches(media.matches);
-      }
-      const listener = () => setMatches(media.matches);
-      media.addEventListener("change", listener);
-      return () => media.removeEventListener("change", listener);
-    }, [matches, query]);
-
-    return matches;
-  };
-
-  const shuffle = (array: ProfileType[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  };
-
   const [randArchive, setRandArchive] = useState<ProfileType[]>(() =>
-    shuffle(documents).slice(0, 5)
+    shuffleArray(documents).slice(0, 5)
   );
   const [visibleIndex, setVisibleIndex] = useState<number>(0);
   const isSmallScreen = useMediaQuery("(max-width:768px)");

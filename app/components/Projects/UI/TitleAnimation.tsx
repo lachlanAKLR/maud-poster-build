@@ -13,25 +13,22 @@ const PageAnimation: React.FC<PageAnimationProps> = ({ title, intervalMs }) => {
   const textColorClass = title === "MAUD" ? "text-white" : "text-black";
 
   useEffect(() => {
-    // Clear previous timeouts if any
     const timeouts: number[] = [];
 
-    // Function to initiate or repeat the animation
     const initiateAnimation = () => {
       for (let i = 0; i <= title.length; i++) {
         const timeout = setTimeout(() => {
           setCurrentLetterIndex(i);
-          // For "MAUD", restart the animation by recalling this function
           if (title === "MAUD" && i === title.length) {
-            setCurrentLetterIndex(-1); // Reset index to -1 to restart
-            initiateAnimation(); // Restart the animation
+            setCurrentLetterIndex(-1);
+            initiateAnimation();
           }
         }, i * intervalMs) as unknown as number;
         timeouts.push(timeout);
       }
     };
 
-    initiateAnimation(); // Start the animation
+    initiateAnimation();
 
     return () => {
       timeouts.forEach((timeoutId) => clearTimeout(timeoutId));
@@ -42,7 +39,6 @@ const PageAnimation: React.FC<PageAnimationProps> = ({ title, intervalMs }) => {
     if (currentLetterIndex >= 0 && currentLetterIndex < title.length) {
       setDisplayedLetter(title.charAt(currentLetterIndex));
     } else if (title !== "MAUD") {
-      // Prevent clearing the letter for "MAUD" on loop restart
       setDisplayedLetter("");
     }
   }, [currentLetterIndex, title]);

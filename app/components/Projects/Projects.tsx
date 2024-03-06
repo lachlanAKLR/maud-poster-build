@@ -2,13 +2,13 @@
 
 import { SanityDocument } from "next-sanity";
 import { useEffect, useState } from "react";
-import TagsFilter from "../UI/TagsFilter";
+import TagsFilter from "./UI/TagsFilter";
 import { Tag } from "@/types";
 import SingleProjectThumb from "./SingleProjectThumb";
-import TitleAnimation from "../UI/TitleAnimation";
+import TitleAnimation from "./UI/TitleAnimation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import ArchiveLink from "../UI/ArchiveLink";
+import ArchiveLink from "./UI/ArchiveLink";
 import { ProfileType } from "@/types";
 
 export default function Projects({

@@ -1,6 +1,6 @@
 "use client";
 
-import Projects from "../Projects/Projects";
+import Projects from "../Projects";
 import { SanityDocument } from "next-sanity";
 import { Tag } from "@/types";
 import { useEffect, useState } from "react";

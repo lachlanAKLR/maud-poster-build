@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Video from "../UI/Video";
+import Video from "../Projects/UI/Video";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityDocument } from "next-sanity";
 import { dataset, projectId } from "@/sanity/env";
@@ -13,9 +13,9 @@ import styled from "styled-components";
 const builder = imageUrlBuilder({ projectId, dataset });
 
 const titleVariants = {
-  initial: { y: "30vh", opacity: 1 },
-  animate: { y: 0, opacity: 1 },
-  exit: { opacity: 0 },
+  // initial: { y: "30vh", opacity: 1 },
+  // animate: { y: 0, opacity: 1 },
+  // exit: { opacity: 0 },
 };
 
 const TextContainer = styled.div`
@@ -60,9 +60,9 @@ export default function ProjectContent({
           onAnimationComplete={() => {}}
         >
           <motion.div
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial={{ y: "30vh", opacity: 1 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ opacity: 0 }}
             variants={titleVariants}
             transition={{
               duration: 0.75,

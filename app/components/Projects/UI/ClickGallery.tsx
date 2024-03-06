@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { SanityDocument } from "next-sanity";
-import useMediaQuery from "../Utilities/useMediaQuery";
-import { shuffleArray } from "../Utilities/shuffleArray";
+import useMediaQuery from "../../Utilities/useMediaQuery";
+import { shuffleArray } from "../../Utilities/shuffleArray";
 import ArchiveThumbImg from "./ArchiveThumbImg";
 
 interface ClickGalleryProps {
@@ -132,7 +132,6 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
       );
     }, 15000);
 
-    // Cleanup the interval when the component unmounts
     return () => clearInterval(cleanupInterval);
   }, []);
 

@@ -2,7 +2,7 @@ import { getInfo, getSettings } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import TitleAnimation from "../components/UI/TitleAnimation";
+import TitleAnimation from "../components/Projects/UI/TitleAnimation";
 import { herbik } from "@/app/fonts";
 
 export default async function Page() {
