@@ -14,10 +14,10 @@ interface DisplayedDocument {
   doc: SanityDocument;
   position: { x: number; y: number };
   width: number;
+  timestamp: number;
 }
 
 const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
-  const [isLongTouch, setIsLongTouch] = useState(false);
   const isSmallScreen = useMediaQuery("(max-width:768px)");
   const [shuffledDocuments, setShuffledDocuments] = useState<SanityDocument[]>(
     []
@@ -33,7 +33,6 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
 
   useEffect(() => {
     setShuffledDocuments(shuffleArray([...documents]));
-    // Preload the first two images upon initialization or when documents change
     preloadImages();
   }, [documents]);
 
@@ -59,6 +58,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
       doc: nextDocument,
       position: initialPosition,
       width: initialWidth,
+      timestamp: Date.now(),
     };
 
     setCurrentPosition(initialPosition);
@@ -124,22 +124,17 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     event.preventDefault();
   };
 
-  const endHoldMobile = () => {
-    if (holdTimer) {
-      clearInterval(holdTimer);
-      setHoldTimer(null);
-    }
+  useEffect(() => {
+    const cleanupInterval = setInterval(() => {
+      const now = Date.now();
+      setDisplayedDocuments((currentDocs) =>
+        currentDocs.filter((doc) => now - doc.timestamp < 15000)
+      );
+    }, 15000);
 
-    setDisplayedDocuments((currentDocs) =>
-      currentDocs.map((doc, index) => {
-        if (index === currentDocs.length - 1) {
-          return { ...doc };
-        }
-        return doc;
-      })
-    );
-    setCurrentPosition(null);
-  };
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(cleanupInterval);
+  }, []);
 
   return (
     <>
