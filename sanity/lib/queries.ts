@@ -13,6 +13,12 @@ export const PROJECTS_QUERY = groq`
 
 export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]`;
 
+export const HOME_QUERY = groq`*[_type == "home"]{
+  _id,
+  videoUrl,
+  "videoPosterUrl": videoPoster.asset->url,
+}`;
+
 export const ARCHIVE_QUERY = groq`*[_type == "archive"]{
   _id,
   archiveImage,
