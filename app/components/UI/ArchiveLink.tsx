@@ -24,30 +24,13 @@ const RotateContainer = styled.div`
   }
 `;
 
-interface PaletteType {
-  dominant: {
-    background: string;
-  };
-}
-
-interface ArchiveImageType {
-  palette: PaletteType;
-  alt?: string;
-  image?: string;
-  videoUrl?: string;
-}
-
-interface ProfileType {
-  archiveImage: ArchiveImageType;
-  _id?: string;
-}
-
 interface ClickGalleryProps {
   documents: ProfileType[];
 }
 
 export default function ArchiveLink({ documents }: ClickGalleryProps) {
   const filteredDocuments = documents.filter(
+    // @ts-ignore
     (data) => data.archiveImage.palette.dominant.background !== "#7c7c7c"
   );
 
