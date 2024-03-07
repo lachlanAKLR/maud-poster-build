@@ -96,7 +96,7 @@ export async function getArchive() {
     groq`*[_type == "archive"]{
               _id,
               archiveImage,
-              archiveImage {alt, "image": asset->url, videoUrl, ratio},
+              archiveImage {alt, "image": asset->url, videoUrl, "palette": asset->metadata.palette},
             }`
   );
 }
