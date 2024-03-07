@@ -130,7 +130,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
       setDisplayedDocuments((currentDocs) =>
         currentDocs.filter((doc) => now - doc.timestamp < 15000)
       );
-    }, 15000);
+    }, 1000);
 
     return () => clearInterval(cleanupInterval);
   }, []);

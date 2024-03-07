@@ -6,6 +6,23 @@ import { ProfileType } from "@/types";
 import Link from "next/link";
 import useMediaQuery from "../Utilities/useMediaQuery";
 import { shuffleArray } from "../Utilities/shuffleArray";
+import styled from "styled-components";
+
+const RotateContainer = styled.div`
+  @keyframes rotateXaxis {
+    from {
+      transform: rotate3d(0, 1, 1, 0deg);
+    }
+    to {
+      transform: rotate3d(0, 1, 1, 360deg);
+    }
+  }
+
+  .rotated {
+    background-color: pink;
+    animation: rotateXaxis 3s linear infinite;
+  }
+`;
 
 interface ClickGalleryProps {
   documents: ProfileType[];
@@ -13,7 +30,7 @@ interface ClickGalleryProps {
 
 export default function ArchiveLink({ documents }: ClickGalleryProps) {
   const [randArchive, setRandArchive] = useState<ProfileType[]>(() =>
-    shuffleArray(documents).slice(0, 5)
+    shuffleArray(documents).slice(0, 10)
   );
   const [visibleIndex, setVisibleIndex] = useState<number>(0);
   const isSmallScreen = useMediaQuery("(max-width:768px)");
@@ -40,27 +57,30 @@ export default function ArchiveLink({ documents }: ClickGalleryProps) {
           >
             View Archive
           </p>
-
-          {randArchive.map((data, index) => (
-            <div
-              key={index}
-              className={`absolute z-[80]" ${
-                visibleIndex === index ? "opacity-100" : "opacity-0"
-              }`}
-              style={{
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <ArchiveThumb
-                // @ts-ignore
-                data={data}
-                index={index}
-                dynamicWidth={isSmallScreen ? 150 : 300}
-              />
+          <RotateContainer>
+            <div className="rotated">
+              {randArchive.map((data, index) => (
+                <div
+                  key={index}
+                  className={`absolute z-[80]" ${
+                    visibleIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  <ArchiveThumb
+                    // @ts-ignore
+                    data={data}
+                    index={index}
+                    dynamicWidth={isSmallScreen ? 150 : 300}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </RotateContainer>
         </Link>
       </div>
     </div>

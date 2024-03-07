@@ -12,12 +12,6 @@ import styled from "styled-components";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
-const titleVariants = {
-  // initial: { y: "30vh", opacity: 1 },
-  // animate: { y: 0, opacity: 1 },
-  // exit: { opacity: 0 },
-};
-
 const TextContainer = styled.div`
   & *:first-of-type {
     text-indent: 64px;
@@ -63,7 +57,6 @@ export default function ProjectContent({
             initial={{ y: "30vh", opacity: 1 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ opacity: 0 }}
-            variants={titleVariants}
             transition={{
               duration: 0.75,
               delay: 1,
@@ -71,7 +64,7 @@ export default function ProjectContent({
             }}
           >
             {title && (
-              <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl 2xl:text-4xl -tracking-[0px] md:-tracking-[1px]	text-center">
+              <h1 className="py-28 md:py-20 px-3 md:px-10 font-black text-2xl md:text-3xl 2xl:text-4xl -tracking-[0px] md:-tracking-[3px]	text-center">
                 {title}
               </h1>
             )}

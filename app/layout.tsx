@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { unica } from "./fonts";
 import Nav from "./components/UI/Nav";
+import { diatype } from "./fonts";
 
 export const metadata: Metadata = {
   title: "MAUD, Part of Accenture song",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${unica.className} antialiased text-maud-black`}>
+      <body className={`${diatype.className} antialiased text-maud-black`}>
         <Nav />
         {children}
       </body>

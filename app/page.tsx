@@ -1,6 +1,5 @@
 import TitleAnimation from "./components/UI/TitleAnimation";
 import { ProfileType } from "@/types";
-import { getHome } from "@/sanity/lib/queries";
 import HomeVideo from "./components/UI/HomeVideo";
 import { loadQuery } from "@/sanity/lib/store";
 import { SanityDocument } from "next-sanity";

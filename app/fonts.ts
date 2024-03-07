@@ -15,6 +15,21 @@ export const unica = localFont({
   ],
 });
 
+export const diatype = localFont({
+  src: [
+    {
+      path: "./assets/fonts/ABCDiatype-Bold.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/ABCDiatype-Black-Trial.woff",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+});
+
 export const herbik = localFont({
   src: [
     {
