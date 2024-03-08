@@ -59,9 +59,9 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
               : "aspect-[3/4]"
           }`}
           src={builder.image(project.thumbnailImage).quality(100).url()}
-          width={3000}
-          height={3000}
-          quality={100}
+          width={1000}
+          height={1000}
+          quality={80}
           alt={project.thumbnailImage.alt || ""}
           priority={index >= 0 && index <= 2}
           placeholder="empty"

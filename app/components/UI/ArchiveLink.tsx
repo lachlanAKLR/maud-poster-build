@@ -35,7 +35,7 @@ export default function ArchiveLink({ documents }: ClickGalleryProps) {
   );
 
   const [randArchive, setRandArchive] = useState<ProfileType[]>(() =>
-    shuffleArray(filteredDocuments).slice(0, 10)
+    shuffleArray(filteredDocuments).slice(0, 5)
   );
   const [visibleIndex, setVisibleIndex] = useState<number>(0);
   const isSmallScreen = useMediaQuery("(max-width:768px)");
