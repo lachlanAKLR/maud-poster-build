@@ -17,7 +17,7 @@ export default async function Page() {
         content.map((data) => (
           <div
             className="text-center flex px-8 md:px-0 md:grid grid-cols-6 gap-x-20 pt-24 md:pt-40 pb-5 md:pb-10"
-            key={`info-${data._id}`}
+            key={data._id}
           >
             <div className="col-start-2 col-span-4">
               <div className={` ${herbik.className} text-lg md:text-xl`}>
@@ -30,7 +30,7 @@ export default async function Page() {
         settings.map((data) => (
           <div
             className="flex flex-col md:grid md:grid-cols-8 gap-x-10 pt-5 md:pt-10 pb-10"
-            key={`info-address-${data._id}`}
+            key={data._id}
           >
             <div className="flex flex-col gap-10 md:flex-row justify-center text-center md:col-start-3 md:col-span-4 text-xs">
               <div className="w-full md:w-1/3">
@@ -60,10 +60,7 @@ export default async function Page() {
         ))}
       {content &&
         content.map((data) => (
-          <div
-            className="grid grid-cols-8 gap-x-10 pb-10 pt-10"
-            key={`info-image-${data._id}`}
-          >
+          <div className="grid grid-cols-8 gap-x-10 pb-10 pt-10" key={data._id}>
             <Image
               className="col-start-2 col-span-6 object-cover bg-top"
               src={data.image.image}
