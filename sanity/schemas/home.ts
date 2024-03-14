@@ -16,5 +16,10 @@ export default defineType({
       name: "videoPoster",
       type: "image",
     }),
+    defineField({
+      title: "Hide Text Animation",
+      name: "hideAnimation",
+      type: "boolean",
+    }),
   ],
 });

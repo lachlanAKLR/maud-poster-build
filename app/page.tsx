@@ -20,6 +20,11 @@ export default async function Page() {
   const settings: ProfileType[] = await getSettings();
   const documents: ProfileType[] = await getArchive();
 
+  // const isHideAnimation = homeContent.data.hideAnimation == true;
+
+  console.log(homeContent.data);
+  // console.log(isHideAnimation);
+
   return (
     <div>
       <ScrollDown />

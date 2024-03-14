@@ -44,6 +44,7 @@ export async function getHome() {
     groq`*[_type == "home"]{
               _id,
               videoUrl,
+              hideAnimation,
               "videoPosterUrl": videoPoster.asset->url,
             }`
   );
@@ -56,14 +57,8 @@ export async function getSettings() {
               phone,
               email,
               instagram,
-              "addressOneGroup": {
-                addressOne,
-                addressOneLink
-              },
-              "addressTwoGroup": {
-                addressTwo,
-                addressTwoLink
-              },
+              addressOneGroup,
+              addressTwoGroup,
               image,
               image {alt, "image": asset->url},
               metaImage,

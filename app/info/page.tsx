@@ -4,8 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import TitleAnimation from "../components/UI/TitleAnimation";
 import { herbik } from "@/app/fonts";
-import { loadQuery } from "@/sanity/lib/store";
-import { SanityDocument } from "next-sanity";
+import addLineBreaks from "../components/Utilities/addLineBreaks";
 
 export default async function Page() {
   const content: ProfileType[] = await getInfo();
@@ -53,12 +52,12 @@ export default async function Page() {
               </div>
               <div className="w-full md:w-1/3">
                 <a href={data.addressOneGroup.addressOneLink} target="blank">
-                  {data.addressOneGroup.addressOne}
+                  {addLineBreaks(data.addressOneGroup.addressOne)}
                 </a>
               </div>
               <div className="w-full md:w-1/3">
                 <a href={data.addressTwoGroup.addressTwoLink} target="blank">
-                  {data.addressTwoGroup.addressTwo}
+                  {addLineBreaks(data.addressTwoGroup.addressTwo)}
                 </a>
               </div>
             </div>

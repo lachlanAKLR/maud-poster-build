@@ -2,16 +2,6 @@
 
 import { ProfileType } from "@/types";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
-
-const AdressStyle = styled.div`
-  br {
-    content: " " !important;
-  }
-  br:after {
-    content: " " !important;
-  }
-`;
 
 interface FooterProps {
   settings: ProfileType[];
@@ -52,60 +42,44 @@ export default function Footer({ settings }: FooterProps) {
         reachedBottom ? "z-[100]" : "z-[-10]"
       }  ${showFooter ? "block" : "hidden"}`}
     >
-      <AdressStyle>
-        <div className="">
-          {settings ? (
-            settings.map((data, index) => {
-              console.log(
-                `AddressOneGroup for settings-${index}:`,
-                data.addressOneGroup
-              );
-              console.log(
-                `AddressTwoGroup for settings-${index}:`,
-                data.addressTwoGroup
-              );
-              return (
-                <div
-                  className={`flex flex-col md:flex-row justify-center items-center pt-7 md:pt-[10px] text-xs gap-2.5`}
-                  key={`settings-${index}`}
-                >
-                  <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
-                    <a
-                      href={data.addressOneGroup.addressOneLink}
-                      target="blank"
-                    >
-                      {data.addressOneGroup.addressOne}
-                    </a>
-                    <a
-                      href={data.addressTwoGroup.addressTwoLink}
-                      target="blank"
-                    >
-                      {data.addressTwoGroup.addressTwoLink}
-                    </a>
-                  </div>
-                  <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
-                    <a
-                      className="pt-2 md:pt-0"
-                      href={`tel:${data.phone}`}
-                      target="blank"
-                    >
-                      P {data.phone}
-                    </a>
-                    <a href={`mailto:${data.email}`} target="blank">
-                      E {data.email}
-                    </a>
-                    <a href={data.instagram} target="blank">
-                      Instagram
-                    </a>
-                  </div>
+      <div className="">
+        {settings ? (
+          settings.map((data, index) => {
+            return (
+              <div
+                className={`flex flex-col md:flex-row justify-center items-center pt-7 md:pt-[10px] text-xs gap-2.5`}
+                key={`settings-${index}`}
+              >
+                <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
+                  <a href={data.addressOneGroup.addressOneLink} target="blank">
+                    {data.addressOneGroup.addressOne}
+                  </a>
+                  <a href={data.addressTwoGroup.addressTwoLink} target="blank">
+                    {data.addressTwoGroup.addressTwo}
+                  </a>
                 </div>
-              );
-            })
-          ) : (
-            <p className="text-xs">No settings available</p>
-          )}
-        </div>
-      </AdressStyle>
+                <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
+                  <a
+                    className="pt-2 md:pt-0"
+                    href={`tel:${data.phone}`}
+                    target="blank"
+                  >
+                    P {data.phone}
+                  </a>
+                  <a href={`mailto:${data.email}`} target="blank">
+                    E {data.email}
+                  </a>
+                  <a href={data.instagram} target="blank">
+                    Instagram
+                  </a>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <p className="text-xs">No settings available</p>
+        )}
+      </div>
     </footer>
   );
 }

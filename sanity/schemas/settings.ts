@@ -25,16 +25,16 @@ export default defineType({
       title: "Address One",
       type: "object",
       fields: [
-        {
+        defineField({
           name: "addressOne",
           title: "Address",
           type: "string",
-        },
-        {
+        }),
+        defineField({
           name: "addressOneLink",
           title: "Link",
           type: "string",
-        },
+        }),
       ],
     }),
     defineField({
@@ -42,16 +42,16 @@ export default defineType({
       title: "Address Two",
       type: "object",
       fields: [
-        {
+        defineField({
           name: "addressTwo",
           title: "Address",
           type: "string",
-        },
-        {
+        }),
+        defineField({
           name: "addressTwoLink",
           title: "Address Link",
           type: "string",
-        },
+        }),
       ],
     }),
     defineField({
