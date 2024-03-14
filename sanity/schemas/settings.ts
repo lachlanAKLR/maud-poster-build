@@ -21,34 +21,38 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "addressOne",
-      type: "array",
+      name: "addressOneGroup",
       title: "Address One",
-      of: [
+      type: "object",
+      fields: [
         {
-          type: "block",
+          name: "addressOne",
+          title: "Address",
+          type: "string",
+        },
+        {
+          name: "addressOneLink",
+          title: "Link",
+          type: "string",
         },
       ],
     }),
     defineField({
-      name: "addressOneLink",
-      title: "Address One Link",
-      type: "string",
-    }),
-    defineField({
-      name: "addressTwo",
-      type: "array",
+      name: "addressTwoGroup",
       title: "Address Two",
-      of: [
+      type: "object",
+      fields: [
         {
-          type: "block",
+          name: "addressTwo",
+          title: "Address",
+          type: "string",
+        },
+        {
+          name: "addressTwoLink",
+          title: "Address Link",
+          type: "string",
         },
       ],
-    }),
-    defineField({
-      name: "addressTwoLink",
-      title: "Address Two Link",
-      type: "string",
     }),
     defineField({
       name: "metaImage",

@@ -56,10 +56,14 @@ export async function getSettings() {
               phone,
               email,
               instagram,
-              addressOne,
-              addressTwo,
-              addressOneLink,
-              addressTwoLink,  
+              "addressOneGroup": {
+                addressOne,
+                addressOneLink
+              },
+              "addressTwoGroup": {
+                addressTwo,
+                addressTwoLink
+              },
               image,
               image {alt, "image": asset->url},
               metaImage,

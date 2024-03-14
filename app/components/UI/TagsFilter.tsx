@@ -20,11 +20,27 @@ const TagsFilter: React.FC<TagsFilterProps> = ({
   const handleTagClick = (slug: string) => {
     setSelectedTagSlug(slug);
     onSelectTag(slug);
+    scrollToAppropriatePosition();
   };
 
   const handleClearSelection = () => {
     setSelectedTagSlug(null);
     onSelectTag(null);
+    scrollToAppropriatePosition();
+  };
+
+  const scrollToAppropriatePosition = () => {
+    if (isHome) {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth",
+      });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {

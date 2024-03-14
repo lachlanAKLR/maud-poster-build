@@ -57,22 +57,32 @@ export default function Footer({ settings }: FooterProps) {
         <div className="">
           {settings ? (
             settings.map((data, index) => {
+              console.log(
+                `AddressOneGroup for settings-${index}:`,
+                data.addressOneGroup
+              );
+              console.log(
+                `AddressTwoGroup for settings-${index}:`,
+                data.addressTwoGroup
+              );
               return (
                 <div
                   className={`flex flex-col md:flex-row justify-center items-center pt-7 md:pt-[10px] text-xs gap-2.5`}
                   key={`settings-${index}`}
                 >
-                  <div className="flex flex-col md:flex-row gap-0.5 md:gap-2">
-                    <div className="flex md:gap-1">
-                      <a href={data.addressOneLink} target="blank">
-                        <PortableText value={data.addressOne} />
-                      </a>
-                    </div>
-                    <div className="flex md:gap-1">
-                      <a href={data.addressTwoLink} target="blank">
-                        <PortableText value={data.addressTwo} />
-                      </a>
-                    </div>
+                  <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
+                    <a
+                      href={data.addressOneGroup.addressOneLink}
+                      target="blank"
+                    >
+                      {data.addressOneGroup.addressOne}
+                    </a>
+                    <a
+                      href={data.addressTwoGroup.addressTwoLink}
+                      target="blank"
+                    >
+                      {data.addressOneGroup.addressTwoLink}
+                    </a>
                   </div>
                   <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
                     <a

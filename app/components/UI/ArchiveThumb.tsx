@@ -3,6 +3,7 @@ import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/env";
 import Video from "./Video";
+import useMediaQuery from "../Utilities/useMediaQuery";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -18,6 +19,7 @@ export default function ArchiveThumb({
   dynamicWidth,
 }: ArchiveThumbProps) {
   const videoUrl = data.archiveImage.videoUrl;
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
 
   const widthStyle = dynamicWidth
     ? {
@@ -48,8 +50,8 @@ export default function ArchiveThumb({
       <Image
         className="object-cover"
         src={builder.image(data.archiveImage.image).quality(100).url()}
-        width={3000}
-        height={3000}
+        width={isSmallScreen ? 500 : 1000}
+        height={isSmallScreen ? 500 : 1000}
         quality={100}
         alt={data.archiveImage.alt || ""}
         priority
