@@ -24,10 +24,14 @@ export type ProfileType = {
   phone: string;
   email: string;
   instagram: string;
-  addressOne: PortableTextBlock[];
-  addressOneLink: string;
-  addressTwo: PortableTextBlock[];
-  addressTwoLink: string;
+  addressOneGroup: {
+    addressOne: string;
+    addressOneLink: string;
+  };
+  addressTwoGroup: {
+    addressTwo: string;
+    addressTwoLink: string;
+  };
   videoUrl: string;
   carousel: CarouselItemType[];
   carouselContent?: CarouselItemType[];

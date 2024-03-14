@@ -2,7 +2,6 @@
 
 import { ProfileType } from "@/types";
 import { useState, useEffect } from "react";
-import { PortableText } from "@portabletext/react";
 import styled from "styled-components";
 
 const AdressStyle = styled.div`
@@ -81,7 +80,7 @@ export default function Footer({ settings }: FooterProps) {
                       href={data.addressTwoGroup.addressTwoLink}
                       target="blank"
                     >
-                      {data.addressOneGroup.addressTwoLink}
+                      {data.addressTwoGroup.addressTwoLink}
                     </a>
                   </div>
                   <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
