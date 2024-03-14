@@ -42,7 +42,7 @@ export default function SvgAnimation() {
     <div className="relative w-full h-dvh md:h-full">
       {titleImages.map((imageSrc, index) => (
         <div
-          key={index}
+          key={`svg-animation-${index}`}
           className={`absolute z-[80] w-2/5 pointer-events-none flex flex-cols align-middle justify-center ${
             visibleIndex === index ? "opacity-100" : "opacity-0"
           }`}

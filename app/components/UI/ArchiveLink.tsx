@@ -30,8 +30,11 @@ interface ClickGalleryProps {
 
 export default function ArchiveLink({ documents }: ClickGalleryProps) {
   const filteredDocuments = documents.filter(
-    // @ts-ignore
-    (data) => data.archiveImage.palette.dominant.background !== "#7c7c7c"
+    (data) =>
+      // @ts-ignore
+      data.archiveImage.palette.dominant.background !== "#7c7c7c" &&
+      // @ts-ignore
+      data.archiveImage.palette.dominant.background !== "#bcbcbc"
   );
 
   const [randArchive, setRandArchive] = useState<ProfileType[]>(() =>
@@ -66,7 +69,7 @@ export default function ArchiveLink({ documents }: ClickGalleryProps) {
             <div className="rotated">
               {randArchive.map((data, index) => (
                 <div
-                  key={index}
+                  key={`archive-link-${index}`}
                   className={`absolute z-[80]" ${
                     visibleIndex === index ? "opacity-100" : "opacity-0"
                   }`}

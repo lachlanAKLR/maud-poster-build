@@ -124,17 +124,6 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     event.preventDefault();
   };
 
-  useEffect(() => {
-    const cleanupInterval = setInterval(() => {
-      const now = Date.now();
-      setDisplayedDocuments((currentDocs) =>
-        currentDocs.filter((doc) => now - doc.timestamp < 15000)
-      );
-    }, 1000);
-
-    return () => clearInterval(cleanupInterval);
-  }, []);
-
   return (
     <>
       <div
@@ -149,7 +138,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
       >
         {displayedDocuments.map(({ doc, position, width }, index) => (
           <div
-            key={index}
+            key={`click-gallery-${index}`}
             style={{
               position: "absolute",
               left: position.x,

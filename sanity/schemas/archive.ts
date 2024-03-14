@@ -22,6 +22,19 @@ export default defineType({
           name: "videoUrl",
           type: "url",
         }),
+        defineField({
+          name: "ratio",
+          title: "Video Ratio",
+          type: "string",
+          initialValue: "square",
+          options: {
+            list: [
+              { title: "Square", value: "square" },
+              { title: "Landscape", value: "landscape" },
+              { title: "Portrait", value: "portrait" },
+            ],
+          },
+        }),
       ],
     }),
   ],

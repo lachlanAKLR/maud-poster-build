@@ -48,7 +48,7 @@ export default function MoreProjects({ projects, id }: MoreProjectsProps) {
           <div className="flex flex-col md:grid grid-cols-6 gap-x-20 gap-y-24 md:gap-y-72 pt-20 px-10 md:px-20 pb-36 content-center">
             {randProjects.slice(0, 3).map((project, index) => (
               <motion.div
-                key={project._id}
+                key={`more-projects-${project._id}`}
                 initial={{ opacity: 1 }}
                 animate={{
                   opacity: selectedProjectId

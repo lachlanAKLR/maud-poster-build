@@ -59,10 +59,10 @@ export default function Footer({ settings }: FooterProps) {
             settings.map((data, index) => {
               return (
                 <div
-                  className={`flex flex-col md:flex-row justify-center items-center pt-9 md:pt-[10px] text-xs gap-2.5`}
-                  key={index}
+                  className={`flex flex-col md:flex-row justify-center items-center pt-7 md:pt-[10px] text-xs gap-2.5`}
+                  key={`settings-${index}`}
                 >
-                  <div className="flex gap-2">
+                  <div className="flex flex-col md:flex-row gap-0.5 md:gap-2">
                     <div className="flex md:gap-1">
                       <PortableText value={data.addressOne} />
                     </div>
@@ -70,7 +70,7 @@ export default function Footer({ settings }: FooterProps) {
                       <PortableText value={data.addressTwo} />
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">
                     <a
                       className="pt-2 md:pt-0"
                       href={`tel:${data.phone}`}

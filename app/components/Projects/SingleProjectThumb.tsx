@@ -64,16 +64,15 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
           quality={80}
           alt={project.thumbnailImage.alt || ""}
           priority={index >= 0 && index <= 2}
-          placeholder="empty"
           sizes="(max-width: 600px) 50vw, (max-width: 900px) 33vw, 33vw"
         />
       ) : null}
       <div
-        className={`hidden md:block transition-opacity duration-500 ${
+        className={`hidden md:block transition-opacity duration-500  ${
           isHovered ? "opacity-100" : "opacity-0"
         } text-xs pt-2`}
       >
-        <p>
+        <p className="min-h-10">
           <span className="uppercase mr-1">{project.title},</span>
           {project.subtitle}
         </p>

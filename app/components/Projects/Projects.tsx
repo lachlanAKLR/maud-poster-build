@@ -68,7 +68,7 @@ export default function Projects({
             isHome={isHome}
           />
         </motion.div>
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <main
             className={`bg-white relative top-0 h-auto z-0 grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 ${
               isHome ? "pt-48" : "pt-20"
@@ -77,7 +77,7 @@ export default function Projects({
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project, index) => (
                 <motion.div
-                  key={project._id}
+                  key={`projects-thumbnail-${project._id}`}
                   initial={{ opacity: 1 }}
                   animate={{
                     opacity: selectedProjectId
@@ -100,7 +100,6 @@ export default function Projects({
                   className="cursor-pointer col-span-2 flex flex-col justify-center content-center"
                 >
                   <SingleProjectThumb
-                    key={index}
                     // @ts-ignore
                     project={project}
                     index={index}

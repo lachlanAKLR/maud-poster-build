@@ -39,7 +39,7 @@ export default function HomeVideo({ content }: HomeProps) {
     <div className="h-dvh md:h-screen w-full fixed z-0 bg-black pointer-events-none">
       {content.map((data, index) => (
         <Video
-          key={index}
+          key={`home-video-${index}`}
           videoUrl={data.videoUrl}
           poster={
             data.videoPosterUrl

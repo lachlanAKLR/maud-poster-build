@@ -7,7 +7,7 @@ export default function VideoBlock({ block }: { block: any }) {
   return (
     <div className="relative w-full h-full md:h-fit py-1.5 md:py-10 px-3 md:px-20">
       <video
-        className="inset-0 w-full h-full md:h-fit bg-maud-grey"
+        className="inset-0 w-full h-full  bg-maud-grey"
         autoPlay
         playsInline
         muted

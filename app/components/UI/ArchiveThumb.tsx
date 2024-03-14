@@ -25,7 +25,16 @@ export default function ArchiveThumb({
       }
     : {};
   return videoUrl ? (
-    <div className="aspect-3/2 w-0" style={widthStyle}>
+    <div
+      className={`w-0 ${
+        data.archiveImage.ratio === "square"
+          ? "aspect-[1/1]"
+          : data.archiveImage.ratio === "landscape"
+          ? "aspect-[4/3]"
+          : "aspect-[3/4]"
+      }`}
+      style={widthStyle}
+    >
       <Video
         videoUrl={videoUrl}
         poster={builder.image(data.archiveImage.image).quality(100).url()}

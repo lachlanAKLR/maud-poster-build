@@ -14,11 +14,11 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 const TextContainer = styled.div`
   & *:first-of-type {
-    text-indent: 64px;
+    text-indent: 0px;
   }
 
   & *:not(:first-of-type) {
-    margin-top: 20px;
+    text-indent: 64px;
   }
 `;
 
@@ -92,14 +92,19 @@ export default function ProjectContent({
         ) : featuredImage ? (
           <Image
             className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
-            src={builder.image(featuredImage).quality(100).url()}
+            src={builder
+              .image(featuredImage)
+              .quality(100)
+              .width(3000)
+              .height(2000)
+              .url()}
             width={3000}
             height={3000}
             quality={100}
             alt={featuredImage.alt || ""}
             priority
             placeholder="empty"
-            sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 33vw"
+            sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 100vw"
           />
         ) : null}
         {projectText ? (
