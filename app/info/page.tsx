@@ -52,13 +52,13 @@ export default async function Page() {
                 </h4>
               </div>
               <div className="w-full md:w-1/3">
-                <a href={data.addressOneLink} target="blank">
-                  <PortableText value={data.addressOne} />
+                <a href={data.addressOneGroup.addressOneLink} target="blank">
+                  {data.addressOneGroup.addressOne}
                 </a>
               </div>
               <div className="w-full md:w-1/3">
-                <a href={data.addressTwoLink} target="blank">
-                  <PortableText value={data.addressTwo} />
+                <a href={data.addressTwoGroup.addressTwoLink} target="blank">
+                  {data.addressTwoGroup.addressTwo}
                 </a>
               </div>
             </div>
