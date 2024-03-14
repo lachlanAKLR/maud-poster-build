@@ -16,6 +16,7 @@ export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug]
 export const HOME_QUERY = groq`*[_type == "home"]{
   _id,
   videoUrl,
+  hideAnimation,
   "videoPosterUrl": videoPoster.asset->url,
 }`;
 
@@ -43,7 +44,7 @@ export async function getHome() {
   return client.fetch(
     groq`*[_type == "home"]{
               _id,
-              videoUrl,
+              videoUrl, 
               hideAnimation,
               "videoPosterUrl": videoPoster.asset->url,
             }`

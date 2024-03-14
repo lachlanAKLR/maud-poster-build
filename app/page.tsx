@@ -20,15 +20,19 @@ export default async function Page() {
   const settings: ProfileType[] = await getSettings();
   const documents: ProfileType[] = await getArchive();
 
-  // const isHideAnimation = homeContent.data.hideAnimation == true;
-
-  console.log(homeContent.data);
-  // console.log(isHideAnimation);
+  const hideAnimation = homeContent.data.map((item) => item.hideAnimation);
+  console.log(hideAnimation);
 
   return (
     <div>
       <ScrollDown />
-      <TitleAnimation title="MAUD" intervalMs={300} />
+      {hideAnimation ? (
+        <div className="w-full h-dvh md:h-screen absolute top-0 left-0 flex items-center justify-center pointer-events-none z-40 pb-0 md:pb-5">
+          <h1 className={`text-2xl md:text-5xl text-white`}>MAUD</h1>
+        </div>
+      ) : (
+        <TitleAnimation title="MAUD" intervalMs={300} />
+      )}
       <HomeVideo content={homeContent.data} />
       <HomeProjects
         projects={initial.data}
