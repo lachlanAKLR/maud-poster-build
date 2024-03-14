@@ -58,6 +58,8 @@ export async function getSettings() {
               instagram,
               addressOne,
               addressTwo,
+              addressOneLink,
+              addressTwoLink,  
               image,
               image {alt, "image": asset->url},
               metaImage,

@@ -25,7 +25,9 @@ export type ProfileType = {
   email: string;
   instagram: string;
   addressOne: PortableTextBlock[];
+  addressOneLink: string;
   addressTwo: PortableTextBlock[];
+  addressTwoLink: string;
   videoUrl: string;
   carousel: CarouselItemType[];
   carouselContent?: CarouselItemType[];

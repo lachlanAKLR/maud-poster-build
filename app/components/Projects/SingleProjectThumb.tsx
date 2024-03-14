@@ -7,6 +7,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { dataset, projectId } from "@/sanity/env";
 import Video from "../UI/Video";
 import { useRouter } from "next/navigation";
+import useMediaQuery from "../Utilities/useMediaQuery";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -22,6 +23,8 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
       router.push(`/work/${project.slug.current}`);
     }, 350);
   };
+
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
 
   return (
     <div
@@ -59,8 +62,8 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
               : "aspect-[3/4]"
           }`}
           src={builder.image(project.thumbnailImage).quality(100).url()}
-          width={1000}
-          height={1000}
+          width={isSmallScreen ? 500 : 1000}
+          height={isSmallScreen ? 500 : 1000}
           quality={80}
           alt={project.thumbnailImage.alt || ""}
           priority={index >= 0 && index <= 2}

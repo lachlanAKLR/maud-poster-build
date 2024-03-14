@@ -64,10 +64,14 @@ export default function Footer({ settings }: FooterProps) {
                 >
                   <div className="flex flex-col md:flex-row gap-0.5 md:gap-2">
                     <div className="flex md:gap-1">
-                      <PortableText value={data.addressOne} />
+                      <a href={data.addressOneLink} target="blank">
+                        <PortableText value={data.addressOne} />
+                      </a>
                     </div>
                     <div className="flex md:gap-1">
-                      <PortableText value={data.addressTwo} />
+                      <a href={data.addressTwoLink} target="blank">
+                        <PortableText value={data.addressTwo} />
+                      </a>
                     </div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-0.5 md:gap-2 text-center">

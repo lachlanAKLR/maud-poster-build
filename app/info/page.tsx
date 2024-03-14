@@ -4,6 +4,8 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import TitleAnimation from "../components/UI/TitleAnimation";
 import { herbik } from "@/app/fonts";
+import { loadQuery } from "@/sanity/lib/store";
+import { SanityDocument } from "next-sanity";
 
 export default async function Page() {
   const content: ProfileType[] = await getInfo();
@@ -50,30 +52,41 @@ export default async function Page() {
                 </h4>
               </div>
               <div className="w-full md:w-1/3">
-                <PortableText value={data.addressOne} />
+                <a href={data.addressOneLink} target="blank">
+                  <PortableText value={data.addressOne} />
+                </a>
               </div>
               <div className="w-full md:w-1/3">
-                <PortableText value={data.addressTwo} />
+                <a href={data.addressTwoLink} target="blank">
+                  <PortableText value={data.addressTwo} />
+                </a>
               </div>
             </div>
           </div>
         ))}
       {content &&
-        content.length > 0 &&
-        content.map((data) => (
-          <div className="grid grid-cols-8 gap-x-10 pb-10 pt-10" key={data._id}>
-            <Image
-              className="col-start-2 col-span-6 object-cover bg-top"
-              src={data.image.image}
-              width={2000}
-              height={2000}
-              quality={100}
-              alt={data.image.alt}
-              priority
-              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
-            />
-          </div>
-        ))}
+        content.map(
+          (data) =>
+            data.image &&
+            data.image.image &&
+            data.image.image.length > 0 && (
+              <div
+                className="grid grid-cols-8 gap-x-10 pb-10 pt-10"
+                key={data._id}
+              >
+                <Image
+                  className="col-start-2 col-span-6 object-cover bg-top"
+                  src={data.image.image}
+                  width={2000}
+                  height={2000}
+                  quality={100}
+                  alt={data.image.alt ? data.image.alt : ""}
+                  priority
+                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
+                />
+              </div>
+            )
+        )}
     </>
   );
 }

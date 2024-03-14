@@ -31,6 +31,11 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "addressOneLink",
+      title: "Address One Link",
+      type: "string",
+    }),
+    defineField({
       name: "addressTwo",
       type: "array",
       title: "Address Two",
@@ -41,16 +46,9 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "image",
-      title: "Footer Image",
-      type: "image",
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Image Description",
-          type: "string",
-        }),
-      ],
+      name: "addressTwoLink",
+      title: "Address Two Link",
+      type: "string",
     }),
     defineField({
       name: "metaImage",

@@ -41,10 +41,10 @@ const TagsFilter: React.FC<TagsFilterProps> = ({
 
   return (
     <div
-      className={`text-xs text-center w-full z-[100] pt-20 md:py-1 md:px-3 md:left-1/2 md:transform md:-translate-x-1/2 ${
+      className={`text-xs text-center w-full z-[100] pt-20 md:py-1 md:px-3 md:left-1/2 md:transform md:-translate-x-1/2 md:w-fit ${
         isHome
           ? `${isFixed ? "absolute md:fixed" : "absolute"} top-[6px]`
-          : "relative md:fixed md:top-[6px] md:w-fit"
+          : "relative md:fixed md:top-[6px]"
       }`}
     >
       <span>Filter →</span>
