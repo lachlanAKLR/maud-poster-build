@@ -59,6 +59,7 @@ export default async function Page() {
           </div>
         ))}
       {content &&
+        content.length > 0 &&
         content.map((data) => (
           <div className="grid grid-cols-8 gap-x-10 pb-10 pt-10" key={data._id}>
             <Image
