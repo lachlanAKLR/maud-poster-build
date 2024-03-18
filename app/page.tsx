@@ -20,8 +20,7 @@ export default async function Page() {
   const settings: ProfileType[] = await getSettings();
   const documents: ProfileType[] = await getArchive();
 
-  const hideAnimation = homeContent.data.map((item) => item.hideAnimation);
-  console.log(hideAnimation);
+  const hideAnimation = homeContent.data[0].hideAnimation;
 
   return (
     <div>
@@ -33,6 +32,7 @@ export default async function Page() {
       ) : (
         <TitleAnimation title="MAUD" intervalMs={300} />
       )}
+      <p></p>
       <HomeVideo content={homeContent.data} />
       <HomeProjects
         projects={initial.data}

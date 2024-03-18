@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import { diatype } from "../fonts";
+import Nav from "../components/UI/Nav";
 
 export const metadata: Metadata = {
   title: "MAUD, Work",
@@ -10,5 +12,10 @@ export default function WorkLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <body className={`${diatype.className} antialiased`}>
+      <Nav />
+      {children}
+    </body>
+  );
 }

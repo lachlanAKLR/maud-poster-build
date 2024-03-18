@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${diatype.className} antialiased text-maud-black`}>
+      <body className={`${diatype.className} antialiased text-maud-black `}>
         <Nav />
         {children}
       </body>

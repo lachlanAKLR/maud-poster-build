@@ -9,6 +9,7 @@ import { PortableText } from "@portabletext/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import Head from "next/head";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -31,11 +32,9 @@ export default function ProjectContent({
   const [animationCompleted, setAnimationCompleted] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-
     const timer = setTimeout(() => {
       document.body.style.overflow = "";
-    }, 1500);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
