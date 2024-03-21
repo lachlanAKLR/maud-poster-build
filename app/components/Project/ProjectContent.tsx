@@ -9,7 +9,7 @@ import { PortableText } from "@portabletext/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Head from "next/head";
+import useMediaQuery from "../Utilities/useMediaQuery";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
@@ -30,6 +30,7 @@ export default function ProjectContent({
 }) {
   const { title, featuredImage, projectText } = project;
   const [animationCompleted, setAnimationCompleted] = useState(false);
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -91,19 +92,13 @@ export default function ProjectContent({
         ) : featuredImage ? (
           <Image
             className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
-            src={builder
-              .image(featuredImage)
-              .quality(100)
-              .width(3000)
-              .height(2000)
-              .url()}
-            width={3000}
-            height={3000}
-            quality={100}
+            src={builder.image(featuredImage).quality(80).url()}
+            width={isSmallScreen ? 1000 : 3000}
+            height={isSmallScreen ? 1000 : 3000}
             alt={featuredImage.alt || ""}
             priority
             placeholder="empty"
-            sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 100vw"
+            sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 70vw"
           />
         ) : null}
         {projectText ? (

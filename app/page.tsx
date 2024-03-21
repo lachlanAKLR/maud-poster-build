@@ -12,6 +12,7 @@ import { getSettings } from "@/sanity/lib/queries";
 import ScrollDown from "./components/UI/ScrollDown";
 import { getArchive } from "@/sanity/lib/queries";
 import { HOME_QUERY } from "@/sanity/lib/queries";
+import { Suspense } from "react";
 
 export default async function Page() {
   const initial = await loadQuery<SanityDocument[]>(PROJECTS_QUERY);
