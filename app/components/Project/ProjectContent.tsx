@@ -91,14 +91,14 @@ export default function ProjectContent({
           </div>
         ) : featuredImage ? (
           <Image
-            className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
-            src={builder.image(featuredImage).quality(80).url()}
-            width={isSmallScreen ? 1000 : 3000}
-            height={isSmallScreen ? 1000 : 3000}
+            className="w-full object-cover bg-maud-grey"
+            src={builder.image(featuredImage).quality(100).url()}
+            width={3000}
+            height={isSmallScreen ? (3000 * 5) / 4 : (3000 * 2) / 3}
             alt={featuredImage.alt || ""}
             priority
             placeholder="empty"
-            sizes="(max-width: 600px) 100vw, (max-width: 900px) 70vw, 70vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
           />
         ) : null}
         {projectText ? (
