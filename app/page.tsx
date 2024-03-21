@@ -6,13 +6,16 @@ import { SanityDocument } from "next-sanity";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { getTags } from "@/sanity/lib/queries";
 import { Tag } from "@/types";
-import HomeProjects from "./components/UI/HomeProjects";
+// import HomeProjects from "./components/UI/HomeProjects";
 import Footer from "./components/UI/Footer";
 import { getSettings } from "@/sanity/lib/queries";
 import ScrollDown from "./components/UI/ScrollDown";
 import { getArchive } from "@/sanity/lib/queries";
 import { HOME_QUERY } from "@/sanity/lib/queries";
 import { Suspense } from "react";
+import React from "react";
+
+const HomeProjects = React.lazy(() => import("./components/UI/HomeProjects"));
 
 export default async function Page() {
   const initial = await loadQuery<SanityDocument[]>(PROJECTS_QUERY);
@@ -35,12 +38,14 @@ export default async function Page() {
       )}
       <p></p>
       <HomeVideo content={homeContent.data} />
-      <HomeProjects
-        projects={initial.data}
-        tags={tags}
-        isHome={true}
-        documents={documents}
-      />
+      <Suspense fallback={<div>Loading</div>}>
+        <HomeProjects
+          projects={initial.data}
+          tags={tags}
+          isHome={true}
+          documents={documents}
+        />
+      </Suspense>
       <Footer settings={settings} />
     </div>
   );

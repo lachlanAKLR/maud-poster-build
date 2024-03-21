@@ -58,7 +58,7 @@ export default function Projects({
         animate={isHome ? { opacity: 1 } : { opacity: 1 }}
         transition={isHome ? {} : { duration: 2, delay: 0.25 }}
       >
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: selectedProjectId ? 0 : 1 }}
         >
@@ -67,7 +67,7 @@ export default function Projects({
             onSelectTag={setSelectedTagSlug}
             isHome={isHome}
           />
-        </motion.div>
+        </motion.div> */}
         <AnimatePresence>
           <main
             className={`bg-white relative top-0 h-auto z-0 grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 ${
