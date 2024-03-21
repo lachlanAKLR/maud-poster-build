@@ -6,6 +6,7 @@ import MoreProjects from "./MoreProjects";
 import MobileMoreProjects from "./MobileMoreProjects";
 import ProjectLayouts from "./ProjectLayouts";
 import useMediaQuery from "../Utilities/useMediaQuery";
+import { Suspense } from "react";
 
 export default function Project({
   project,
@@ -20,11 +21,17 @@ export default function Project({
   return (
     <main className="min-h-screen relative z-[100] bg-white">
       <ProjectContent project={project} />
-      <ProjectLayouts layouts={layouts} />
+      <Suspense fallback={<div>Loading layouts...</div>}>
+        <ProjectLayouts layouts={layouts} />
+      </Suspense>
       {isSmallScreen ? (
-        <MobileMoreProjects projects={projects} id={_id} />
+        <Suspense fallback={<div>Loading more projects...</div>}>
+          <MobileMoreProjects projects={projects} id={_id} />
+        </Suspense>
       ) : (
-        <MoreProjects projects={projects} id={_id} />
+        <Suspense fallback={<div>Loading more projects...</div>}>
+          <MoreProjects projects={projects} id={_id} />
+        </Suspense>
       )}
     </main>
   );

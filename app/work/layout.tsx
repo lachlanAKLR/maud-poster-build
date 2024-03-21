@@ -12,10 +12,5 @@ export default function WorkLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <body className={`${diatype.className} antialiased`}>
-      <Nav />
-      {children}
-    </body>
-  );
+  return <>{children}</>;
 }
