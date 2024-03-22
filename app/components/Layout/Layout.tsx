@@ -4,11 +4,13 @@ import VideoBlock from "./VideoBlock";
 import PortraitImage from "./PortaitImage";
 import LandscapeImage from "./LandscapeImage";
 import TwoUpImage from "./TwoUpImage";
+import FourUpImage from "./FourUpImage";
 
 export default function Layout({ layouts }: { layouts: any[] }) {
   const Components: { [key: string]: React.ComponentType<any> } = {
     landscapeImage: LandscapeImage,
     twoUpImage: TwoUpImage,
+    fourUpImage: FourUpImage,
     portraitImage: PortraitImage,
     quote: Quote,
     video: VideoBlock,

@@ -108,6 +108,10 @@ export default defineType({
           title: "Portrait Two Up",
         },
         {
+          type: "fourUpImage",
+          title: "Landscape Four Square",
+        },
+        {
           type: "quote",
           title: "Project Text",
         },

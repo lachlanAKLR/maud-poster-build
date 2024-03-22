@@ -11,6 +11,7 @@ import quote from "./schemas/objects/quote";
 import tags from "./schemas/objects/tags";
 import video from "./schemas/objects/video";
 import archive from "./schemas/archive";
+import fourUpImage from "./schemas/objects/fourUpImage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -18,6 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     project,
     landscapeImage,
     twoUpImage,
+    fourUpImage,
     settings,
     home,
     portraitImage,

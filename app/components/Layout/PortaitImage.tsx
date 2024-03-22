@@ -9,7 +9,7 @@ export default function PortraitImage({ block }: { block: any }) {
     <div className="block md:grid grid-cols-10 py-1.5 md:py-10 px-3 md:px-20 gap-x-20">
       {block.image ? (
         <Image
-          className="w-full aspect-4/5 object-cover col-start-3 col-span-6 bg-maud-grey"
+          className="w-full aspect-3/4 object-cover col-start-3 col-span-6 bg-maud-grey"
           src={builder
             .image(block.image)
             .width(2000)

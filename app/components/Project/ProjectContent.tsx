@@ -91,7 +91,7 @@ export default function ProjectContent({
           </div>
         ) : featuredImage ? (
           <Image
-            className="w-full aspect-4/5 md:aspect-3/2 object-cover bg-maud-grey"
+            className="w-full aspect-3/4 md:aspect-3/2 object-cover bg-maud-grey"
             src={builder.image(featuredImage).quality(80).url()}
             width={isSmallScreen ? 1000 : 3000}
             height={isSmallScreen ? 1000 : 3000}

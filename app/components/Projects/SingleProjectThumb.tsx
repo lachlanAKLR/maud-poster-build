@@ -39,7 +39,7 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
             project.thumbnailImage.ratio === "square"
               ? "aspect-[1/1]"
               : project.thumbnailImage.ratio === "landscape"
-              ? "aspect-[4/3]"
+              ? "aspect-[3/2]"
               : "aspect-[3/4]"
           }`}
         >
@@ -58,7 +58,7 @@ const SingleProjectThumb: React.FC<SingleProjectProps> = ({
             project.thumbnailImage.ratio === "square"
               ? "aspect-[1/1]"
               : project.thumbnailImage.ratio === "landscape"
-              ? "aspect-[4/3]"
+              ? "aspect-[3/2]"
               : "aspect-[3/4]"
           }`}
           src={builder.image(project.thumbnailImage).quality(100).url()}
