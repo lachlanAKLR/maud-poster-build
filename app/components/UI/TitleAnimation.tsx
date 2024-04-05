@@ -60,7 +60,9 @@ const PageAnimation: React.FC<PageAnimationProps> = ({ title, intervalMs }) => {
 
   return (
     <div className="w-full h-dvh md:h-screen absolute top-0 left-0 flex items-center justify-center pointer-events-none z-40 pb-0 md:pb-5">
-      <h1 className={`text-5xl md:text-6xl ${textColorClass}`}>
+      <h1
+        className={`text-5xl md:text-6xl h-[245px] md:h-[575px] ${textColorClass}`}
+      >
         {displayedLetter}
       </h1>
     </div>

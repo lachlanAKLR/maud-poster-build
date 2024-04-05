@@ -1,7 +1,7 @@
 import { PortableText } from "@portabletext/react";
 import { herbik } from "@/app/fonts";
-import { unica } from "@/app/fonts";
 import styled from "styled-components";
+import { diatype } from "@/app/fonts";
 
 const TextContainer = styled.div`
   & *:first-of-type {
@@ -26,7 +26,7 @@ const components = {
     // @ts-ignore
     h5: ({ children }) => (
       <p
-        className={`${unica.className} text-center text-xs md:text-sm pt-6 md:pt-10`}
+        className={`${diatype.className} text-center text-xs md:text-sm pt-6 md:pt-10`}
       >
         {children}
       </p>
@@ -34,12 +34,12 @@ const components = {
     // @ts-ignore
     normal: ({ children }) => (
       <TextContainer>
-        <p className={`${unica.className} text-xs md:text-sm`}>{children}</p>
+        <p className={`${diatype.className} text-xs md:text-sm`}>{children}</p>
       </TextContainer>
     ),
     // @ts-ignore
     h6: ({ children }) => (
-      <p className={`${unica.className} text-center text-xs`}>{children}</p>
+      <p className={`${diatype.className} text-center text-xs`}>{children}</p>
     ),
   },
 };

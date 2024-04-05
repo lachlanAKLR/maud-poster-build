@@ -1,51 +1,75 @@
-import TitleAnimation from "./components/UI/TitleAnimation";
 import { ProfileType } from "@/types";
 import HomeVideo from "./components/UI/HomeVideo";
 import { loadQuery } from "@/sanity/lib/store";
 import { SanityDocument } from "next-sanity";
-import { PROJECTS_QUERY } from "@/sanity/lib/queries";
-import { getTags } from "@/sanity/lib/queries";
-import { Tag } from "@/types";
-import Footer from "./components/UI/Footer";
 import { getSettings } from "@/sanity/lib/queries";
-import ScrollDown from "./components/UI/ScrollDown";
-import { getArchive } from "@/sanity/lib/queries";
 import { HOME_QUERY } from "@/sanity/lib/queries";
-import { Suspense } from "react";
 import React from "react";
+import addLineBreaks from "./components/Utilities/addLineBreaks";
+import Video from "./components/UI/Video";
+import imageUrlBuilder from "@sanity/image-url";
+import { dataset, projectId } from "@/sanity/env";
 
-const HomeProjects = React.lazy(() => import("./components/UI/HomeProjects"));
+const builder = imageUrlBuilder({ projectId, dataset });
 
 export default async function Page() {
-  const initial = await loadQuery<SanityDocument[]>(PROJECTS_QUERY);
   const homeContent = await loadQuery<SanityDocument[]>(HOME_QUERY);
-  const tags: Tag[] = await getTags();
   const settings: ProfileType[] = await getSettings();
-  const documents: ProfileType[] = await getArchive();
 
   const hideAnimation = homeContent.data[0].hideAnimation;
 
   return (
-    <div>
-      <ScrollDown />
-      {hideAnimation ? (
-        <div className="w-full h-dvh md:h-screen absolute top-0 left-0 flex items-center justify-center pointer-events-none z-40 pb-0 md:pb-5">
-          <h1 className={`text-2xl md:text-5xl text-white`}>MAUD</h1>
+    <div className="flex flex-col h-dvh md:h-screen justify-between text-xs">
+      {settings &&
+        settings.map((data) => (
+          <div
+            key={data._id}
+            className="flex flex-col md:grid md:grid-cols-12 gap-x-5 p-2.5 md:p-2.5 gap-y-5 md:gap-y-0"
+          >
+            <div className="col-span-6 pb-10">MAUD, Part of Accenture Song</div>
+            <div className="col-span-2">
+              <h4>
+                <span className="mr-[10px] md:mr-[15px]">P</span>
+                <a href={`tel:${data.phone}`}>{data.phone}</a>
+              </h4>
+              <h4>
+                <span className="mr-[10px] md:mr-[15px]">E</span>
+                <a href={`mailto:${data.email}`}>{data.email}</a>
+              </h4>
+              <h4>
+                <span className="mr-[8px] md:mr-[13px]">→</span>
+                <a target="blank" href={data.instagram}>
+                  Instagram
+                </a>
+              </h4>
+            </div>
+            <div className="col-span-2">
+              <a href={data.addressOneGroup.addressOneLink} target="blank">
+                {addLineBreaks(data.addressOneGroup.addressOne)}
+              </a>
+            </div>
+            <div className="col-span-2">
+              <a href={data.addressTwoGroup.addressTwoLink} target="blank">
+                {addLineBreaks(data.addressTwoGroup.addressTwo)}
+              </a>
+            </div>
+          </div>
+        ))}
+      <div className="md:grid md:grid-cols-12 gap-x-5 p-2.5 md:p-2.5">
+        <div className="col-start-7 col-end-13 aspect-3/2">
+          {homeContent.data.map((data, index) => (
+            <Video
+              key={`home-video-${index}`}
+              videoUrl={data.videoUrl}
+              poster={
+                data.videoPosterUrl
+                  ? builder.image(data.videoPosterUrl).quality(50).url()
+                  : ""
+              }
+            />
+          ))}
         </div>
-      ) : (
-        <TitleAnimation title="MAUD" intervalMs={300} />
-      )}
-      <p></p>
-      <HomeVideo content={homeContent.data} />
-      <Suspense fallback={<div>Loading</div>}>
-        <HomeProjects
-          projects={initial.data}
-          tags={tags}
-          isHome={true}
-          documents={documents}
-        />
-      </Suspense>
-      <Footer settings={settings} />
+      </div>
     </div>
   );
 }

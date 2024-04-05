@@ -6,9 +6,10 @@ import { useState, useEffect } from "react";
 
 export default function Nav() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isHome = pathname === "/home";
   const isArchive = pathname === "/archive";
   const isStudio = pathname.includes("/studio");
+  const isLanding = pathname === "/";
 
   const [isFixed, setIsFixed] = useState(false);
 
@@ -23,6 +24,10 @@ export default function Nav() {
       return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [isHome]);
+
+  if (isLanding) {
+    return null;
+  }
 
   return (
     <nav className={`${isStudio ? "hidden" : "block"}`}>

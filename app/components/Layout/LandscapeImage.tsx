@@ -6,7 +6,7 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 export default function LandscapeImage({ block }: { block: any }) {
   return (
-    <div className="w-full aspect-3/2 object-cover py-1.5 md:py-10 px-3 md:px-20">
+    <div className="w-full py-1.5 md:py-10 px-3 md:px-20">
       {block.image ? (
         <Image
           className="bg-maud-grey"
