@@ -1,5 +1,4 @@
 import { ProfileType } from "@/types";
-import HomeVideo from "./components/UI/HomeVideo";
 import { loadQuery } from "@/sanity/lib/store";
 import { SanityDocument } from "next-sanity";
 import { getSettings } from "@/sanity/lib/queries";
@@ -15,8 +14,6 @@ const builder = imageUrlBuilder({ projectId, dataset });
 export default async function Page() {
   const homeContent = await loadQuery<SanityDocument[]>(HOME_QUERY);
   const settings: ProfileType[] = await getSettings();
-
-  const hideAnimation = homeContent.data[0].hideAnimation;
 
   return (
     <div className="flex flex-col h-dvh md:h-screen justify-between text-xs">
@@ -56,6 +53,9 @@ export default async function Page() {
           </div>
         ))}
       <div className="md:grid md:grid-cols-12 gap-x-5 p-2.5 md:p-2.5">
+        <div className="col-span-6 pb-5 md:pb-0">
+          <p>New website coming soon.</p>
+        </div>
         <div className="col-start-7 col-end-13 aspect-3/2">
           {homeContent.data.map((data, index) => (
             <Video
