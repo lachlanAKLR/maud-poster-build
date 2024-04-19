@@ -9,7 +9,7 @@ export default function TwoUpImage({ block }: { block: any }) {
     <div className="flex flex-col md:grid grid-cols-10 py-1.5 md:py-10 px-3 md:px-20 gap-x-20 gap-y-3">
       {block.leftImage ? (
         <Image
-          className="aspect-3/4 col-start-1 col-span-5 bg-maud-grey"
+          className="aspect-3/4 col-start-1 col-span-5 bg-maud-grey object-cover"
           src={builder
             .image(block.leftImage)
             .width(2000)
@@ -25,7 +25,7 @@ export default function TwoUpImage({ block }: { block: any }) {
       ) : null}
       {block.rightImage ? (
         <Image
-          className="aspect-3/4 col-span-5 bg-maud-grey"
+          className="aspect-3/4 col-span-5 bg-maud-grey object-cover"
           src={builder
             .image(block.rightImage)
             .width(2000)

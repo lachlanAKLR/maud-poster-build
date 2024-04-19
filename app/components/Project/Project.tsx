@@ -2,9 +2,6 @@
 
 import { SanityDocument } from "next-sanity";
 import ProjectContent from "./ProjectContent";
-// import MoreProjects from "./MoreProjects";
-// import MobileMoreProjects from "./MobileMoreProjects";
-// import ProjectLayouts from "./ProjectLayouts";
 import useMediaQuery from "../Utilities/useMediaQuery";
 import { Suspense } from "react";
 import React from "react";

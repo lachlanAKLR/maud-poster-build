@@ -46,8 +46,8 @@ const components = {
 
 export default function Quote({ block }: { block: any }) {
   return (
-    <div className="block md:grid grid-cols-10 py-36 md:py-72 px-3 md:px-20 gap-x-20">
-      <div className={`col-start-2 col-span-8`}>
+    <div className="block md:grid grid-cols-10 py-36 md:py-72 px-3 md:px-20 gap-x-20 ">
+      <div className={`col-start-2 col-span-8 max-w-5xl m-auto`}>
         {block ? (
           // @ts-ignore
           <PortableText value={block.text} components={components} />
