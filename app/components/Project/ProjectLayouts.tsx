@@ -9,7 +9,7 @@ interface ProjectLayoutsAndCreditsProps {
 const ProjectLayouts: React.FC<ProjectLayoutsAndCreditsProps> = ({
   layouts,
 }) => {
-  return <>{layouts ? <Layout layouts={layouts} /> : null}</>;
+  return <div>{layouts ? <Layout layouts={layouts} /> : null}</div>;
 };
 
 export default ProjectLayouts;
