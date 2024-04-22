@@ -11,7 +11,56 @@ export const PROJECTS_QUERY = groq`
   },
 }`;
 
-export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]`;
+// export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]`;
+
+export const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]{
+  _id,
+  title,
+  subtitle,
+  featuredImage {
+    asset->{
+      _id,
+      url,
+      metadata {
+        dimensions {
+          aspectRatio,
+          height,
+          width
+        }
+      }
+    },
+    alt
+  },
+  thumbnailImage {
+    asset->{
+      _id,
+      url
+    },
+    alt
+  },
+  layouts[] {
+    ...,
+    _type == 'landscapeImage' => {
+      asset->{
+        _id,
+        url,
+        metadata {
+          dimensions {
+            aspectRatio,
+            height,
+            width
+          }
+        }
+      },
+      alt
+    }
+  },
+  tags[]->{
+    _id,
+    title,
+    slug
+  }
+}`;
 
 export const HOME_QUERY = groq`*[_type == "home"]{
   _id,
