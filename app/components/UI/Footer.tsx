@@ -10,7 +10,6 @@ interface FooterProps {
 export default function Footer({ settings }: FooterProps) {
   const [showFooter, setShowFooter] = useState<boolean>(false);
   const [reachedBottom, setReachedBottom] = useState<boolean>(false);
-  const [applyClasses, setApplyClasses] = useState(true);
 
   useEffect(() => {
     const onScroll = () => {
@@ -22,14 +21,6 @@ export default function Footer({ settings }: FooterProps) {
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setApplyClasses(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -48,10 +39,8 @@ export default function Footer({ settings }: FooterProps) {
   return (
     <footer
       className={`fixed bottom-0 left-0 w-full h-40 md:h-10 bg-maud-grey ${
-        applyClasses ? "hidden" : ""
-      } ${reachedBottom ? "z-[100]" : "z-[-10]"}  ${
-        showFooter ? "block" : "hidden"
-      }`}
+        reachedBottom ? "z-[100]" : "z-[-10]"
+      }  ${showFooter ? "block" : "hidden"}`}
     >
       <div className="">
         {settings ? (
