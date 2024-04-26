@@ -21,9 +21,6 @@ const TextContainer = styled.div`
   & *:not(:first-of-type) {
     text-indent: 64px;
   }
-
-  max-width: 576px;
-  margin: auto;
 `;
 
 export default function ProjectContent({

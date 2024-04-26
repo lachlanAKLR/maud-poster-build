@@ -1,10 +1,20 @@
 import { getInfo, getSettings } from "@/sanity/lib/queries";
 import { ProfileType } from "@/types";
 import { PortableText } from "@portabletext/react";
-import Image from "next/image";
 import TitleAnimation from "../components/UI/TitleAnimation";
 import { herbik } from "@/app/fonts";
 import addLineBreaks from "../components/Utilities/addLineBreaks";
+
+const components = {
+  block: {
+    // @ts-ignore
+    h2: ({ children }) => (
+      <h2 className={`${herbik.className} text-center text-lg md:text-xl pb-5`}>
+        {children}
+      </h2>
+    ),
+  },
+};
 
 export default async function Page() {
   const content: ProfileType[] = await getInfo();
@@ -13,79 +23,56 @@ export default async function Page() {
   return (
     <>
       <TitleAnimation title="INFO" intervalMs={300} />
-
-      {content &&
-        content.map((data) => (
-          <div
-            className="text-center flex px-8 md:px-0 md:grid grid-cols-6 gap-x-20 pt-24 md:pt-40 pb-5 md:pb-10"
-            key={data._id}
-          >
-            <div className="col-start-2 col-span-4">
-              <div className={` ${herbik.className} text-lg md:text-xl`}>
-                <PortableText value={data.infoText} />
+      <div className="h-screen flex flex-col justify-center align-middle">
+        {content &&
+          content.map((data) => (
+            <div
+              className="flex flex-col md:grid md:grid-cols-8 gap-x-10"
+              key={data._id}
+            >
+              <div className="col-start-2 col-span-6">
+                {/* @ts-ignore */}
+                <PortableText value={data.infoText} components={components} />
               </div>
             </div>
-          </div>
-        ))}
-      {settings &&
-        settings.map((data) => (
-          <div
-            className="flex flex-col md:grid md:grid-cols-8 gap-x-10 pt-5 md:pt-10 pb-10"
-            key={data._id}
-          >
-            <div className="flex flex-col gap-10 md:flex-row justify-center text-center md:col-start-3 md:col-span-4 text-xs">
-              <div className="w-full md:w-1/3">
-                <h4>
-                  <span className="mr-1">P</span>
-                  <a href={`tel:${data.phone}`}>{data.phone}</a>
-                </h4>
-                <h4>
-                  <span className="mr-1">E</span>
-                  <a href={`mailto:${data.email}`}>{data.email}</a>
-                </h4>
-                <h4>
-                  <span className="mr-1">→</span>
-                  <a target="blank" href={data.instagram}>
-                    Instagram
+          ))}
+        {settings &&
+          settings.map((data) => (
+            <div
+              className="flex flex-col md:flex-row md:align-middle md:justify-center gap-x-10 pt-5 md:pt-10 pb-10 md:pb-0 w-full"
+              key={data._id}
+            >
+              <div className="flex flex-col gap-10 md:flex-row justify-center text-center text-xs">
+                <div className="w-full md:w-[180px]">
+                  <h4>
+                    <span className="mr-1">P</span>
+                    <a href={`tel:${data.phone}`}>{data.phone}</a>
+                  </h4>
+                  <h4>
+                    <span className="mr-1">E</span>
+                    <a href={`mailto:${data.email}`}>{data.email}</a>
+                  </h4>
+                  <h4>
+                    <span className="mr-1">→</span>
+                    <a target="blank" href={data.instagram}>
+                      Instagram
+                    </a>
+                  </h4>
+                </div>
+                <div className="w-full md:w-[180px]">
+                  <a href={data.addressOneGroup.addressOneLink} target="blank">
+                    {addLineBreaks(data.addressOneGroup.addressOne)}
                   </a>
-                </h4>
-              </div>
-              <div className="w-full md:w-1/3">
-                <a href={data.addressOneGroup.addressOneLink} target="blank">
-                  {addLineBreaks(data.addressOneGroup.addressOne)}
-                </a>
-              </div>
-              <div className="w-full md:w-1/3">
-                <a href={data.addressTwoGroup.addressTwoLink} target="blank">
-                  {addLineBreaks(data.addressTwoGroup.addressTwo)}
-                </a>
+                </div>
+                <div className="w-full md:w-[180px]">
+                  <a href={data.addressTwoGroup.addressTwoLink} target="blank">
+                    {addLineBreaks(data.addressTwoGroup.addressTwo)}
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      {content &&
-        content.map(
-          (data) =>
-            data.image &&
-            data.image.image &&
-            data.image.image.length > 0 && (
-              <div
-                className="grid grid-cols-8 gap-x-10 pb-10 pt-10"
-                key={data._id}
-              >
-                <Image
-                  className="col-start-2 col-span-6 object-cover bg-top"
-                  src={data.image.image}
-                  width={2000}
-                  height={2000}
-                  quality={100}
-                  alt={data.image.alt ? data.image.alt : ""}
-                  priority
-                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 50vw"
-                />
-              </div>
-            )
-        )}
+          ))}
+      </div>
     </>
   );
 }
