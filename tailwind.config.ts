@@ -28,7 +28,7 @@ const config: Config = {
         base: ["16px", "18px"],
         lg: ["24px", "28.8px"],
         xl: ["48px", "57.6px"],
-        "2xl": ["64px", "58px"],
+        "2xl": ["56px", "58px"],
         "3xl": ["150px", "134px"],
         "4xl": ["180px", "171px"],
         "5xl": ["300px", "300px"],
@@ -43,6 +43,9 @@ const config: Config = {
       },
       maxWidth: {
         "max-w-3xl": "50rem",
+      },
+      screens: {
+        "2xl": "1681px",
       },
     },
   },

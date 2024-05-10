@@ -52,7 +52,7 @@ export default function ArchiveLink({ documents }: ClickGalleryProps) {
   }, [randArchive.length]);
 
   return (
-    <div className=" pb-32 md:pb-64 bg-white mb-40 md:mb-10">
+    <div className=" pb-24 md:pb-32 bg-white mb-40 md:mb-10">
       <div className="relative w-full h-auto min-h-[400px] flex justify-center items-center ">
         <Link href="/archive">
           <p

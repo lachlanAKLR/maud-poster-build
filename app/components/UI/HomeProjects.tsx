@@ -11,11 +11,13 @@ export default function HomeProjects({
   tags,
   isHome,
   documents,
+  settings,
 }: {
   projects: SanityDocument[];
   tags: Tag[];
   isHome: boolean;
   documents: ProfileType[];
+  settings: ProfileType[];
 }) {
   const [isFixed, setIsFixed] = useState(false);
 
@@ -46,6 +48,7 @@ export default function HomeProjects({
         tags={tags}
         isHome={isHome}
         documents={documents}
+        settings={settings}
       />
     </div>
   );

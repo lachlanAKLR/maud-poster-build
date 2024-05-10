@@ -11,7 +11,8 @@ const PageAnimation: React.FC<PageAnimationProps> = ({ title, intervalMs }) => {
   const [currentLetterIndex, setCurrentLetterIndex] = useState<number>(-1);
   const [displayedLetter, setDisplayedLetter] = useState<string>("");
   const [showComponent, setShowComponent] = useState<boolean>(true);
-  const textColorClass = title === "MAUD" ? "text-white" : "text-black";
+  const textColorClass =
+    title === "MAUD" || title === "ARCHIVE" ? "text-white" : "text-black";
 
   useEffect(() => {
     const timeouts: number[] = [];

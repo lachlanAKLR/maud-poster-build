@@ -43,9 +43,9 @@ export default async function Page() {
           tags={tags}
           isHome={true}
           documents={documents}
+          settings={settings}
         />
       </Suspense>
-      <Footer settings={settings} />
     </div>
   );
 }

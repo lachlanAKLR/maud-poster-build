@@ -21,8 +21,8 @@ export default async function Page() {
         tags={tags}
         isHome={false}
         documents={documents}
+        settings={settings}
       />
-      <Footer settings={settings} />
     </>
   );
 }

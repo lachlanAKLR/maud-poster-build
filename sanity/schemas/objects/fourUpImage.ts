@@ -15,6 +15,11 @@ export default defineType({
           title: "Alt",
           type: "string",
         }),
+        defineField({
+          title: "Video URL",
+          name: "videoUrl",
+          type: "url",
+        }),
       ],
     }),
     defineField({
@@ -26,6 +31,11 @@ export default defineType({
           name: "alt",
           title: "Alt",
           type: "string",
+        }),
+        defineField({
+          title: "Video URL",
+          name: "videoUrl",
+          type: "url",
         }),
       ],
     }),
@@ -39,6 +49,11 @@ export default defineType({
           title: "Alt",
           type: "string",
         }),
+        defineField({
+          title: "Video URL",
+          name: "videoUrl",
+          type: "url",
+        }),
       ],
     }),
     defineField({
@@ -50,6 +65,11 @@ export default defineType({
           name: "alt",
           title: "Alt",
           type: "string",
+        }),
+        defineField({
+          title: "Video URL",
+          name: "videoUrl",
+          type: "url",
         }),
       ],
     }),

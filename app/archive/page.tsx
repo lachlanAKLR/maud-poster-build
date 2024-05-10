@@ -4,13 +4,15 @@ import SvgAnimation from "../components/UI/SvgAnimation";
 import { loadQuery } from "@/sanity/lib/store";
 import { SanityDocument } from "next-sanity";
 import ArchiveHint from "../components/UI/ArchiveHint";
+import TitleAnimation from "../components/UI/TitleAnimation";
 
 export default async function Page() {
   const initial = await loadQuery<SanityDocument[]>(ARCHIVE_QUERY);
 
   return (
     <main className="bg-black overflow-hidden w-full h-full absolute top-0 left-0 z-10">
-      <SvgAnimation />
+      {/* <SvgAnimation /> */}
+      <TitleAnimation title="ARCHIVE" intervalMs={200} />
       <ArchiveHint />
       <ClickGallery documents={initial.data} />
     </main>

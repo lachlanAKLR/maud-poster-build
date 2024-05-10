@@ -10,17 +10,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import ArchiveLink from "../UI/ArchiveLink";
 import { ProfileType } from "@/types";
+import Footer from "../UI/Footer";
 
 export default function Projects({
   projects,
   tags,
   isHome,
   documents,
+  settings,
 }: {
   projects: SanityDocument[];
   tags: Tag[];
   isHome: boolean;
   documents: ProfileType[];
+  settings: ProfileType[];
 }) {
   const [selectedTagSlug, setSelectedTagSlug] = useState<string | null>(null);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
@@ -70,7 +73,7 @@ export default function Projects({
         </motion.div> */}
         <AnimatePresence>
           <main
-            className={`bg-white relative top-0 h-auto z-0 grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 gap-y-8 md:gap-y-24 px-8 md:px-24 ${
+            className={`bg-white relative top-0 h-auto z-0 grid grid-cols-4 md:grid-cols-6 gap-x-8 md:gap-x-24 2xl:gap-x-40 gap-y-8 md:gap-y-24 2xl:gap-y-40 px-8 md:px-24 2xl:px-40 ${
               isHome ? "pt-48" : "pt-20"
             } md:pt-44 pb-20 md:pb-72 content-center min-h-dvh md:min-h-screen `}
           >
@@ -111,6 +114,7 @@ export default function Projects({
             )}
           </main>
           <ArchiveLink documents={documents} />
+          <Footer settings={settings} />
         </AnimatePresence>
       </motion.div>
     </>

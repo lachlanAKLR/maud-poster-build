@@ -21,6 +21,12 @@ const TextContainer = styled.div`
   & *:not(:first-of-type) {
     text-indent: 64px;
   }
+
+  @media screen and (max-width: 768px) {
+    & *:not(:first-of-type) {
+      text-indent: 32px;
+    }
+  }
 `;
 
 export default function ProjectContent({

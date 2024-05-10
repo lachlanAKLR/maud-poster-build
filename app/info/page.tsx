@@ -27,7 +27,7 @@ export default async function Page() {
         {content &&
           content.map((data) => (
             <div
-              className="flex flex-col md:grid md:grid-cols-8 gap-x-10"
+              className="flex flex-col md:grid md:grid-cols-8 gap-x-10 px-4 md:px-0"
               key={data._id}
             >
               <div className="col-start-2 col-span-6">
@@ -39,10 +39,10 @@ export default async function Page() {
         {settings &&
           settings.map((data) => (
             <div
-              className="flex flex-col md:flex-row md:align-middle md:justify-center gap-x-10 pt-5 md:pt-10 pb-10 md:pb-0 w-full"
+              className="flex flex-col md:flex-row md:align-middle md:justify-center gap-x-10 pt-5 md:pt-10 pb-0 w-full"
               key={data._id}
             >
-              <div className="flex flex-col gap-10 md:flex-row justify-center text-center text-xs">
+              <div className="flex flex-col md:gap-10 gap-5 md:flex-row justify-center text-center text-xs">
                 <div className="w-full md:w-[180px]">
                   <h4>
                     <span className="mr-1">P</span>
