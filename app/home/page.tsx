@@ -6,9 +6,7 @@ import { SanityDocument } from "next-sanity";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { getTags } from "@/sanity/lib/queries";
 import { Tag } from "@/types";
-import Footer from "../components/UI/Footer";
 import { getSettings } from "@/sanity/lib/queries";
-import ScrollDown from "../components/UI/ScrollDown";
 import { getArchive } from "@/sanity/lib/queries";
 import { HOME_QUERY } from "@/sanity/lib/queries";
 import { Suspense } from "react";
@@ -27,7 +25,6 @@ export default async function Page() {
 
   return (
     <div>
-      <ScrollDown />
       {hideAnimation ? (
         <div className="w-full h-dvh md:h-screen absolute top-0 left-0 flex items-center justify-center pointer-events-none z-40 pb-0 md:pb-5">
           <h1 className={`text-2xl md:text-5xl text-white`}>MAUD</h1>
@@ -35,7 +32,6 @@ export default async function Page() {
       ) : (
         <TitleAnimation title="MAUD" intervalMs={300} />
       )}
-      <p></p>
       <HomeVideo content={homeContent.data} />
       <Suspense fallback={<div>Loading</div>}>
         <HomeProjects

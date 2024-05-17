@@ -38,7 +38,7 @@ export default function HomeProjects({
       className={`${
         isHome
           ? `w-full absolute top-[100vh] left-0 h-auto z-40 min-h-dvh md:min-h-screen ${
-              isFixed ? "fixed top-0" : "fixed top-0"
+              isFixed ? "fixed top-0" : "absolute top-[100vh]"
             }`
           : " "
       }`}
