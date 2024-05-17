@@ -46,13 +46,17 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
   };
 
   const startHold = (x: number, y: number) => {
+    // @ts-ignore
+    const containerRect = document
+      .getElementById("content")
+      .getBoundingClientRect();
     const nextDocumentIndex =
       displayedDocuments.length % shuffledDocuments.length;
     const nextDocument = shuffledDocuments[nextDocumentIndex];
     const initialWidth = isSmallScreen ? 100 : 250;
     const initialPosition = {
-      x: x - initialWidth / 2,
-      y: y - initialWidth / 2,
+      x: (x - containerRect.left) / 0.75 - initialWidth / 2,
+      y: (y - containerRect.top) / 0.75 - initialWidth / 2,
     };
     const newDisplayDocument: DisplayedDocument = {
       doc: nextDocument,
@@ -103,7 +107,6 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     setCurrentPosition(null);
   };
 
-  // @ts-ignore
   const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     startHold(event.clientX, event.clientY);
   };
@@ -127,34 +130,30 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
   return (
     <>
       <div
-        className="w-full h-dvh md:h-screen relative select-none"
+        className="w-full h-dvh md:h-screen relative select-none cursor-pointer"
         onMouseDown={isSmallScreen ? undefined : handleMouseDown}
         onMouseUp={isSmallScreen ? undefined : endHold}
         onMouseLeave={endHold}
         onTouchStart={isSmallScreen ? handleTouchStart : undefined}
         onTouchEnd={isSmallScreen ? endHold : undefined}
         onContextMenu={handleContextMenu}
-        style={{ cursor: "pointer" }}
       >
         {displayedDocuments.map(({ doc, position, width }, index) => (
           <div
             key={`click-gallery-${index}`}
+            className="absolute"
             style={{
-              position: "absolute",
               left: position.x,
               top: position.y,
+              width: `${width}px`,
+              height: `${width}px`,
+              zIndex: 10,
             }}
           >
             <ArchiveThumbImg data={doc} index={index} dynamicWidth={width} />
           </div>
         ))}
       </div>
-      <button
-        className="text-xs absolute bottom-0 right-0 text-white p-2 m-1 h-fit w-fit z-20"
-        onClick={resetLayout}
-      >
-        Clear
-      </button>
     </>
   );
 };

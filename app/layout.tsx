@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Nav from "./components/UI/Nav";
 import { diatype } from "./fonts";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "MAUD, Part of Accenture song",
@@ -17,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleAnalytics gaId="G-TYTT67R84C" />
       <body className={`${diatype.className} antialiased text-maud-black `}>
-        <Nav />
         {children}
       </body>
     </html>
