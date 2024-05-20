@@ -25,8 +25,10 @@ export default function ScreenCapture({ documents }: ScreenCaptureProps) {
   const handleGeneratePdf = () => {
     if (contentRef.current) {
       html2canvas(contentRef.current, {
-        scale: 4, // Adjust the scale for higher resolution
+        scale: 6, // Adjust the scale for higher resolution
         useCORS: true, // Use this if there are cross-origin images
+        // @ts-ignore
+        letterRendering: true,
       })
         .then((canvas) => {
           // Create an image from the canvas for debugging
