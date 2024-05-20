@@ -55,7 +55,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
     const nextDocumentIndex =
       displayedDocuments.length % shuffledDocuments.length;
     const nextDocument = shuffledDocuments[nextDocumentIndex];
-    const initialWidth = isSmallScreen ? 100 : 250;
+    const initialWidth = isSmallScreen ? 100 : 150;
     const initialPosition = {
       x: (x - containerRect.left) / 0.75 - initialWidth / 2,
       y: (y - containerRect.top) / 0.75 - initialWidth / 2,
