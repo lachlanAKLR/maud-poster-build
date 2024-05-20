@@ -10,7 +10,7 @@ const IPAddress = () => {
         const response = await axios.get("https://api.ipify.org?format=json");
         setIp(response.data.ip);
       } catch (error) {
-        setIp("Unable to fetch IP");
+        setIp("IP NOT FOUND");
       }
     };
 
