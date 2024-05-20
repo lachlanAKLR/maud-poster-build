@@ -5,6 +5,8 @@ import { SanityDocument } from "next-sanity";
 import useMediaQuery from "../Utilities/useMediaQuery";
 import { shuffleArray } from "../Utilities/shuffleArray";
 import ArchiveThumbImg from "./ArchiveThumbImg";
+import Timer from "../Utilities/timer";
+import IPAddress from "../Utilities/IPAddress";
 
 interface ClickGalleryProps {
   documents: SanityDocument[];
@@ -130,7 +132,7 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
   return (
     <>
       <div
-        className="w-full h-dvh md:h-screen relative select-none cursor-pointer"
+        className="w-full  h-full relative select-none cursor-pointer"
         onMouseDown={isSmallScreen ? undefined : handleMouseDown}
         onMouseUp={isSmallScreen ? undefined : endHold}
         onMouseLeave={endHold}
@@ -153,6 +155,14 @@ const ClickGallery: React.FC<ClickGalleryProps> = ({ documents }) => {
             <ArchiveThumbImg data={doc} index={index} dynamicWidth={width} />
           </div>
         ))}
+      </div>
+
+      <div className="text-white text-small absolute bottom-1 left-2 z-50 pl-1 pb-2 pr-4 flex justify-between w-full">
+        <div className="flex gap-3">
+          <Timer />
+          <IPAddress />
+        </div>
+        <div>MAUD.COM.AU</div>
       </div>
     </>
   );
